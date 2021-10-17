@@ -1,17 +1,23 @@
 # api-chain
 ApiChain and CssChain JS. Collection API inherits the element one.
 
-Demo and test reside in [api-chain](https://github.com/sashafirsov/api-chain-test) project.
+Demo and test sources reside in [api-chain](https://github.com/sashafirsov/api-chain-test) project.
 
 # cssChain - intiniated by css selector from HTMLElement API
-Registered interfaces are taken from window object by `window.HTML*Element` pattern.
+Registered interfaces are taken from window object by `window.HTML*Element` pattern. To use API from custom elements, add those in array of last 
 
-# collection use same API as members. 
+## collection use same API as members. 
 
-# mix-in 
-class MyElement# xPathChain - xPath, no default API
-
-Api selected either from 1st element in collection or from `window?. HTMLElement||Node` for browser and non-browser environment compatibility.
+Api selected either from elements in collection or from `window.HTML*Element`.
+```js
+import {CssChain as $} from 'api-chain/CssChain.js`;
+$('input').value=''; // set all INPUT elements on page value to blank string
+$('input').forEach( (el,i) => el.value=i ) // all array methods available
+$('[type="checkbox"]')
+  .addEventListener('click' ,function(){  }) // methods are called for each element
+  .addEventListener('change',function(){ this.checked; }) // and could be chained
+  .on( 'hover", ()=>showTooltip() ) // 'on' is alias to `addEventListener`
+```
 
 # optimization
 API simulation is expensive when done on each occasion. Pre-generated API wrappers could be added on app load time. CssChain on module load applied the whole set of `window.HTML*Element`. 
