@@ -14,9 +14,16 @@ import {CssChain as $} from 'api-chain/CssChain.js`;
 $('input').value=''; // set all INPUT elements on page value to blank string
 $('input').forEach( (el,i) => el.value=i ) // all array methods available
 $('[type="checkbox"]')
+  .prop( 'checked', false ) // set property and return same CssChain 
   .addEventListener('click' ,function(){  }) // methods are called for each element
   .addEventListener('change',function(){ this.checked; }) // and could be chained
-  .on( 'hover", ()=>showTooltip() ) // 'on' is alias to `addEventListener`
+  .on( 'hover', ()=>showTooltip() ) // 'on' is alias to `addEventListener`
+  
+const firstFormUrl = $('form').action; // returns property valuye of 1st element in collection.
+const firstLinkUrl = $('a').href; // returns property valuye of 1st element in collection.
+$('a').prop('href'); // same as above
+$('a').attr('href'); // same as getAttribute() for 1st element in collection
+
 ```
 
 # optimization
