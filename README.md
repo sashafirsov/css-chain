@@ -1,12 +1,66 @@
-# api-chain
-ApiChain and CssChain JS. Collection API inherits the element one.
+# ApiChain and CssChain JS. 
+_Collection API inherits the element API and Array._
 
-Demo and test sources reside in [api-chain](https://github.com/sashafirsov/api-chain-test) project.
+Demo and test sources reside in [api-chain-test](https://github.com/sashafirsov/api-chain-test) project.
+
+# [CssChain.js](./CssChain.js)
+## html elements methods
+`CssChain` returns an Array inherited object which has all methods and properties of its elements.
+When method is called, each element would invoke this method and then same CssChain object is returned.
+
+    function addTooltip( el ){ ...el.title }
+    CssChain( '*[title]' ).forEach( el=>addTooltip( el ) ).forEach( addTooltip ).removeAttribute('title');
+^^ calls `addTiooltip()` twice for each element with `title` attribute and then removes this attribute
+
+    CssChain( '*[title]', rootEL ).addEventListener( 'click', ev=> alert(ev.target.title) );
+^^ adds event listener to all selected elements in `rootEl` DOM tree
+
+    CssChain( 'a' )
+        .addEventListener( 'mouseover', ev=> alert(ev.target.classList.add('hovered') )
+        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') )
+        .addEventListener( 'focus', ev=> alert(ev.target.classList.add('focused') )
+        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') )
+^^ adds multiple event handlers in chainable dot notation.
+
+## special methods
+* `forEach()` - same as [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+  returns CssChain
+* `map()` - same as [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+  returns new CssChain with elements from callback
+* `attr(name)` (alias for `getAttribute`) returns 1st element attribute value or `undefined` for empty collection
+* `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
+* `prop(name)`  returns 1st element property value or `undefined` for empty collection
+* `prop(name, value)`  sets elements attribute, returns CssChain
+
+
+## html elements properties
+When property is assigned to collection, this property would be set for all elements in collection.
+The property get would return property from 1st element.
+
+    import { CssChain as $ } from '../src/CssChain.js';
+    $( 'input' ).value = 'not defined'; // all INPUT elements would have new value set
+    v = $( 'input' ).prop( value,'not defined' ); // same as ^^
+    let  v = $( 'input' ).value; // variable would receive the 1st INPUT element value
+    v = $( 'input' ).prop( value ); // same as ^^
+
+# [ApiChain.js](./ApiChain.js)
+## Array of raw objects
+    $$([ {a:1},{a:2} ]).a=1;    // all arr elements property `a` set to 1
+    v = $$([ {a:1},{a:2} ]).a;  // 1st element property `a` is returned, i.e. 1
+    $$( [ { a:1,f(v){ this.a=v} }}, { b:2,f(v){ this.b=v}} ])
+            .f(3); // method called on each element, result [{a:3},{b:3}]
+## Array of class objects
+Could be initiated in same fashion as raw objects.
+But for performance better to provide the reference object as a second parameter:
+
+    Class A{ f(){} }
+    const x = new A(), y = new A();
+    $$( [x,y], A ).f()
 
 # cssChain - initiated by css selector from HTMLElement API
-Registered interfaces are taken from window object by `window.HTML*Element` pattern. To use API from custom elements, add those in array of last 
+Registered interfaces are taken from window object by `window.HTML*Element` pattern. 
+To use API from custom elements, add those in array of last 
 
-## collection use same API as members.
 
 Api selected either from elements in collection or from `window.HTML*Element`.
 ```js
