@@ -38,8 +38,7 @@ CssChain( css, el=document, protoArr=[] )
     }else
         protoArr = [ protoArr ];
 
-    protoArr.map( tag => tag.tagName ? tag : document.createElement(tag) )
-        .forEach( el => applyPrototype(el,CssChainLocal) );
+    protoArr.forEach( el => applyPrototype(el,CssChainLocal) );
     const ret = new CssChainLocal();
     ret.push(...arr);
     return ret;
