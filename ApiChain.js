@@ -6,7 +6,9 @@ setProp = ( refObj, k, ApiChainLocal )=>
 {
     if( typeof refObj[ k ] == 'function' )
     {   ApiChainLocal.prototype[ k ] = function( ...args )
-        {   this.forEach( el => el[ k ]( ...args ) );
+        {   if( k.startsWith('get') )
+                return this.length ? this[0][k](...args) : undefined;
+            this.forEach( el => el[ k ]( ...args ) );
             return this;
         }
     }else

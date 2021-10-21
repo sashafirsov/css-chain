@@ -1,6 +1,13 @@
 import { setProp } from './ApiChain.js';
 
-class CssChainLocal extends Array{}
+class CssChainLocal extends Array
+{
+    attr(...args){ return args.length>1 ? this.setAttribute(...args) : this.getAttribute(...args) }
+    prop(...args){ return args.length>1 ? this.forEach( el=>el[args[0]]=args[1]) : this[0][args[0]] }
+    forEach( ...args){ Array.prototype.forEach.apply(this,args); return this; }
+    map( ...args){ return Array.prototype.map.apply(this,args); }
+}
+
 const appliedTypes = new Set()
 ,     OBJ_prototype = Object.getPrototypeOf( {} );
 
