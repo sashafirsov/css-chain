@@ -31,7 +31,8 @@ When method is called, each element would invoke this method and then same CssCh
 * `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
 * `prop(name, value)`  sets elements attribute, returns CssChain
-
+* `querySelector(css)` - todo
+* `querySelectorAll(css)`, alias `$` - todo, return union collection of each child select  
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.
