@@ -1,24 +1,37 @@
 {
-  "name": "css-chain",
-  "version": "1.0.0",
-  "description": "ApiChain and CssChain JS. Collection API inherits the element one.",
-  "main": "CssChain.js",
-  "scripts": {
-    "test": "echo \"reside in https://github.com/sashafirsov/api-chain-test\" && exit 0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sashafirsov/css-chain.git"
-  },
-  "keywords": [
-    "css",
-    "nodeset",
-    "api"
-  ],
-  "author": "Sasha Firsov",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/sashafirsov/css-chain/issues"
-  },
-  "homepage": "https://github.com/sashafirsov/css-chain#readme"
+    "name": "css-chain",
+    "version": "1.0.0",
+    "description": "ApiChain and CssChain JS. Collection API inherits the Array and element API.",
+    "main": "CssChain.js",
+    "browser": "CssChain.js",
+    "module": "CssChain.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"reside in https://github.com/sashafirsov/api-chain-test\" && exit 0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sashafirsov/css-chain.git"
+    },
+    "keywords": [
+        "JS",
+        "Vanilla",
+        "css",
+        "nodeset",
+        "api"
+    ],
+    "author": {
+        "name": "Sasha Firsov",
+        "email": "suns@simulationworks.com",
+        "url": "https://blog.firsov.net/"
+    },
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/sashafirsov/css-chain/issues"
+    },
+    "homepage": "https://github.com/sashafirsov/css-chain#readme",
+    "funding": {
+        "type": "patreon",
+        "url": "https://www.patreon.com/sashafirsov"
+    }
 }
