@@ -1,7 +1,11 @@
 # ApiChain and CssChain JS. 
 _Collection API inherits the element API and Array._
 
-Demo and test sources reside in [api-chain-test](https://github.com/sashafirsov/api-chain-test) project.
+[![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.0/demo/index.html)
+| [tests project](https://github.com/sashafirsov/css-chain-test)
+
+[![NPM version][npm-image]][npm-url]
 
 # [CssChain.js](./CssChain.js)
 ## html elements methods
@@ -30,6 +34,7 @@ When method is called, each element would invoke this method and then same CssCh
 * `push(...arr)` - same as [Array.push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
   returns appended CssChain
 * `querySelector(css)` - selects 1st element, returns CssChain
+* `querySelectorAll(css)` - selects all children matching `css` , returns CssChain
 * `attr(name)` (alias for `getAttribute`) returns 1st element attribute value or `undefined` for empty collection
 * `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
@@ -95,4 +100,6 @@ ApiChain( [], [A,B] ) // would generate from prototypes array on 1st call
 ApiChain( [a,b], [A,B] ).f1().f2() // would reuse API generated on 1st call
 ```
 
-
+[github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
+[npm-image]:      https://img.shields.io/npm/v/css-chain.svg
+[npm-url]:        https://npmjs.org/package/css-chain
