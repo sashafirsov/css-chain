@@ -27,12 +27,13 @@ When method is called, each element would invoke this method and then same CssCh
   returns CssChain
 * `map()` - same as [Array.map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
   returns new CssChain with elements from callback
+* `push(...arr)` - same as [Array.push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+  returns appended CssChain
+* `querySelector(css)` - selects 1st element, returns CssChain
 * `attr(name)` (alias for `getAttribute`) returns 1st element attribute value or `undefined` for empty collection
 * `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
 * `prop(name, value)`  sets elements attribute, returns CssChain
-* `querySelector(css)` - todo
-* `querySelectorAll(css)`, alias `$` - todo, return union collection of each child select  
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.

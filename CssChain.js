@@ -4,8 +4,11 @@ class CssChainLocal extends Array
 {
     attr(...args){ return args.length>1 ? this.setAttribute(...args) : this.getAttribute(...args) }
     prop(...args){ return args.length>1 ? this.forEach( el=>el[args[0]]=args[1]) : this[0][args[0]] }
-    forEach( ...args){ Array.prototype.forEach.apply(this,args); return this; }
-    map( ...args){ return Array.prototype.map.apply(this,args); }
+    forEach( ...args){ Array.prototype.forEach.apply(this,args); return this }
+    map( ...args){ return Array.prototype.map.apply(this,args) }
+    push(...args){ Array.prototype.push.apply(this,args); return this; }
+    querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
+    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...el.querySelectorAll(css) ), new CssChainLocal()) }
 }
 
 const appliedTypes = new Set()
