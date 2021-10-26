@@ -2,7 +2,7 @@
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.3/demo/index.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.4/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test)
 
 [![NPM version][npm-image]][npm-url]
