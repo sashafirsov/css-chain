@@ -2,7 +2,7 @@
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.4/demo.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.5/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test)
 
 [![NPM version][npm-image]][npm-url]
@@ -39,6 +39,10 @@ When method is called, each element would invoke this method and then same CssCh
 * `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
 * `prop(name, value)`  sets elements attribute, returns CssChain
+* `parent()` - set of immediate parents of current collection, duplications removed
+* `parent(css)` - set of parents of current set which 
+  [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
+  the selector, duplications removed
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.

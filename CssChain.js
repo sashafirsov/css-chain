@@ -9,6 +9,15 @@ class CssChainLocal extends Array
     push(...args){ Array.prototype.push.apply(this,args); return this; }
     querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
     querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...el.querySelectorAll(css) ), new CssChainLocal()) }
+    parent(css)
+    {   const s = new Set()
+        , add = n=> s.has(n) ? 0 : (s.add(n), n)
+        , parentLoop = n=>  {   while( n=n.parentElement )
+                                    if( n.matches(css) )
+                                        return add(n);
+                            };
+        return this.map( css ? parentLoop : n=>add(n.parentElement) ).filter(n=>n);
+    }
 }
 
 const appliedTypes = new Set()
