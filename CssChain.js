@@ -9,6 +9,7 @@ class CssChainLocal extends Array
     push(...args){ Array.prototype.push.apply(this,args); return this; }
     querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
     querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...el.querySelectorAll(css) ), new CssChainLocal()) }
+    $(...args){ return this.querySelectorAll(...args) }
     parent(css)
     {   const s = new Set()
         , add = n=> s.has(n) ? 0 : (s.add(n), n)
@@ -17,6 +18,13 @@ class CssChainLocal extends Array
                                         return add(n);
                             };
         return this.map( css ? parentLoop : n=>add(n.parentElement) ).filter(n=>n);
+    }
+    on(...args){ return this.addEventListener(...args) }
+    remove(...args)
+    {   if( !args.length )
+            {   this.forEach(el=>el.remove()); return new CssChainLocal() }
+        const p = args[0], t = typeof args[1];
+        return 'function' === t ? this.removeEventListener(...args) : this.map(el=>el.matches(p)).filter(el=>el) ;
     }
 }
 

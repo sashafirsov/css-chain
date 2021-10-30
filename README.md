@@ -2,28 +2,34 @@
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.5/dist/demo.html)
-| [tests project](https://github.com/sashafirsov/css-chain-test)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.6/dist/demo.html)
+| [tests project](https://github.com/sashafirsov/css-chain-test) 
 
-[![NPM version][npm-image]][npm-url]
+[![NPM version][npm-image]][npm-url] [![coverage][coverage-image]][coverage-url]
 
 # [CssChain.js](./CssChain.js)
 ## html elements methods
 `CssChain` returns an Array inherited object which has all methods and properties of its elements.
 When method is called, each element would invoke this method and then same CssChain object is returned.
+```js
 
-    function addTooltip( el ){ ...el.title }
-    CssChain( '*[title]' ).forEach( el=>addTooltip( el ) ).forEach( addTooltip ).removeAttribute('title');
+    function addTooltip( el ){ /* ...el.title */ }
+    CssChain( '*[title]' ).forEach( el=>addTooltip( el ) )
+                          .forEach( addTooltip )
+                          .removeAttribute('title');
+```
 ^^ calls `addTiooltip()` twice for each element with `title` attribute and then removes this attribute
-
+```js
     CssChain( '*[title]', rootEL ).addEventListener( 'click', ev=> alert(ev.target.title) );
+```
 ^^ adds event listener to all selected elements in `rootEl` DOM tree
-
+```js
     CssChain( 'a' )
-        .addEventListener( 'mouseover', ev=> alert(ev.target.classList.add('hovered') )
-        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') )
-        .addEventListener( 'focus', ev=> alert(ev.target.classList.add('focused') )
-        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') )
+        .addEventListener( 'mouseover', ev=> alert(ev.target.classList.add('hovered') ) )
+        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') ) )
+        .addEventListener( 'focus', ev=> alert(ev.target.classList.add('focused') ) )
+        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
+```
 ^^ adds multiple event handlers in chainable dot notation.
 
 ## special methods
@@ -35,6 +41,7 @@ When method is called, each element would invoke this method and then same CssCh
   returns appended CssChain
 * `querySelector(css)` - selects 1st element, returns CssChain
 * `querySelectorAll(css)` - selects all children matching `css` , returns CssChain
+* `$` - alias to `querySelectorAll()`
 * `attr(name)` (alias for `getAttribute`) returns 1st element attribute value or `undefined` for empty collection
 * `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
@@ -43,31 +50,36 @@ When method is called, each element would invoke this method and then same CssCh
 * `parent(css)` - set of parents of current set which 
   [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
   the selector, duplications removed
+* `on(eventName, cb)` - alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+* `remove()` - delete all nodes, returns empty CssChain
+* `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.
 The property get would return property from 1st element.
-
+```js
     import { CssChain as $ } from '../src/CssChain.js';
     $( 'input' ).value = 'not defined'; // all INPUT elements would have new value set
     v = $( 'input' ).prop( value,'not defined' ); // same as ^^
     let  v = $( 'input' ).value; // variable would receive the 1st INPUT element value
     v = $( 'input' ).prop( value ); // same as ^^
-
+```
 # [ApiChain.js](./ApiChain.js)
 ## Array of raw objects
-    $$([ {a:1},{a:2} ]).a=1;    // all arr elements property `a` set to 1
-    v = $$([ {a:1},{a:2} ]).a;  // 1st element property `a` is returned, i.e. 1
-    $$( [ { a:1,f(v){ this.a=v} }}, { b:2,f(v){ this.b=v}} ])
-            .f(3); // method called on each element, result [{a:3},{b:3}]
+```js
+    $([ {a:1},{a:2} ]).a=1;    // all arr elements property `a` set to 1
+    v = $([ {a:1},{a:2} ]).a;  // 1st element property `a` is returned, i.e. 1
+    $( [ { a:1,f(v){ this.a=v} }, { b:2,f(v){ this.b=v}} ])
+        .f(3); // method called on each element, result [{a:3},{b:3}]
+```
 ## Array of class objects
 Could be initiated in same fashion as raw objects.
 But for performance better to provide the reference object as a second parameter:
-
-    Class A{ f(){} }
+```js
+    class A{ f(){} }
     const x = new A(), y = new A();
-    $$( [x,y], A ).f()
-
+    $( [x,y], A ).f()
+```
 # cssChain - initiated by css selector from HTMLElement API
 Registered interfaces are taken from window object by `window.HTML*Element` pattern. 
 To use API from custom elements, add those in array of last 
@@ -101,9 +113,11 @@ class A{ f1(){} } class B{ f2(){} }
 const a = new A, b = new A;
 ApiChain( [a,b] ).f1().f2() // would generate API on each call
 ApiChain( [], [A,B] ) // would generate from prototypes array on 1st call
-ApiChain( [a,b], [A,B] ).f1().f2() // would reuse API generated on 1st call
+ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 ```
 
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
+[coverage-image]: https://unpkg.com/css-chain-test@1.0.6/coverage/coverage.svg
+[coverage-url]:   https://unpkg.com/css-chain-test@1.0.6/coverage/lcov-report/index.html
