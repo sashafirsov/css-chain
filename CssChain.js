@@ -44,6 +44,8 @@ CssChainLocal extends Array
     }
     get innerText(){ return collectionText( this ) }
     set innerText( val ){ return this.forEach( n=>n.innerText = val ) }
+    get innerHTML(){ return map(this, e=>e.innerHTML).join('')}
+    set innerHTML( val ){ return this.forEach( n=>n.innerHTML = val ) }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
 }
 

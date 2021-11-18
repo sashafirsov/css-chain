@@ -2,7 +2,7 @@
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.6/dist/demo.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.7/dist/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test) 
 
 [![NPM version][npm-image]][npm-url] [![coverage][coverage-image]][coverage-url]
@@ -53,6 +53,13 @@ When method is called, each element would invoke this method and then same CssCh
 * `on(eventName, cb)` - alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 * `remove()` - delete all nodes, returns empty CssChain
 * `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+
+## slots in template
+Works with and without shadowDOM in same manner.
+* `slot()` - returns all slots
+* `slot('')` - returns slot without name
+* `slot(name)` - returns named slot content, alias to [HTMLSlotElement.assignedNodes()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedNodes)
+* `slot(name, val)` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.
@@ -119,5 +126,5 @@ ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
-[coverage-image]: https://unpkg.com/css-chain-test@1.0.6/coverage/coverage.svg
-[coverage-url]:   https://unpkg.com/css-chain-test@1.0.6/coverage/lcov-report/index.html
+[coverage-image]: https://unpkg.com/css-chain-test@1.0.7/coverage/coverage.svg
+[coverage-url]:   https://unpkg.com/css-chain-test@1.0.7/coverage/lcov-report/index.html
