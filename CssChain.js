@@ -11,6 +11,11 @@ export const text =
         ,   11:collectionText(n.children)
         }[n.nodeType]);
 
+export const setText = ( n, val ) =>
+    n.assignedElements
+        ? n.assignedElements().forEach( e => e.innerText = val )
+        : n.innerText = val;
+
     class
 CssChainLocal extends Array
 {
@@ -43,9 +48,16 @@ CssChainLocal extends Array
         return this.$( arr.length ? ( arr[0] ? `slot[name="${arr[0]}"]` : `slot:not([name])` ): 'slot');
     }
     get innerText(){ return collectionText( this ) }
-    set innerText( val ){ return this.forEach( n=>n.innerText = val ) }
+    set innerText( val ){ return this.forEach( n=>setText(n,val) ) }
+    text( val )
+    {   typeof val === 'function'
+             ? this.forEach( (n,i)=>setText(n,val(n,i,this)) )
+             : val===undefined ? this.innerText : this.innerText = val;
+        return this;
+    }
     get innerHTML(){ return map(this, e=>e.innerHTML).join('')}
-    set innerHTML( val ){ return this.forEach( n=>n.innerHTML = val ) }
+    set innerHTML( val ){ return this.forEach( n=>n.assignedElements ? n.assignedElements().forEach(e=>e.innerHTML=val)
+                                                                     : n.innerHTML = val ) }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
 }
 

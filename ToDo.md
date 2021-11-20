@@ -1,6 +1,7 @@
 # ToDo
-* innerText, innerHTML as aggregation with check of `assignedNodes()` on each element
+* slots innerText, innerHTML as aggregation with check of `assignedNodes()` on each element
+* text(), text(val), text(fun)
 * clone(N)
 * repeat(N)
-* children, chil
-* 
+* children, childElements
+* firstChild

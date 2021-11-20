@@ -53,13 +53,17 @@ When method is called, each element would invoke this method and then same CssCh
 * `on(eventName, cb)` - alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 * `remove()` - delete all nodes, returns empty CssChain
 * `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+* `text()` - returns text of whole collection
+* `text(val)` - sets text for each element
+* `text( (el,i,arr)=>'text'+i )` sets the element text from callback
 
 ## slots in template
-Works with and without shadowDOM in same manner.
+Works with and without shadowDOM in same manner. 
 * `slot()` - returns all slots
 * `slot('')` - returns slot without name
-* `slot(name)` - returns named slot content, alias to [HTMLSlotElement.assignedNodes()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedNodes)
-* `slot(name, val)` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
+* `slot(name)` - returns named slot
+* `slot(name, val|cb )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
+* `slot().innerText`,`slot().innerHTML`, `slot().text()`, `slot().html()` sets slotted content
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.
