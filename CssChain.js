@@ -1,17 +1,22 @@
 import { setProp } from './ApiChain.js';
-const map = (arr, ...args ) => Array.prototype.map.apply( arr, args );
-export const collectionText = arr=> map(arr, e=>text(e)).join('')
-export const text =
- n =>  ({   1:  n.assignedElements
-                ? collectionText(n.assignedElements()) || n.innerText
-                : ['SCRIPT','META','STYLE'].includes(n.nodeName) ? ''
-                : n.innerText //collectionText(n.children)
-        ,   3: n.innerText
-        ,   4: n.innerText
-        ,   11:collectionText(n.children)
-        }[n.nodeType]);
+export const map = (arr, ...args ) => Array.prototype.map.apply( arr, args );
+export const csv = (arr, ...args ) => map( arr, ...args ).join(',');
 
-export const setText = ( n, val ) =>
+export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
+const nop = ()=>'';
+const node2text =   {   1:  n=>n.assignedElements
+                             ? collectionText(n.assignedElements()) || n.innerText
+                             : ['SCRIPT','AUDIO','STYLE','CANVAS','DATALIST','EMBED','OBJECT','PICTURE','IFRAME','METER','NOSCRIPT'
+                                   ,'SELECT','OPTGROUP','PROGRESS','TEMPLATE','VIDEO']
+                                   .includes(n.nodeName) ? ''
+                                                         : n.innerText //collectionText(n.children)
+                    ,   3: n=>n.nodeValue
+                    ,   4: n=>n.innerText
+                    ,   11:n=>collectionText(n.children)
+                    };
+export const getNodeText = n => (node2text[n.nodeType] || nop)(n);
+
+export const setNodeText = ( n, val ) =>
     n.assignedElements
         ? n.assignedElements().forEach( e => e.innerText = val )
         : n.innerText = val;
@@ -44,16 +49,25 @@ CssChainLocal extends Array
         return 'function' === t ? this.removeEventListener(...args) : this.map(el=>el.matches(p)).filter(el=>el) ;
     }
     slot(...arr)
-    {
-        return this.$( arr.length ? ( arr[0] ? `slot[name="${arr[0]}"]` : `slot:not([name])` ): 'slot');
+    {   return this.$( arr.length
+                        ? csv( arr
+                            , name=>
+                                csv( name.split(',')
+                                    , n=> ['""',"''"].includes(n) || !n
+                                          ? `slot:not([name])`
+                                          : `slot[name="${n}"]`
+                                    )
+                            )
+                        : 'slot');
     }
-    get innerText(){ return collectionText( this ) }
-    set innerText( val ){ return this.forEach( n=>setText(n,val) ) }
+    get innerText(){ return this.text() }
+    set innerText( val ){ return this.text( val ) }
     text( val )
-    {   typeof val === 'function'
-             ? this.forEach( (n,i)=>setText(n,val(n,i,this)) )
-             : val===undefined ? this.innerText : this.innerText = val;
-        return this;
+    {   return val === undefined
+               ? collectionText( this )
+               : this.forEach( typeof val === 'function'
+                                ? (n,i)=>setNodeText(n,val(n,i,this))
+                                : n=>setNodeText(n,val) );
     }
     get innerHTML(){ return map(this, e=>e.innerHTML).join('')}
     set innerHTML( val ){ return this.forEach( n=>n.assignedElements ? n.assignedElements().forEach(e=>e.innerHTML=val)

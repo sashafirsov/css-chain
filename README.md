@@ -61,7 +61,7 @@ When method is called, each element would invoke this method and then same CssCh
 Works with and without shadowDOM in same manner. 
 * `slot()` - returns all slots
 * `slot('')` - returns slot without name
-* `slot(name)` - returns named slot
+* `slot(name1,name2...)` - returns named slots
 * `slot(name, val|cb )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
 * `slot().innerText`,`slot().innerHTML`, `slot().text()`, `slot().html()` sets slotted content
 
