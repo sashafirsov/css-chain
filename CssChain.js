@@ -3,7 +3,11 @@ export const map = (arr, ...args ) => Array.prototype.map.apply( arr, args );
 export const csv = (arr, ...args ) => map( arr, ...args ).join(',');
 
 export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
-const nop = ()=>'';
+
+const nop = ()=>''
+,   isArr = a => Array.isArray(a)
+,   isStr = a => typeof a === 'string';
+
 const node2text =   {   1:  n=>n.assignedElements
                              ? collectionText(n.assignedElements()) || n.innerText
                              : ['SCRIPT','AUDIO','STYLE','CANVAS','DATALIST','EMBED','OBJECT','PICTURE','IFRAME','METER','NOSCRIPT'
@@ -21,6 +25,24 @@ export const setNodeText = ( n, val ) =>
         ? n.assignedElements().forEach( e => e.innerText = val )
         : n.innerText = val;
 
+export const collectionHtml = arr => map(arr, e=>e.innerHTML).join('');
+export const setNodeHtml = ( n, val ) =>
+{
+    if( isArr(val) && isStr(val[1]) )
+        return n.innerHTML = val.join('');
+
+    const set = ( to, v )=> to.append(v instanceof Node ? (v.remove(),v)
+                                        : (''+v).startsWith('<')
+                                            ? to.innerHTML = v
+                                            : document.createTextNode(v) )
+    ,  append = v => n.assignedElements
+                   ? n.assignedElements().forEach( el => set(el,v) )
+                   : set(n,v);
+    n.innerHTML='';
+    val instanceof NodeList || Array.isArray(val)
+        ? [ ...val ].forEach( append )
+        : n.innerHTML = val;
+}
     class
 CssChainLocal extends Array
 {
@@ -69,9 +91,15 @@ CssChainLocal extends Array
                                 ? (n,i)=>setNodeText(n,val(n,i,this))
                                 : n=>setNodeText(n,val) );
     }
-    get innerHTML(){ return map(this, e=>e.innerHTML).join('')}
-    set innerHTML( val ){ return this.forEach( n=>n.assignedElements ? n.assignedElements().forEach(e=>e.innerHTML=val)
-                                                                     : n.innerHTML = val ) }
+    get innerHTML(){ return this.html() }
+    set innerHTML( val ){ return this.html(val) }
+    html( val )
+    {   return val === undefined
+            ? collectionHtml( this )
+            : this.forEach( typeof val === 'function'
+               ? (n,i)=>setNodeHtml(n,val(n,i,this))
+               : n=>setNodeHtml(n,val) );
+    }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
 }
 

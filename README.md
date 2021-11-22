@@ -56,6 +56,9 @@ When method is called, each element would invoke this method and then same CssCh
 * `text()` - returns text of whole collection
 * `text(val)` - sets text for each element
 * `text( (el,i,arr)=>'text'+i )` sets the element text from callback
+* `html()` - returns concatenated innerHTML of collection
+* `html(htmlText)` - sets innerHTML of each collection element
+* `html(strArr|NodeList)` - array duplicated within each collection element
 
 ## slots in template
 Works with and without shadowDOM in same manner. 
