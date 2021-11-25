@@ -6,7 +6,10 @@ export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
 
 const nop = ()=>''
 ,   isArr = a => Array.isArray(a)
-,   isStr = a => typeof a === 'string';
+,   isStr = a => typeof a === 'string'
+,   clear = n => n.assignedElements
+               ? n.assignedElements().forEach( a => a.innerHTML='' )
+               : n.innerHTML='' ;
 
 const node2text =   {   1:  n=>n.assignedElements
                              ? collectionText(n.assignedElements()) || n.innerText
@@ -15,7 +18,6 @@ const node2text =   {   1:  n=>n.assignedElements
                                    .includes(n.nodeName) ? ''
                                                          : n.innerText //collectionText(n.children)
                     ,   3: n=>n.nodeValue
-                    ,   4: n=>n.innerText
                     ,   11:n=>collectionText(n.children)
                     };
 export const getNodeText = n => (node2text[n.nodeType] || nop)(n);
@@ -25,23 +27,24 @@ export const setNodeText = ( n, val ) =>
         ? n.assignedElements().forEach( e => e.innerText = val )
         : n.innerText = val;
 
-export const collectionHtml = arr => map(arr, e=>e.innerHTML).join('');
+export const collectionHtml = arr => map( arr, n=>n.assignedElements
+         ? map( n.assignedElements(), e=>e.innerHTML ).join('')
+         : n.innerHTML
+    ).join('');
+
 export const setNodeHtml = ( n, val ) =>
 {
-    if( isArr(val) && isStr(val[1]) )
-        return n.innerHTML = val.join('');
-
-    const set = ( to, v )=> to.append(v instanceof Node ? (v.remove(),v)
-                                        : (''+v).startsWith('<')
-                                            ? to.innerHTML = v
-                                            : document.createTextNode(v) )
+    const set = ( to, v )=> ( v instanceof Node
+                            ? v.remove() || to.append(v)
+                            : to.innerHTML = to.innerHTML+v
+                            )
     ,  append = v => n.assignedElements
-                   ? n.assignedElements().forEach( el => set(el,v) )
+                   ? n.assignedElements().forEach( a =>clear(a)||set(a,v) )
                    : set(n,v);
-    n.innerHTML='';
-    val instanceof NodeList || Array.isArray(val)
+    clear(n);
+    val instanceof NodeList || isArr(val)
         ? [ ...val ].forEach( append )
-        : n.innerHTML = val;
+        : append(val);
 }
     class
 CssChainLocal extends Array
@@ -108,7 +111,7 @@ const appliedTypes = new Set()
 
     export function
 applyPrototype( nodeOrTag, ApiChain )
-{   const node = ( typeof nodeOrTag === 'string' ) ? document.createElement(nodeOrTag) : nodeOrTag;
+{   const node = isStr(nodeOrTag) ? document.createElement(nodeOrTag) : nodeOrTag;
     if( appliedTypes.has(node.tagName) )
         return;
     appliedTypes.add( node.tagName );
@@ -134,9 +137,9 @@ CssChain( css, el=document, protoArr=[] )
 {
     const arr = 'string'===typeof css
                 ? el.querySelectorAll( css )
-                : Array.isArray(css) ? css : [css.shadowRoot || css];
+                : isArr(css) ? css : [css.shadowRoot || css];
 
-    if( Array.isArray( protoArr ) )
+    if( isArr( protoArr ) )
     {   if( !protoArr.length )
             protoArr = [...arr].slice(0,256);
     }else

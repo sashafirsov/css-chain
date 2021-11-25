@@ -1,4 +1,6 @@
 # ApiChain and CssChain JS. 
+_HTML template/slot and DOM manipulation library_
+
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
