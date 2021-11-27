@@ -61,6 +61,9 @@ When method is called, each element would invoke this method and then same CssCh
 * `html()` - returns concatenated innerHTML of collection
 * `html(htmlText)` - sets innerHTML of each collection element
 * `html(strArr|NodeList)` - array duplicated within each collection element
+* `cloneNode(deep)` - returns collection of cloned elements of current one by [Node.cloneNode(deep)](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
+* `clone()` - clone nodes(deep) or objects(shallow) 
+* `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
 
 ## slots in template
 Works with and without shadowDOM in same manner. 

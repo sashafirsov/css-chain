@@ -104,6 +104,8 @@ CssChainLocal extends Array
                : n=>setNodeHtml(n,val) );
     }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
+    cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
+    clone(doc){ return this.map( el=> doc? doc.importNode( el,true ): el.cloneNode ? el.cloneNode(true):Object.assign({},el) ) }
 }
 
 const appliedTypes = new Set()

@@ -1,7 +1,7 @@
 # ToDo
-* slots innerText, innerHTML as aggregation with check of `assignedNodes()` on each element
-* text(), text(val), text(fun)
+* [cloneNode(deep)](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
 * clone(N)
 * repeat(N)
 * children, childElements
 * firstChild
+* outerHTML
