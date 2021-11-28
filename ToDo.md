@@ -5,3 +5,8 @@
 * children, childElements
 * firstChild
 * outerHTML
+
+* assignedElements => assignedNodes
+* 
+# test
+* clear() slot assignedElements

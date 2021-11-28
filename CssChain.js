@@ -8,7 +8,7 @@ const nop = ()=>''
 ,   isArr = a => Array.isArray(a)
 ,   isStr = a => typeof a === 'string'
 ,   clear = n => n.assignedElements
-               ? n.assignedElements().forEach( a => a.innerHTML='' )
+               ? n.assignedElements().forEach( a => a.remove() )
                : n.innerHTML='' ;
 
 const node2text =   {   1:  n=>n.assignedElements
@@ -32,20 +32,22 @@ export const collectionHtml = arr => map( arr, n=>n.assignedElements
          : n.innerHTML
     ).join('');
 
-export const setNodeHtml = ( n, val ) =>
+export const addNodeHtml = ( n, val ) =>
 {
     const set = ( to, v )=> ( v instanceof Node
                             ? v.remove() || to.append(v)
                             : to.innerHTML = to.innerHTML+v
                             )
-    ,  append = v => n.assignedElements
-                   ? n.assignedElements().forEach( a =>clear(a)||set(a,v) )
+    ,  append = v => n.assign
+                   ? n.assign( [...n.assignedNodes(), v] )
                    : set(n,v);
-    clear(n);
+
     val instanceof NodeList || isArr(val)
         ? [ ...val ].forEach( append )
         : append(val);
 }
+export const setNodeHtml = ( n, val ) => { clear(n); addNodeHtml(n,val) };
+
     class
 CssChainLocal extends Array
 {
@@ -67,6 +69,7 @@ CssChainLocal extends Array
         return CssChain(this.map( css ? parentLoop : n=>add(n.parentElement) ).filter(n=>n));
     }
     on(...args){ return this.addEventListener(...args) }
+    append(val){ return this.forEach( n=> addNodeHtml(n,val)) }
     remove(...args)
     {   if( !args.length )
             {   this.forEach(el=>el.remove()); return new CssChainLocal() }
