@@ -24,7 +24,6 @@ const node2text =   {   1:  n=>n.assignedElements
                     ,   11:n=>collectionText(n.children)
                     };
 export const getNodeText = n => (node2text[n.nodeType] || nop)(n);
-export const getTextNode = t => (t&&t.nodeType) ? t : document.createTextNode(t);
 export const setNodeText = ( n, val ) =>
     hasAssigned(n)
     ? n.assignedElements().forEach( e => e.innerText = val )
