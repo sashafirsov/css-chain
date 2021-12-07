@@ -7,7 +7,10 @@ export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
 const nop = ()=>''
 ,   isArr = a => Array.isArray(a)
 ,   isStr = a => typeof a === 'string'
-,   clear = n => n.assignedElements
+,   inWC = n => n.getRootNode().host
+,   hasAssigned = n=> inWC(n) && n.assignedElements
+,   each = (arr, cb )=> (arr.forEach(cb),arr)
+,   clear = n => hasAssigned(n)
                ? n.assignedElements().forEach( a => a.remove() )
                : n.innerHTML='' ;
 
@@ -21,25 +24,33 @@ const node2text =   {   1:  n=>n.assignedElements
                     ,   11:n=>collectionText(n.children)
                     };
 export const getNodeText = n => (node2text[n.nodeType] || nop)(n);
-
+export const getTextNode = t => (t&&t.nodeType) ? t : document.createTextNode(t);
 export const setNodeText = ( n, val ) =>
-    n.assignedElements
-        ? n.assignedElements().forEach( e => e.innerText = val )
-        : n.innerText = val;
-
+    hasAssigned(n)
+    ? n.assignedElements().forEach( e => e.innerText = val )
+    : n.innerText = val;
+export const assignParent = (arr,n)=>arr.map( e=>n.appendChild(e))
 export const collectionHtml = arr => map( arr, n=>n.assignedElements
-         ? map( n.assignedElements(), e=>e.innerHTML ).join('')
+         ? map( n.assignedElements(), e=>e.outerHTML ).join('')
          : n.innerHTML
     ).join('');
+
+export const html2NodeArr = html =>
+{   const n = document.createElement('div');
+    n.innerHTML = html;
+    return [...n.childNodes].map(e=>(e.remove(),e));
+};
 
 export const addNodeHtml = ( n, val ) =>
 {
     const set = ( to, v )=> ( v instanceof Node
                             ? v.remove() || to.append(v)
-                            : to.innerHTML = to.innerHTML+v
+                            : html2NodeArr(v).forEach( e=>to.append(e) )
                             )
-    ,  append = v => n.assign
-                   ? n.assign( [...n.assignedNodes(), v] )
+    ,  append = v => hasAssigned(n)
+                   ? n.assign( ...n.assignedNodes()
+                             , ...assignParent( each( html2NodeArr(v), e=>e.slot=n.name )
+                                                , n.getRootNode().host ) )
                    : set(n,v);
 
     val instanceof NodeList || isArr(val)
@@ -142,7 +153,7 @@ CssChain( css, el=document, protoArr=[] )
 {
     const arr = 'string'===typeof css
                 ? el.querySelectorAll( css )
-                : isArr(css) ? css : [css.shadowRoot || css];
+                : isArr(css) ? css : [css? css.shadowRoot || css : document];
 
     if( isArr( protoArr ) )
     {   if( !protoArr.length )

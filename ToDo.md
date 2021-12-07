@@ -10,3 +10,5 @@
 * 
 # test
 * clear() slot assignedElements
+* html2NodeArr(html)
+* 
