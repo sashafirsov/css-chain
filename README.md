@@ -136,9 +136,15 @@ ApiChain( [a,b] ).f1().f2() // would generate API on each call
 ApiChain( [], [A,B] ) // would generate from prototypes array on 1st call
 ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 ```
+# Samples of use
+
+PokéAPI Explorer:
+[![PokéAPI Explorer][PokeApi-explorer-image]][PokeApi-explorer-url]
 
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
 [coverage-image]: https://unpkg.com/css-chain-test@1.0.7/coverage/coverage.svg
 [coverage-url]:   https://unpkg.com/css-chain-test@1.0.7/coverage/lcov-report/index.html
+[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.0.7/src/PokeApi-Explorer.png
+[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.0.7/src/PokeApi-Explorer.html
