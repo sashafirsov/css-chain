@@ -86,6 +86,7 @@ CssChainLocal extends Array
         const p = args[0], t = typeof args[1];
         return 'function' === t ? this.removeEventListener(...args) : this.map(el=>el.matches(p)).filter(el=>el) ;
     }
+    clear(){ this.innerHTML=''; return this }
     slot(...arr)
     {   return this.$( arr.length
                         ? csv( arr

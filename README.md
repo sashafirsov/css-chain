@@ -64,6 +64,8 @@ When method is called, each element would invoke this method and then same CssCh
 * `cloneNode(deep)` - returns collection of cloned elements of current one by [Node.cloneNode(deep)](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
 * `clone()` - clone nodes(deep) or objects(shallow) 
 * `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
+* `append( html )`,`append( html[] )`, `append( node[] )` append HTML text or nodes
+* `clear()` - removes content
 
 ## slots in template
 Works with and without shadowDOM in same manner. 
