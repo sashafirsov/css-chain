@@ -1,6 +1,6 @@
 {
     "name": "css-chain",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "ApiChain and CssChain JS. Collection API inherits the Array and element API.",
     "main": "CssChain.js",
     "browser": "CssChain.js",
