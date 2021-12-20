@@ -7,6 +7,7 @@ export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
 const nop = ()=>''
 ,   isArr = a => Array.isArray(a)
 ,   isStr = a => typeof a === 'string'
+,   isFn = a => typeof a === 'function'
 ,   inWC = n => n.getRootNode().host
 ,   hasAssigned = n=> inWC(n) && n.assignedElements
 ,   each = (arr, cb )=> (arr.forEach(cb),arr)
@@ -90,8 +91,7 @@ CssChainLocal extends Array
     remove(...args)
     {   if( !args.length )
             {   this.forEach(el=>el.remove()); return new CssChainLocal() }
-        const p = args[0], t = typeof args[1];
-        return 'function' === t ? this.removeEventListener(...args) : this.map(el=>el.matches(p)).filter(el=>el) ;
+        return isFn(args[1]) ? this.removeEventListener(...args) : this.map(el=>el.matches(args[0])).filter(el=>el) ;
     }
     clear(){ this.innerHTML=''; return this }
     slot(...arr)
@@ -112,10 +112,19 @@ CssChainLocal extends Array
     {   const arr = css? this.$(css): this;
         if( val === undefined )
             return collectionText( arr );
-        arr.forEach( typeof val === 'function'
+        arr.forEach( isFn(val)
                     ? (n,i)=>setNodeText(n,val(n,i,arr))
                     : n=>setNodeText(n,val) );
-        return this;
+        return this
+    }
+    get outerHTML(){ return this.map( e=>e.outerHTML ).join('') }
+    set outerHTML( val )
+    {   return this.forEach( (n,i,arr)=>
+        {   const p = n.parentNode;
+            html2NodeArr(isFn(val) ? val(n,i,arr): val )
+                .forEach( e=> p.insertBefore( (arr[i]=e), n));
+            n.remove();
+        })
     }
     get innerHTML(){ return this.html() }
     set innerHTML( val ){ return this.html(val) }
@@ -123,10 +132,10 @@ CssChainLocal extends Array
     {   const arr = css? this.$(css): this;
         if( val === undefined )
             return collectionHtml( arr );
-        arr.forEach( typeof val === 'function'
+        arr.forEach( isFn(val)
                ? (n,i)=>setNodeHtml(n,val(n,i,arr))
                : n=>setNodeHtml(n,val) );
-        return this;
+        return this
     }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
