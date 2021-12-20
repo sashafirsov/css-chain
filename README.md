@@ -56,11 +56,12 @@ When method is called, each element would invoke this method and then same CssCh
 * `remove()` - delete all nodes, returns empty CssChain
 * `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
 * `text()` - returns text of whole collection
-* `text(val)` - sets text for each element
-* `text( (el,i,arr)=>'text'+i )` sets the element text from callback
+* `text(val | cb(el,i,arr))` - sets text for each element from `val` or callback
+* `text( val, css )` sets text for children elements defined by css, returns original collection
 * `html()` - returns concatenated innerHTML of collection
 * `html(htmlText)` - sets innerHTML of each collection element
 * `html(strArr|NodeList)` - array duplicated within each collection element
+* `html( val, css )` sets html for children elements defined by css, returns original collection
 * `cloneNode(deep)` - returns collection of cloned elements of current one by [Node.cloneNode(deep)](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
 * `clone()` - clone nodes(deep) or objects(shallow) 
 * `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
@@ -71,8 +72,8 @@ When method is called, each element would invoke this method and then same CssCh
 Works with and without shadowDOM in same manner. 
 * `slot()` - returns all slots
 * `slot('')` - returns slot without name
-* `slot(name1,name2...)` - returns named slots
-* `slot(name, val|cb )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
+* `slot(',name1,name2...')` - returns named slots. Blank name defines unnamed(default) slot 
+* `slot(name, val | cb(el,i,arr) )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
 * `slot().innerText`,`slot().innerHTML`, `slot().text()`, `slot().html()` sets slotted content
 
 ## html elements properties

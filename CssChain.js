@@ -37,7 +37,14 @@ export const collectionHtml = arr => map( arr, n=>n.assignedElements
 export const html2NodeArr = html =>
 {   const n = document.createElement('div');
     n.innerHTML = html;
-    return [...n.childNodes].map(e=>(e.remove(),e));
+    const wrapIfText = e=>{
+        if( e.nodeType !== 3 )
+            return e;
+        const n = document.createElement('span');
+        n.append(e);
+        return n;
+    };
+    return [...n.childNodes].map(e=>(e.remove(),e)).map(wrapIfText);
 };
 
 export const addNodeHtml = ( n, val ) =>
@@ -88,25 +95,27 @@ CssChainLocal extends Array
     }
     clear(){ this.innerHTML=''; return this }
     slot(...arr)
-    {   return this.$( arr.length
-                        ? csv( arr
-                            , name=>
-                                csv( name.split(',')
-                                    , n=> ['""',"''"].includes(n) || !n
-                                          ? `slot:not([name])`
-                                          : `slot[name="${n}"]`
-                                    )
+    {   const ret = this.$( arr.length
+                        ? csv( arr[0].split(',')
+                            , n=> ['""',"''"].includes(n) || !n
+                                  ? `slot:not([name])`
+                                  : `slot[name="${n}"]`
                             )
                         : 'slot');
+        if( arr.length === 2 )
+            ret.html(arr[1])
+        return ret;
     }
     get innerText(){ return this.text() }
     set innerText( val ){ return this.text( val ) }
-    text( val )
-    {   return val === undefined
-               ? collectionText( this )
-               : this.forEach( typeof val === 'function'
-                                ? (n,i)=>setNodeText(n,val(n,i,this))
-                                : n=>setNodeText(n,val) );
+    text( val, css=undefined )
+    {   const arr = css? this.$(css): this;
+        if( val === undefined )
+            return collectionText( arr )
+        arr.forEach( typeof val === 'function'
+                    ? (n,i)=>setNodeText(n,val(n,i,arr))
+                    : n=>setNodeText(n,val) );
+        return this;
     }
     get innerHTML(){ return this.html() }
     set innerHTML( val ){ return this.html(val) }

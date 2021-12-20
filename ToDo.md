@@ -4,7 +4,7 @@
 * repeat(N)
 * children, childElements
 * firstChild
-* outerHTML
+* outerHTML - does not support collection
 
 * assignedElements => assignedNodes
 * 
