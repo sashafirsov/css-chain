@@ -111,7 +111,7 @@ CssChainLocal extends Array
     text( val, css=undefined )
     {   const arr = css? this.$(css): this;
         if( val === undefined )
-            return collectionText( arr )
+            return collectionText( arr );
         arr.forEach( typeof val === 'function'
                     ? (n,i)=>setNodeText(n,val(n,i,arr))
                     : n=>setNodeText(n,val) );
@@ -119,12 +119,14 @@ CssChainLocal extends Array
     }
     get innerHTML(){ return this.html() }
     set innerHTML( val ){ return this.html(val) }
-    html( val )
-    {   return val === undefined
-            ? collectionHtml( this )
-            : this.forEach( typeof val === 'function'
-               ? (n,i)=>setNodeHtml(n,val(n,i,this))
+    html( val, css=undefined )
+    {   const arr = css? this.$(css): this;
+        if( val === undefined )
+            return collectionHtml( arr );
+        arr.forEach( typeof val === 'function'
+               ? (n,i)=>setNodeHtml(n,val(n,i,arr))
                : n=>setNodeHtml(n,val) );
+        return this;
     }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
