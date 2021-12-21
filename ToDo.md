@@ -5,9 +5,5 @@
 * children, childElements
 * firstChild
 
-* assignedElements => assignedNodes
-* 
+
 # test
-* clear() slot assignedElements
-* html2NodeArr(html)
-* 

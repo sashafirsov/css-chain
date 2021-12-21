@@ -138,8 +138,11 @@ CssChainLocal extends Array
         return this
     }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
+    assignedNodes(){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes():[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
     clone(doc){ return this.map( el=> doc? doc.importNode( el,true ): el.cloneNode ? el.cloneNode(true):Object.assign({},el) ) }
+    get firstElementChild(){ return CssChain(this.map( n=>n.firstElementChild).filter(n=>n)) }
+    get firstChild(){ return CssChain(this.map( n=>n.firstChild).filter(n=>n)) }
 }
 
 const appliedTypes = new Set()
