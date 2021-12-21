@@ -16,7 +16,7 @@ const nop = ()=>''
                : n.innerHTML='' ;
 
 const node2text =   {   1:  n=>n.assignedElements
-                             ? collectionText(n.assignedElements()) || n.innerText
+                             ? collectionText(n.assignedElements()) || collectionText(n.childNodes)
                              : ['SCRIPT','AUDIO','STYLE','CANVAS','DATALIST','EMBED','OBJECT','PICTURE','IFRAME','METER','NOSCRIPT'
                                    ,'SELECT','OPTGROUP','PROGRESS','TEMPLATE','VIDEO']
                                    .includes(n.nodeName) ? ''
