@@ -72,8 +72,8 @@ export const setNodeHtml = ( n, val ) => { clear(n); addNodeHtml(n,val) };
     class
 CssChainLocal extends Array
 {
-    attr(...args){ return args.length>1 ? this.setAttribute(...args) : this.getAttribute(...args) }
-    prop(...args){ return args.length>1 ? this.forEach( el=>el[args[0]]=args[1]) : this[0][args[0]] }
+    attr(...args){  return args.length>1 ? (( args[2] ? this.$(args[2]) : this ).setAttribute(...args),this) : this.getAttribute(...args) }
+    prop(...args){  return args.length>1 ? (( args[2] ? this.$(args[2]) : this ).forEach( el=>el[args[0]]=args[1]),this ): this[0][args[0]] }
     forEach( ...args){ Array.prototype.forEach.apply(this,args); return this }
     map( ...args){ return map(this,...args) }
     push(...args){ Array.prototype.push.apply(this,args); return this; }
@@ -96,7 +96,7 @@ CssChainLocal extends Array
             {   this.forEach(el=>el.remove()); return new CssChainLocal() }
         return isFn(args[1]) ? this.removeEventListener(...args) : this.map(el=>el.matches(args[0])).filter(el=>el) ;
     }
-    clear(){ this.innerHTML=''; return this }
+    clear(){ return this.forEach(n=>clear(n)) }
     slot(...arr)
     {   const ret = this.$( arr.length
                         ? csv( arr[0].split(',')
@@ -106,7 +106,9 @@ CssChainLocal extends Array
                             )
                         : 'slot');
         if( arr.length === 2 )
-            ret.html(arr[1])
+        {   ret.html( arr[ 1 ] );
+            return this
+        }
         return ret;
     }
     get innerText(){ return this.text() }
@@ -156,7 +158,9 @@ CssChainLocal extends Array
                 ,     x = cb && cb( m, d, i, arr );
                 isStr(x)
                 ? ret.push( ...html2NodeArr(x) )
-                : ret.push( isNode(x) ? x : m )
+                : isArr(x)
+                    ? ret.push(...x)
+                    : ret.push( isNode(x) ? x : m )
             }));
             return CssChain( ret );
         }

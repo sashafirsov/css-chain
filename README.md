@@ -46,8 +46,10 @@ When method is called, each element would invoke this method and then same CssCh
 * `$` - alias to `querySelectorAll()`
 * `attr(name)` (alias for `getAttribute`) returns 1st element attribute value or `undefined` for empty collection
 * `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
+* `attr(name, value,css)` (alias for `setAttribute`) sets `css`-defined sub-tree elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
 * `prop(name, value)`  sets elements attribute, returns CssChain
+* `prop(name, value, css)`  sets `css`-defined sub-tree elements attribute, returns CssChain
 * `parent()` - set of immediate parents of current collection, duplications removed
 * `parent(css)` - set of parents of current set which 
   [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
