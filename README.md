@@ -59,12 +59,15 @@ When method is called, each element would invoke this method and then same CssCh
 * `text(val | cb(el,i,arr))` - sets text for each element from `val` or callback
 * `text( val, css )` sets text for children elements defined by css, returns original collection
 * `html()` - returns concatenated innerHTML of collection
+* `html( cb(el,i,arr) )` - sets innerHTML of each collection element
 * `html(htmlText)` - sets innerHTML of each collection element
 * `html(strArr|NodeList)` - array duplicated within each collection element
-* `html( val, css )` sets html for children elements defined by css, returns original collection
+* `html( val, css )` sets html for children elements defined by css. `val` type is one of above. Returns original collection
 * `cloneNode(deep)` - returns collection of cloned elements of current one by [Node.cloneNode(deep)](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
-* `clone()` - clone nodes(deep) or objects(shallow) 
+* `clone()` - clone nodes(deep) or objects(shallow). Returns cloned collection 
 * `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
+* `clone( count, cb( clonedNode, index ) )` when callback result is a string or node it is used as return value
+* `clone( arr, cb( clonedNode, dataItem, index, arr ) )`
 * `append( html )`,`append( html[] )`, `append( node[] )` append HTML text or nodes
 * `clear()` - removes content
 
@@ -74,6 +77,7 @@ Works with and without shadowDOM in same manner.
 * `slot('')` - returns slot without name
 * `slot(',name1,name2...')` - returns named slots. Blank name defines unnamed(default) slot 
 * `slot(name, val | cb(el,i,arr) )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
+    when `cb` is defined slots content is set by `html(cb)`  
 * `slot().innerText`,`slot().innerHTML`, `slot().text()`, `slot().html()` sets slotted content
 
 ## html elements properties

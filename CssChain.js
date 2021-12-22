@@ -6,9 +6,12 @@ export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
 
 const nop = ()=>''
 ,   isArr = a => Array.isArray(a)
-,   isStr = a => typeof a === 'string'
-,   isFn = a => typeof a === 'function'
-,   inWC = n => n.getRootNode().host
+,   isT = (a,t) => typeof a === t
+,   isStr  = a => isT(a, 'string')
+,   isNum  = a => isT(a, 'number')
+,   isFn   = a => isT(a, 'function')
+,   isNode = n => n && n.nodeType
+,   inWC   = n => n.getRootNode().host
 ,   hasAssigned = n=> inWC(n) && n.assignedElements
 ,   each = (arr, cb )=> (arr.forEach(cb),arr)
 ,   clear = n => hasAssigned(n)
@@ -140,7 +143,26 @@ CssChainLocal extends Array
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
     assignedNodes(){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes():[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
-    clone(doc){ return this.map( el=> doc? doc.importNode( el,true ): el.cloneNode ? el.cloneNode(true):Object.assign({},el) ) }
+    clone( /* number|array */count, cb=undefined )
+    {
+        let arr = count;
+        if( isNum(count) )
+            arr = Array.from({length: count}, (v, i) => i);
+
+        if( isArr(arr) )
+        {   const ret = [];
+            this.forEach( n => arr.forEach( (d,i) =>
+            {   const m = n.ownerDocument.importNode(n,true)
+                ,     x = cb && cb( m, d, i, arr );
+                isStr(x)
+                ? ret.push( ...html2NodeArr(x) )
+                : ret.push( isNode(x) ? x : m )
+            }));
+            return CssChain( ret );
+        }
+        const doc = count;
+        return this.map( el=> doc? doc.importNode( el,true ): el.cloneNode ? el.cloneNode(true):Object.assign({},el) )
+    }
     get firstElementChild(){ return CssChain(this.map( n=>n.firstElementChild).filter(n=>n)) }
     get firstChild(){ return CssChain(this.map( n=>n.firstChild).filter(n=>n)) }
     get childNodes(){ return CssChain([].concat( ...map( this, el=>[...(el.childNodes || [] )] ) ) ) }
