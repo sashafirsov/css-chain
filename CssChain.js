@@ -12,18 +12,18 @@ const nop = ()=>''
 ,   isFn   = a => isT(a, 'function')
 ,   isNode = n => n && n.nodeType
 ,   inWC   = n => n.getRootNode().host
-,   hasAssigned = n=> inWC(n) && n.assignedElements
+,   hasAssigned = n=> inWC(n) && n.assignedNodes
 ,   each = (arr, cb )=> (arr.forEach(cb),arr)
 ,   clear = n => hasAssigned(n)
-               ? n.assignedElements().forEach( a => a.remove() )
+               ? n.assignedNodes().forEach( a => a.remove() )
                : n.innerHTML='' ;
 
-const node2text =   {   1:  n=>n.assignedElements
-                             ? collectionText(n.assignedElements()) || collectionText(n.childNodes)
-                             : ['SCRIPT','AUDIO','STYLE','CANVAS','DATALIST','EMBED','OBJECT','PICTURE','IFRAME','METER','NOSCRIPT'
-                                   ,'SELECT','OPTGROUP','PROGRESS','TEMPLATE','VIDEO']
-                                   .includes(n.nodeName) ? ''
-                                                         : n.innerText //collectionText(n.children)
+const node2text =   {   1:  n=>n.assignedNodes
+                             ? collectionText(n.assignedNodes()) || collectionText(n.childNodes)
+                             : [ 'SCRIPT','AUDIO','STYLE','CANVAS','DATALIST','EMBED','OBJECT'
+                               , 'PICTURE','IFRAME','METER','NOSCRIPT'
+                               , 'SELECT','OPTGROUP','PROGRESS','TEMPLATE','VIDEO'
+                               ].includes(n.nodeName)? '' : n.innerText //collectionText(n.children)
                     ,   3: n=>n.nodeValue
                     ,   11:n=>collectionText(n.children)
                     };
@@ -79,7 +79,7 @@ CssChainLocal extends Array
     push(...args){ Array.prototype.push.apply(this,args); return this; }
     querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
     querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...el.querySelectorAll(css) ), new CssChainLocal()) }
-    $(...args){ return this.querySelectorAll(...args) }
+    $(...args){ return args.length ? this.querySelectorAll(...args) : this; }
     parent(css)
     {   const s = new Set()
         , add = n=> s.has(n) ? 0 : (s.add(n), n)
