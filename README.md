@@ -69,6 +69,7 @@ When method is called, each element would invoke this method and then same CssCh
 * `clone()` - clone nodes(deep) or objects(shallow). Returns cloned collection 
 * `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
 * `clone( count, cb( clonedNode, index ) )` when callback result is a string or node it is used as return value
+* `clone( arr )` alias of `clone(arr.length)`
 * `clone( arr, cb( clonedNode, dataItem, index, arr ) )`
 * `append( html )`,`append( html[] )`, `append( node[] )` append HTML text or nodes
 * `clear()` - removes content
@@ -82,7 +83,7 @@ as convenient way to generate DOM subtree by JavaScript.
 In the `light DOM` as opposite to `Shadow DOM`
 the render root is part of usual DOM without engaging the shadowRoot. 
 There the template clone would take a render root DOM subtree payload as the source for its `slot` assignment. 
-Once slots are populated into clone, it would replace the render root content. 
+Once slots are populated into this clone, it would replace the render root content. 
 
 Of course such benefits of shadow DOM as template reuse and CSS encapsulation are lost in light DOM. But the modular 
 development with templates, HTML5 standard dynamic content use convention and API are still around. 

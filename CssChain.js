@@ -111,6 +111,17 @@ CssChainLocal extends Array
         }
         return ret;
     }
+    template(n)
+    {
+        const c = CssChain(n.content||n).clone(this);
+        c.slot().forEach( s =>
+        {   const v = this.$(`[slot="${s.name}"]`);
+            v.length && setNodeHtml(s,v)
+        });
+        this.children.remove();
+        this.forEach( (n,i)=> n.appendChild(c[i]))
+        return this;
+    }
     get innerText(){ return this.text() }
     set innerText( val ){ return this.text( val ) }
     text( val, css=undefined )
@@ -145,7 +156,7 @@ CssChainLocal extends Array
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
     assignedNodes(){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes():[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
-    clone( /* number|array */count, cb=undefined )
+    clone( /* number|array */count=1, cb=undefined )
     {
         let arr = count;
         if( isNum(count) )
