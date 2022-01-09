@@ -98,7 +98,7 @@ CssChainLocal extends Array
     }
     clear(){ return this.forEach(n=>clear(n)) }
     slot(...arr)
-    {   const ret = this.$( arr.length
+    {   const ret = this.map( n=>n.shadowRoot || n ).$( arr.length
                         ? csv( arr[0].split(',')
                             , n=> ['""',"''"].includes(n) || !n
                                   ? `slot:not([name])`
@@ -115,7 +115,7 @@ CssChainLocal extends Array
     {
         const c = CssChain(n.content||n).clone(this);
         c.slot().forEach( s =>
-        {   const v = this.$(`[slot="${s.name}"]`);
+        {   const v = this.children.filter( n=>n.slot===s.name );
             v.length && setNodeHtml(s,v)
         });
         this.children.remove();
