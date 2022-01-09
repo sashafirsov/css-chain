@@ -25,7 +25,7 @@ const node2text =   {   1:  n=>n.assignedNodes
                                , 'SELECT','OPTGROUP','PROGRESS','TEMPLATE','VIDEO'
                                ].includes(n.nodeName)? '' : n.innerText //collectionText(n.children)
                     ,   3: n=>n.nodeValue
-                    ,   11:n=>collectionText(n.children)
+                    ,   11:n=>collectionText(n.childNodes)
                     };
 export const getNodeText = n => (node2text[n.nodeType] || nop)(n);
 export const setNodeText = ( n, val ) =>

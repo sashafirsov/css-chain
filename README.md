@@ -70,7 +70,7 @@ When method is called, each element would invoke this method and then same CssCh
 * `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
 * `clone( count, cb( clonedNode, index ) )` when callback result is a string or node it is used as return value
 * `clone( arr )` alias of `clone(arr.length)`
-* `clone( arr, cb( clonedNode, dataItem, index, arr ) )`
+* `clone( arr, cb( clonedNode, dataItem, index, arr ) )` call callback after clone
 * `append( html )`,`append( html[] )`, `append( node[] )` append HTML text or nodes
 * `clear()` - removes content
 
