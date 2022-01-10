@@ -27,9 +27,9 @@ When method is called, each element would invoke this method and then same CssCh
 ^^ adds event listener to all selected elements in `rootEl` DOM tree
 ```js
     CssChain( 'a' )
-        .addEventListener( 'mouseover', ev=> alert(ev.target.classList.add('hovered') ) )
+        .addEventListener( 'mouseover' , ev=> alert(ev.target.classList.add('hovered') ) )
         .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') ) )
-        .addEventListener( 'focus', ev=> alert(ev.target.classList.add('focused') ) )
+        .addEventListener( 'focus'     , ev=> alert(ev.target.classList.add('focused') ) )
         .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
 ```
 ^^ adds multiple event handlers in chainable dot notation.

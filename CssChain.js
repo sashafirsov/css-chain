@@ -78,7 +78,7 @@ CssChainLocal extends Array
     map( ...args){ return map(this,...args) }
     push(...args){ Array.prototype.push.apply(this,args); return this; }
     querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
-    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...el.querySelectorAll(css) ), new CssChainLocal()) }
+    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...(el.shadowRoot||el).querySelectorAll(css) ), new CssChainLocal()) }
     $(...args){ return args.length ? this.querySelectorAll(...args) : this; }
     parent(css)
     {   const s = new Set()
