@@ -154,7 +154,7 @@ CssChainLocal extends Array
         return this
     }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
-    assignedNodes(){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes():[] ) ) ) }
+    assignedNodes(f){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes(f):[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
     clone( /* number|array */count=1, cb=undefined )
     {
