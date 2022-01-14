@@ -6,10 +6,13 @@
     "module": "CssChain.js",
     "exports": {
         ".": "./CssChain.js",
+        "./package.json": "./package.json",
         "./CssChain": "./CssChain.js",
         "./ApiChain": "./ApiChain.js"
     },
-    "files": ["*"],
+    "files": [
+        "*"
+    ],
     "type": "module",
     "scripts": {
         "test": "echo \"reside in https://github.com/sashafirsov/api-chain-test\" && exit 0"
