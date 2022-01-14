@@ -4,7 +4,7 @@ _HTML template/slot and DOM manipulation library_
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.11/dist/demo.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.12/dist/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test) 
 
 [![NPM version][npm-image]][npm-url] [![coverage][coverage-image]][coverage-url]
@@ -27,9 +27,9 @@ When method is called, each element would invoke this method and then same CssCh
 ^^ adds event listener to all selected elements in `rootEl` DOM tree
 ```js
     CssChain( 'a' )
-        .addEventListener( 'mouseover', ev=> alert(ev.target.classList.add('hovered') ) )
+        .addEventListener( 'mouseover' , ev=> alert(ev.target.classList.add('hovered') ) )
         .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') ) )
-        .addEventListener( 'focus', ev=> alert(ev.target.classList.add('focused') ) )
+        .addEventListener( 'focus'     , ev=> alert(ev.target.classList.add('focused') ) )
         .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
 ```
 ^^ adds multiple event handlers in chainable dot notation.
@@ -69,12 +69,44 @@ When method is called, each element would invoke this method and then same CssCh
 * `clone()` - clone nodes(deep) or objects(shallow). Returns cloned collection 
 * `clone(doc)` - clone nodes to be inserted into document using [Document.importNode()](https://developer.mozilla.org/en-US/docs/Web/API/Document/importNode)
 * `clone( count, cb( clonedNode, index ) )` when callback result is a string or node it is used as return value
-* `clone( arr, cb( clonedNode, dataItem, index, arr ) )`
+* `clone( arr )` alias of `clone(arr.length)`
+* `clone( arr, cb( clonedNode, dataItem, index, arr ) )` call callback after clone
 * `append( html )`,`append( html[] )`, `append( node[] )` append HTML text or nodes
 * `clear()` - removes content
 
-## slots in template
-Works with and without shadowDOM in same manner. 
+## Light DOM
+[Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and its twin `Light DOM` allows 
+to use template and work with dynamic content withing template. 
+Both often represent the content of [web component](https://developer.mozilla.org/en-US/docs/Web/Web_Components) 
+as convenient way to generate DOM subtree by JavaScript.
+
+In the `light DOM` as opposite to `Shadow DOM`
+the render root is part of usual DOM without engaging the shadowRoot. 
+There the template clone would take a render root DOM subtree payload as the source for its `slot` assignment. 
+Once slots are populated into this clone, it would replace the render root content. 
+
+Of course such benefits of shadow DOM as template reuse and CSS encapsulation are lost in light DOM. But the modular 
+development with templates, HTML5 standard dynamic content use convention and API are still around. 
+
+### global CSS 
+is available for styling the light DOM components, which could be advantage in some environments where css encapsulation 
+of shadow DOM in web components prevents usual css styling. 
+
+### Light DOM API
+* `template()` would render the current node as a template with immediate children with `slot='xxx'`
+as assignedNodes payload for `<slot name='xxx'>`. There is no default slot in such case as the inner DOM serves the
+default content. 
+* `template(css)`, typically `template('template')` would extract the template defined by selector, 
+clone it with assigned slots from remaining children  
+* `template(node)` the children are used as slot content within node clone which is set as a child  
+
+## slot
+`<slot name='xxx'></slot>` is an HTML tag, a marker where dynamic content would be placed. 
+It works with shadow and light DOM in same manner.
+
+When used with `template()` or by shadow DOM, dynamic content is taken from DOM subtree marked by `slot='xxx'` attribute.
+
+Otherwise `slot` content could be manipulated by JS API: 
 * `slot()` - returns all slots
 * `slot('')` - returns slot without name
 * `slot(',name1,name2...')` - returns named slots. Blank name defines unnamed(default) slot 
@@ -151,7 +183,7 @@ ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
-[coverage-image]: https://unpkg.com/css-chain-test@1.0.11/coverage/coverage.svg
-[coverage-url]:   https://unpkg.com/css-chain-test@1.0.11/coverage/lcov-report/index.html
-[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.0.11/src/PokeApi-Explorer.png
-[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.0.11/src/PokeApi-Explorer.html
+[coverage-image]: https://unpkg.com/css-chain-test@1.0.12/coverage/coverage.svg
+[coverage-url]:   https://unpkg.com/css-chain-test@1.0.12/coverage/lcov-report/index.html
+[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.0.12/src/PokeApi-Explorer.png
+[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.0.12/src/PokeApi-Explorer.html

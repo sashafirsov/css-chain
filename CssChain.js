@@ -25,7 +25,7 @@ const node2text =   {   1:  n=>n.assignedNodes
                                , 'SELECT','OPTGROUP','PROGRESS','TEMPLATE','VIDEO'
                                ].includes(n.nodeName)? '' : n.innerText //collectionText(n.children)
                     ,   3: n=>n.nodeValue
-                    ,   11:n=>collectionText(n.children)
+                    ,   11:n=>collectionText(n.childNodes)
                     };
 export const getNodeText = n => (node2text[n.nodeType] || nop)(n);
 export const setNodeText = ( n, val ) =>
@@ -78,7 +78,7 @@ CssChainLocal extends Array
     map( ...args){ return map(this,...args) }
     push(...args){ Array.prototype.push.apply(this,args); return this; }
     querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
-    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...el.querySelectorAll(css) ), new CssChainLocal()) }
+    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...(el.shadowRoot||el).querySelectorAll(css) ), new CssChainLocal()) }
     $(...args){ return args.length ? this.querySelectorAll(...args) : this; }
     parent(css)
     {   const s = new Set()
@@ -98,7 +98,7 @@ CssChainLocal extends Array
     }
     clear(){ return this.forEach(n=>clear(n)) }
     slot(...arr)
-    {   const ret = this.$( arr.length
+    {   const ret = this.map( n=>n.shadowRoot || n ).$( arr.length
                         ? csv( arr[0].split(',')
                             , n=> ['""',"''"].includes(n) || !n
                                   ? `slot:not([name])`
@@ -110,6 +110,27 @@ CssChainLocal extends Array
             return this
         }
         return ret;
+    }
+    template(n)
+    {
+        if( n === undefined )
+        {   const x  = this.$('[slot]').forEach(n=>n.remove());
+            n = this.splice(0, this.length );
+            this.push(document.createElement('span'));
+            this.append(x);
+        }else if( isStr(n) )
+        {
+            n = this.$( n );
+            n.remove();
+        }
+        const c = CssChain(n.content||n).clone(this);
+        c.slot().forEach( s =>
+        {   const v = this.children.filter( n=>n.slot===s.name );
+            v.length && setNodeHtml(s,v)
+        });
+        this.children.remove();
+        this.forEach( (n,i)=> n.appendChild(c[i]))
+        return this;
     }
     get innerText(){ return this.text() }
     set innerText( val ){ return this.text( val ) }
@@ -143,9 +164,9 @@ CssChainLocal extends Array
         return this
     }
     assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
-    assignedNodes(){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes():[] ) ) ) }
+    assignedNodes(f){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes(f):[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
-    clone( /* number|array */count, cb=undefined )
+    clone( /* number|array */count=1, cb=undefined )
     {
         let arr = count;
         if( isNum(count) )
