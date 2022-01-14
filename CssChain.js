@@ -113,6 +113,16 @@ CssChainLocal extends Array
     }
     template(n)
     {
+        if( n === undefined )
+        {   const x  = this.$('[slot]').forEach(n=>n.remove());
+            n = this.splice(0, this.length );
+            this.push(document.createElement('span'));
+            this.append(x);
+        }else if( isStr(n) )
+        {
+            n = this.$( n );
+            n.remove();
+        }
         const c = CssChain(n.content||n).clone(this);
         c.slot().forEach( s =>
         {   const v = this.children.filter( n=>n.slot===s.name );
