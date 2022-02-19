@@ -96,7 +96,7 @@ CssChainLocal extends Array
             {   this.forEach(el=>el.remove()); return new CssChainLocal() }
         return isFn(args[1]) ? this.removeEventListener(...args) : this.map(el=>el.matches(args[0])).filter(el=>el) ;
     }
-    clear(){ return this.forEach(n=>clear(n)) }
+    erase(){ return this.forEach(n=>clear(n)) }
     slot(...arr)
     {   const ret = this.map( n=>n.shadowRoot || n ).$( arr.length
                         ? csv( arr[0].split(',')
@@ -132,9 +132,9 @@ CssChainLocal extends Array
         this.forEach( (n,i)=> n.appendChild(c[i]))
         return this;
     }
-    get innerText(){ return this.text() }
-    set innerText( val ){ return this.text( val ) }
-    text( val, css=undefined )
+    get innerText(){ return this.txt() }
+    set innerText( val ){ return this.txt( val ) }
+    txt( val, css=undefined )
     {   const arr = css? this.$(css): this;
         if( val === undefined )
             return collectionText( arr );

@@ -55,6 +55,7 @@ When method is called, each element would invoke this method and then same CssCh
   [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
   the selector, duplications removed
 * `on(eventName, cb)` - alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
+* `erase()` - removes content of collection nodes, collection nodes remain
 * `remove()` - delete all nodes, returns empty CssChain
 * `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
 * `text()` - returns text of whole collection
@@ -72,7 +73,6 @@ When method is called, each element would invoke this method and then same CssCh
 * `clone( arr )` alias of `clone(arr.length)`
 * `clone( arr, cb( clonedNode, dataItem, index, arr ) )` call callback after clone
 * `append( html )`,`append( html[] )`, `append( node[] )` append HTML text or nodes
-* `clear()` - removes content
 
 ## Light DOM
 [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and its twin `Light DOM` allows 
