@@ -70,15 +70,15 @@ export const addNodeHtml = ( n, val ) =>
 export const setNodeHtml = ( n, val ) => { clear(n); addNodeHtml(n,val) };
 
     class
-CssChainLocal extends Array
+CssChainT extends Array
 {
     attr(...args){  return args.length>1 ? (( args[2] ? this.$(args[2]) : this ).setAttribute(...args),this) : this.getAttribute(...args) }
     prop(...args){  return args.length>1 ? (( args[2] ? this.$(args[2]) : this ).forEach( el=>el[args[0]]=args[1]),this ): this[0][args[0]] }
     forEach( ...args){ Array.prototype.forEach.apply(this,args); return this }
     map( ...args){ return map(this,...args) }
     push(...args){ Array.prototype.push.apply(this,args); return this; }
-    querySelector(css){ return new CssChainLocal().push( this.querySelectorAll(css)[0] )  }
-    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...(el.shadowRoot||el).querySelectorAll(css) ), new CssChainLocal()) }
+    querySelector(css){ return new CssChainT().push( this.querySelectorAll(css)[0] )  }
+    querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...(el.shadowRoot||el).querySelectorAll(css) ), new CssChainT()) }
     $(...args){ return args.length ? this.querySelectorAll(...args) : this; }
     parent(css)
     {   const s = new Set()
@@ -93,7 +93,7 @@ CssChainLocal extends Array
     append(val){ return this.forEach( n=> addNodeHtml(n,val)) }
     remove(...args)
     {   if( !args.length )
-            {   this.forEach(el=>el.remove()); return new CssChainLocal() }
+            {   this.forEach(el=>el.remove()); return new CssChainT() }
         return isFn(args[1]) ? this.removeEventListener(...args) : this.map(el=>el.matches(args[0])).filter(el=>el) ;
     }
     erase(){ return this.forEach(n=>clear(n)) }
@@ -218,7 +218,7 @@ applyPrototype( nodeOrTag, ApiChain )
 Object.getOwnPropertyNames(window)
     .filter(key => key.startsWith('HTML') && key.endsWith('Element')&& key.length > 11 )
     .map( key=>key.substring(4,key.length-7).toLowerCase() )
-    .forEach( tag=>applyPrototype( document.createElement(tag), CssChainLocal ) );
+    .forEach( tag=>applyPrototype( document.createElement(tag), CssChainT ) );
 
     export function
 CssChain( css, el=document, protoArr=[] )
@@ -233,8 +233,8 @@ CssChain( css, el=document, protoArr=[] )
     }else
         protoArr = [ protoArr ];
 
-    protoArr.forEach( el => applyPrototype(el,CssChainLocal) );
-    const ret = new CssChainLocal();
+    protoArr.forEach( el => applyPrototype(el,CssChainT) );
+    const ret = new CssChainT();
     ret.push(...arr);
     return ret;
 }

@@ -55,9 +55,9 @@ When method is called, each element would invoke this method and then same CssCh
   [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
   the selector, duplications removed
 * `on(eventName, cb)` - alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
-* `erase()` - removes content of collection nodes, collection nodes remain
-* `remove()` - delete all nodes, returns empty CssChain
 * `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
+* `remove()` - delete all nodes, returns empty CssChain
+* `erase()` - removes content of collection nodes, collection nodes remain
 * `text()` - returns text of whole collection
 * `text(val | cb(el,i,arr))` - sets text for each element from `val` or callback
 * `text( val, css )` sets text for children elements defined by css, returns original collection
