@@ -22,51 +22,29 @@ import { HTMLElementMixin as AnyElement } from './HTMLElementMixin';
  */
 export function CssChain<T= AnyElement>(css?: string|AnyElement|Array<AnyElement&T>, el?: Document|Node, protoArr?: string|T|string[]): CssChainCollection<T>&T;
 
-/** CssChain as Array and Element */
+/** CssChain as Array and HTMLElementMixin dual interface */
 export type CssChainT<T = AnyElement > = CssChainCollection<T> & T;
 
 /** CssChain Array part */
 export interface CssChainCollection<T> extends  Array<AnyElement&T>, AnyElement
 {
-    length:number;
-    // addEventListener(type:string, listener:any, options?:any): CssChainCollection<T>;
-    // removeEventListener(type:string, listener:any, options?:any): CssChainCollection<T>;
-    type:typeof HTMLAnchorElement.prototype.type;
-    referrerPolicy:typeof HTMLAnchorElement.prototype.referrerPolicy;
-    elements:typeof HTMLFormElement.prototype.elements;
-    min:typeof HTMLInputElement.prototype.min;
-    max:typeof HTMLInputElement.prototype.max;
-    htmlFor:typeof HTMLOutputElement.prototype.htmlFor;
-    options:typeof HTMLSelectElement.prototype.options;
-    size:typeof HTMLSelectElement.prototype.size;
-    sizes:typeof HTMLLinkElement.prototype.sizes;
-    content:typeof HTMLTemplateElement.prototype.content;
-    cols:typeof HTMLTextAreaElement.prototype.cols;
-    rows:typeof HTMLTextAreaElement.prototype.rows;
-    value:typeof HTMLTextAreaElement.prototype.value;
-    height:typeof HTMLVideoElement.prototype.height;
-    width:typeof HTMLVideoElement.prototype.width;
-    loop:typeof HTMLVideoElement.prototype.loop;
-
-    slot:string;
-
-    // foreach(callbackfn: (value: ChildNode, key: number, parent: NodeListOf<ChildNode>) => void, thisArg?: any) : void;
-    // foreach(callbackfn: (value: AnyElement, index: number, array: AnyElement[]) => void, thisArg?: any) : void;
-    // forEach(callbackfn: (value: ChildNode, key: number, parent: NodeListOf<ChildNode>) => void) : void;
-    forEach(callbackfn: (value: AnyElement&T, index: number, array: (AnyElement&T)[]) => void, thisArg?: any) : void;
-    // forEach(callbackfn:(  ( (value: AnyElement|ChildNode, key: number, parent: any|NodeListOf<ChildNode>) => void), thisArg?: any) : void;
+    forEach(callbackfn: (value: AnyElement&T, index: number, array: CssChainCollection<T>) => void, thisArg?: any) : CssChainCollection<T>;
 
 
     attr(...args: any[]): any;
     prop(...args: any[]): any;
-    // querySelector(css: any): CssChainCollection<T>;
-    // querySelectorAll(css: any): CssChainCollection<T>;
+    /** selects 1st elements by @param css string from each collection element, returns CssChain */
+    querySelector(css: string): CssChainT;
+    /** selects child elements by @param css string, returns CssChain */
+    querySelectorAll(css: any): CssChainT;
+    /** alias to [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) */
     $(css: string): CssChainCollection<T>;
-    $(...args: any[]): CssChainCollection<T>;
-    parent(css: any): CssChainCollection<T>;
+    /** returns collection of parents which match @param css string */
+    parent(css: string): CssChainCollection<T>;
     /** alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) */
     on(...args: any[]): CssChainCollection<T>;
-    // append(val: any): CssChainCollection<T>;
+    /** appends html or node */
+    append(htmlOrElement: string|string[]|Node|Node[]|CssChainT): CssChainT;
     /** delete all nodes, returns empty CssChain */
     remove(): CssChainCollection<T>;
     /** alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener) */
@@ -76,8 +54,7 @@ export interface CssChainCollection<T> extends  Array<AnyElement&T>, AnyElement
      * removes content of collection nodes, collection nodes remain
      */
     erase(): CssChainCollection<T>;
-    // @ts-ignore
-    // slot(...arr: any[]): any;
+    slots(...arr: any[]): any;
     template(n: any): CssChainCollection<T>;
     set innerText(arg: any);
     get innerText(): any;
@@ -89,17 +66,28 @@ export interface CssChainCollection<T> extends  Array<AnyElement&T>, AnyElement
     set innerHTML(arg: any);
     get innerHTML(): any;
     html(val: any, css?: any): any;
-    // @ts-ignore
-    // assignedElements(): CssChainCollection<T>;
-    // assignedNodes(f: any): CssChainCollection<T>;
+    /** returns a sequence of the elements assigned to this slot (and no other nodes).
+     *
+     * If the flatten *option* is set to *true*, it returns a sequence of both the elements assigned to this slot,
+     * as well as the elements assigned to any other slots that are descendants of this slot.
+     * If no assigned elements are found, it returns the slot's fallback content.
+     * [mdn](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedElements) */
+    assignedElements(options?: AssignedNodesOptions): CssChainT;
+    /** returns a sequence of the nodes assigned to this slot (and no other nodes).
+     *
+     * If the flatten *option* is set to *true*, it returns a sequence of both the elements assigned to this slot,
+     * as well as the elements assigned to any other slots that are descendants of this slot.
+     * If no assigned elements are found, it returns the slot's fallback content.
+     * [mdn](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assignedNodes) */
+    assignedNodes(f: any): CssChainT;
     cloneNode(...args: any[]): any;
     clone(count?: number, cb?: any): any;
-    // @ts-ignore
+
     get firstElementChild(): CssChainCollection<T>;
-    // @ts-ignore
+
     get firstChild(): CssChainCollection<T>;
     get childNodes(): CssChainCollection<T>;
-    // @ts-ignore
+
     get children(): CssChainCollection<T>;
 }
 export default CssChain;

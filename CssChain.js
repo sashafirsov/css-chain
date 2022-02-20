@@ -97,7 +97,7 @@ CssChainT extends Array
         return isFn(args[1]) ? this.removeEventListener(...args) : this.map(el=>el.matches(args[0])).filter(el=>el) ;
     }
     erase(){ return this.forEach(n=>clear(n)) }
-    slot(...arr)
+    slots(...arr)
     {   const ret = this.map( n=>n.shadowRoot || n ).$( arr.length
                         ? csv( arr[0].split(',')
                             , n=> ['""',"''"].includes(n) || !n
@@ -124,7 +124,7 @@ CssChainT extends Array
             n.remove();
         }
         const c = CssChain(n.content||n).clone(this);
-        c.slot().forEach( s =>
+        c.slots().forEach( s =>
         {   const v = this.children.filter( n=>n.slot===s.name );
             v.length && setNodeHtml(s,v)
         });
@@ -163,7 +163,7 @@ CssChainT extends Array
                : n=>setNodeHtml(n,val) );
         return this
     }
-    assignedElements(){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements():[] ) ) ) }
+    assignedElements(opts){ return CssChain([].concat( ...this.map( el=>el.assignedElements ? el.assignedElements(opts):[] ) ) ) }
     assignedNodes(f){ return CssChain([].concat( ...this.map( el=>el.assignedNodes ? el.assignedNodes(f):[] ) ) ) }
     cloneNode(...args){ return this.map( el=>el.cloneNode && el.cloneNode(...args) ) }
     clone( /* number|array */count=1, cb=undefined )
