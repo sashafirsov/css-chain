@@ -4,7 +4,7 @@ _HTML template/slot and DOM manipulation library_
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.13/dist/demo.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.1.0/dist/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test) 
 
 [![NPM version][npm-image]][npm-url] [![coverage][coverage-image]][coverage-url]
@@ -13,14 +13,11 @@ _Collection API inherits the element API and Array._
 ## html elements methods
 `CssChain` returns an Array inherited object which has all methods and properties of its elements.
 When method is called, each element would invoke this method and then same CssChain object is returned.
-```js
 
-    function addTooltip( el ){ /* ...el.title */ }
-    CssChain( '*[title]' ).forEach( el=>addTooltip( el ) )
-                          .forEach( addTooltip )
-                          .removeAttribute('title');
-```
-^^ calls `addTiooltip()` twice for each element with `title` attribute and then removes this attribute
+| chained calls                                      | HTMLElement API                                        |                                        
+|----------------------------------------------------|--------------------------------------------------------|
+| [![chained call][css-chain-image]][css-chain-link] | [![chained call][element-api-image]][element-api-link] | 
+
 ```js
     CssChain( '*[title]', rootEL ).addEventListener( 'click', ev=> alert(ev.target.title) );
 ```
@@ -29,8 +26,8 @@ When method is called, each element would invoke this method and then same CssCh
     CssChain( 'a' )
         .addEventListener( 'mouseover' , ev=> alert(ev.target.classList.add('hovered') ) )
         .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') ) )
-        .addEventListener( 'focus'     , ev=> alert(ev.target.classList.add('focused') ) )
-        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
+        .on( 'focus'     , ev=> alert(ev.target.classList.add('focused') ) )
+        .on( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
 ```
 ^^ adds multiple event handlers in chainable dot notation.
 
@@ -55,12 +52,12 @@ When method is called, each element would invoke this method and then same CssCh
   [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
   the selector, duplications removed
 * `on(eventName, cb)` - alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
-* `erase()` - removes content of collection nodes, collection nodes remain
-* `remove()` - delete all nodes, returns empty CssChain
 * `remove(eventName, cb)` - alias to [removeEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)
-* `text()` - returns text of whole collection
-* `text(val | cb(el,i,arr))` - sets text for each element from `val` or callback
-* `text( val, css )` sets text for children elements defined by css, returns original collection
+* `remove()` - delete all nodes, returns empty CssChain
+* `erase()` - removes content of collection nodes, collection nodes remain
+* `txt()` - returns text of whole collection
+* `txt(val | cb(el,i,arr))` - sets text for each element from `val` or callback
+* `txt( val, css )` sets text for children elements defined by css, returns original collection
 * `html()` - returns concatenated innerHTML of collection
 * `html( cb(el,i,arr) )` - sets innerHTML of each collection element
 * `html(htmlText)` - sets innerHTML of each collection element
@@ -100,19 +97,19 @@ default content.
 clone it with assigned slots from remaining children  
 * `template(node)` the children are used as slot content within node clone which is set as a child  
 
-## slot
+## slots
 `<slot name='xxx'></slot>` is an HTML tag, a marker where dynamic content would be placed. 
 It works with shadow and light DOM in same manner.
 
 When used with `template()` or by shadow DOM, dynamic content is taken from DOM subtree marked by `slot='xxx'` attribute.
 
 Otherwise `slot` content could be manipulated by JS API: 
-* `slot()` - returns all slots
-* `slot('')` - returns slot without name
-* `slot(',name1,name2...')` - returns named slots. Blank name defines unnamed(default) slot 
-* `slot(name, val | cb(el,i,arr) )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
+* `slots()` - returns all slots
+* `slots('')` - returns slot without name
+* `slots(',name1,name2...')` - returns named slots. Blank name defines unnamed(default) slot 
+* `slots(name, val | cb(el,i,arr) )` assigns slot content, alias to [HTMLSlotElement.assign(nodes)](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement/assign)
     when `cb` is defined slots content is set by `html(cb)`  
-* `slot().innerText`,`slot().innerHTML`, `slot().text()`, `slot().html()` sets slotted content
+* `slots().innerText`,`slots().innerHTML`, `slots().txt()`, `slots().html()` sets slotted content
 
 ## html elements properties
 When property is assigned to collection, this property would be set for all elements in collection.
@@ -183,7 +180,11 @@ ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
-[coverage-image]: https://unpkg.com/css-chain-test@1.0.13/coverage/coverage.svg
-[coverage-url]:   https://unpkg.com/css-chain-test@1.0.13/coverage/lcov-report/index.html
-[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.0.13/src/PokeApi-Explorer.png
-[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.0.13/src/PokeApi-Explorer.html
+[coverage-image]: https://unpkg.com/css-chain-test@1.1.0/coverage/coverage.svg
+[coverage-url]:   https://unpkg.com/css-chain-test@1.1.0/coverage/lcov-report/index.html
+[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.1.0/src/PokeApi-Explorer.png
+[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.1.0/src/PokeApi-Explorer.html
+[css-chain-image]:      ChainedCalls.png
+[css-chain-link]:       https://github.com/sashafirsov/css-chain-test/blob/9edc6edac6bc6c22c078e2fd987b37a7721947ee/src/PokeApi-Explorer.js#L140
+[element-api-image]:    ElementAPI.png
+[element-api-link]:     https://github.com/sashafirsov/css-chain-test/blob/9edc6edac6bc6c22c078e2fd987b37a7721947ee/src/PokeApi-Explorer.js#L150
