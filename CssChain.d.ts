@@ -41,7 +41,7 @@ export interface CssChainCollection<T> extends  Array<AnyElement&T>, AnyElement
      the selector, duplications removed */
     parent(css: string): CssChainCollection<T>;
     /** alias to [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) */
-    on(...args: any[]): CssChainCollection<T>;
+    on( eventName:string, listener: (ev: Event) => any ): CssChainCollection<T>;
     /** appends html or node */
     append(htmlOrElement: string|string[]|Node|Node[]|CssChainT): CssChainT;
     /** delete all nodes, returns empty CssChain */

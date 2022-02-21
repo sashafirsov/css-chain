@@ -4,7 +4,7 @@ _HTML template/slot and DOM manipulation library_
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.0.13/dist/demo.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.1.0/dist/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test) 
 
 [![NPM version][npm-image]][npm-url] [![coverage][coverage-image]][coverage-url]
@@ -13,14 +13,11 @@ _Collection API inherits the element API and Array._
 ## html elements methods
 `CssChain` returns an Array inherited object which has all methods and properties of its elements.
 When method is called, each element would invoke this method and then same CssChain object is returned.
-```js
 
-    function addTooltip( el ){ /* ...el.title */ }
-    CssChain( '*[title]' ).forEach( el=>addTooltip( el ) )
-                          .forEach( addTooltip )
-                          .removeAttribute('title');
-```
-^^ calls `addTiooltip()` twice for each element with `title` attribute and then removes this attribute
+| chained calls                                      | HTMLElement API                                        |                                        
+|----------------------------------------------------|--------------------------------------------------------|
+| [![chained call][css-chain-image]][css-chain-link] | [![chained call][element-api-image]][element-api-link] | 
+
 ```js
     CssChain( '*[title]', rootEL ).addEventListener( 'click', ev=> alert(ev.target.title) );
 ```
@@ -29,8 +26,8 @@ When method is called, each element would invoke this method and then same CssCh
     CssChain( 'a' )
         .addEventListener( 'mouseover' , ev=> alert(ev.target.classList.add('hovered') ) )
         .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('hovered') ) )
-        .addEventListener( 'focus'     , ev=> alert(ev.target.classList.add('focused') ) )
-        .addEventListener( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
+        .on( 'focus'     , ev=> alert(ev.target.classList.add('focused') ) )
+        .on( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
 ```
 ^^ adds multiple event handlers in chainable dot notation.
 
@@ -183,7 +180,11 @@ ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
-[coverage-image]: https://unpkg.com/css-chain-test@1.0.13/coverage/coverage.svg
-[coverage-url]:   https://unpkg.com/css-chain-test@1.0.13/coverage/lcov-report/index.html
-[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.0.13/src/PokeApi-Explorer.png
-[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.0.13/src/PokeApi-Explorer.html
+[coverage-image]: https://unpkg.com/css-chain-test@1.1.0/coverage/coverage.svg
+[coverage-url]:   https://unpkg.com/css-chain-test@1.1.0/coverage/lcov-report/index.html
+[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.1.0/src/PokeApi-Explorer.png
+[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.1.0/src/PokeApi-Explorer.html
+[css-chain-image]:      ChainedCalls.png
+[css-chain-link]:       https://github.com/sashafirsov/css-chain-test/blob/9edc6edac6bc6c22c078e2fd987b37a7721947ee/src/PokeApi-Explorer.js#L140
+[element-api-image]:    ElementAPI.png
+[element-api-link]:     https://github.com/sashafirsov/css-chain-test/blob/9edc6edac6bc6c22c078e2fd987b37a7721947ee/src/PokeApi-Explorer.js#L150
