@@ -11,7 +11,8 @@ _Collection API inherits the element API and Array._
 
 # [CssChain.js](./CssChain.js)
 ## html elements methods
-`CssChain` returns an Array inherited object which has all methods and properties of its elements.
+`CssChain` searches HTML by `css` and returns an Array inherited object which has 
+all methods and properties of its elements.
 When method is called, each element would invoke this method and then same CssChain object is returned.
 
 | chained calls                                      | HTMLElement API                                        |                                        
@@ -30,6 +31,38 @@ When method is called, each element would invoke this method and then same CssCh
         .on( 'mouseleave', ev=> alert(ev.target.classList.remove('focused') ) )
 ```
 ^^ adds multiple event handlers in chainable dot notation.
+
+# Typescript
+`import CssChain from 'css-chain'` code has typings enabled by default. The chain type is a mixin of 
+[HTMLElementMixin](HTMLElementMixin.d.ts) and array of this mixin. To add the type checking for custom element(s) 
+CssChain accept generics parameter and needs at least once initialisation by 
+3rd parameter as array of either custom element tags or classes. 
+
+```typescript
+import {CssChain as $ } from 'css-chain';
+
+class DemoElement {  b:string; setB(_b: string) { this.b = _b; } }
+customElements.define('demo-element', DemoElement );
+
+const $X = $<DemoElement>('demo-element', el, ['demo-element']);
+
+expect($X.b).to.equal('initial');
+$X.setB('1');
+```
+
+## CssChain initialization
+* `CssChain(css)` return mixin of [HTMLElementMixin](HTMLElementMixin.d.ts) and array
+* `CssChain(css,from:Node|Node[]|CssChain)` css selector to be applied on node(s)
+* `CssChain(css,from, protoArr)` -||- with prototype(s) for members and methods of CssChain, needed to support methods 
+of web component 
+ 
+To avoid passing the prototype each time, it could be initialized in module global scope:
+```typescript
+import {CssChain as $ } from 'css-chain';
+// import or declare DemoElement
+$([],[],[DemoElement]);
+// now all methods and members of DemoElement available in CssChain everywhere.
+```
 
 ## special methods
 * `forEach()` - same as [Array.forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
@@ -140,7 +173,6 @@ But for performance better to provide the reference object as a second parameter
 # cssChain - initiated by css selector from HTMLElement API
 Registered interfaces are taken from window object by `window.HTML*Element` pattern. 
 To use API from custom elements, add those in array of last 
-
 
 Api selected either from elements in collection or from `window.HTML*Element`.
 ```js
