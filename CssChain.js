@@ -3,9 +3,11 @@ export const map = (arr, ...args ) => Array.prototype.map.apply( arr, args );
 export const csv = (arr, ...args ) => map( arr, ...args ).join(',');
 
 export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
+const createEl = tag=> document.createElement(tag);
+function nodeProp( tag, prop, val ){ const el = createEl(tag); el[prop]=val; return el; }
 
 const nop = ()=>''
-,   isArr = a => Array.isArray(a)
+,   isArr = a => Array.isArray(a) || (a && 'function' === typeof a.forEach)
 ,   isT = (a,t) => typeof a === t
 ,   isStr  = a => isT(a, 'string')
 ,   isNum  = a => isT(a, 'number')
@@ -16,7 +18,8 @@ const nop = ()=>''
 ,   each = (arr, cb )=> (arr.forEach(cb),arr)
 ,   clear = n => hasAssigned(n)
                ? n.assignedNodes().forEach( a => a.remove() )
-               : n.innerHTML='' ;
+               : n.innerHTML=''
+;
 
 const node2text =   {   1:  n=>n.assignedNodes
                              ? collectionText(n.assignedNodes()) || collectionText(n.childNodes)
@@ -39,12 +42,12 @@ export const collectionHtml = arr => map( arr, n=>n.assignedElements
     ).join('');
 
 export const html2NodeArr = html =>
-{   const n = document.createElement('div');
+{   const n = createEl('div');
     n.innerHTML = html;
     const wrapIfText = e=>{
         if( e.nodeType !== 3 )
             return e;
-        const n = document.createElement('span');
+        const n = createEl('span');
         n.append(e);
         return n;
     };
@@ -98,7 +101,17 @@ CssChainT extends Array
     }
     erase(){ return this.forEach(n=>clear(n)) }
     slots(...arr)
-    {   const ret = this.map( n=>n.shadowRoot || n ).$( arr.length
+    {
+        const selector = arr.length
+                         ? csv( arr[0].split(',')
+                                , n=> ['""',"''"].includes(n) || !n
+                                      ? `slot:not([name])`
+                                      : `slot[name="${n}"]`
+                                )
+                        : 'slot';
+        const ss = this.filter( el=>el.matches && el.matches(selector) );
+        const ret = this.filter( n => !ss.includes(n) && n.querySelector )
+                    .map( n=>n.shadowRoot || n ).$( arr.length
                         ? csv( arr[0].split(',')
                             , n=> ['""',"''"].includes(n) || !n
                                   ? `slot:not([name])`
@@ -109,27 +122,30 @@ CssChainT extends Array
         {   ret.html( arr[ 1 ] );
             return this
         }
-        return ret;
+        return CssChain([...ss,...ret]);
     }
     template(n)
     {
         if( n === undefined )
-        {   const x  = this.$('[slot]').forEach(n=>n.remove());
-            n = this.splice(0, this.length );
-            this.push(document.createElement('span'));
-            this.append(x);
-        }else if( isStr(n) )
         {
-            n = this.$( n );
+            const $s = this.$('[slot]')
+                .forEach( n => this.$(n.slot ? `slot[name="${n.slot}"]`:'slot:not([name])').length
+                               || n.parentNode.insertBefore( nodeProp('slot','name',n.slot), n ));
+            $s.remove();
+            n = createEl('template');
+            this.childNodes.forEach( c=>n.content.append(c) );
+            this.append($s);
+        }else if( isStr(n) )
+        {   n = this.$( n );
             n.remove();
         }
-        const c = CssChain(n.content||n).clone(this);
+        const c = CssChain( n.content ? n.content.childNodes : n ).clone(this);
         c.slots().forEach( s =>
         {   const v = this.children.filter( n=>n.slot===s.name );
             v.length && setNodeHtml(s,v)
         });
         this.children.remove();
-        this.forEach( (n,i)=> n.appendChild(c[i]))
+        this.append(c);
         return this;
     }
     get innerText(){ return this.txt() }
@@ -199,7 +215,7 @@ const appliedTypes = new Set()
 
     export function
 applyPrototype( nodeOrTag, ApiChain )
-{   const node = isStr(nodeOrTag) ? document.createElement(nodeOrTag) : nodeOrTag;
+{   const node = isStr(nodeOrTag) ? createEl(nodeOrTag) : nodeOrTag;
     if( appliedTypes.has(node.tagName) )
         return;
     appliedTypes.add( node.tagName );
@@ -218,7 +234,7 @@ applyPrototype( nodeOrTag, ApiChain )
 Object.getOwnPropertyNames(window)
     .filter(key => key.startsWith('HTML') && key.endsWith('Element')&& key.length > 11 )
     .map( key=>key.substring(4,key.length-7).toLowerCase() )
-    .forEach( tag=>applyPrototype( document.createElement(tag), CssChainT ) );
+    .forEach( tag=>applyPrototype( createEl(tag), CssChainT ) );
 
     export function
 CssChain( css, el=document, protoArr=[] )
