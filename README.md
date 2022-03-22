@@ -214,8 +214,8 @@ ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 [npm-url]:        https://npmjs.org/package/css-chain
 [coverage-image]: https://unpkg.com/css-chain-test@1.1.2/coverage/coverage.svg
 [coverage-url]:   https://unpkg.com/css-chain-test@1.1.2/coverage/lcov-report/index.html
-[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.1.2/dist/PokeApi-Explorer.png
-[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.1.2/src/PokeApi-Explorer.html
+[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.1.2/src/PokeApi-Explorer.png
+[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.1.2/dist/PokeApi-Explorer.html
 [css-chain-image]:      ChainedCalls.png
 [css-chain-link]:       https://github.com/sashafirsov/css-chain-test/blob/9edc6edac6bc6c22c078e2fd987b37a7721947ee/src/PokeApi-Explorer.js#L140
 [element-api-image]:    ElementAPI.png
