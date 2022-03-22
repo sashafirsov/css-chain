@@ -547,112 +547,112 @@ The event listener is appended to target's event listener list and is not append
 	removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean):CssChainT;
 
 
-	ariaAtomic:string;
+	ariaAtomic:string|null;
 
 
-	ariaAutoComplete:string;
+	ariaAutoComplete:string|null;
 
 
-	ariaBusy:string;
+	ariaBusy:string|null;
 
 
-	ariaChecked:string;
+	ariaChecked:string|null;
 
 
-	ariaColCount:string;
+	ariaColCount:string|null;
 
 
-	ariaColIndex:string;
+	ariaColIndex:string|null;
 
 
-	ariaColSpan:string;
+	ariaColSpan:string|null;
 
 
-	ariaCurrent:string;
+	ariaCurrent:string|null;
 
 
-	ariaDisabled:string;
+	ariaDisabled:string|null;
 
 
-	ariaExpanded:string;
+	ariaExpanded:string|null;
 
 
-	ariaHasPopup:string;
+	ariaHasPopup:string|null;
 
 
-	ariaHidden:string;
+	ariaHidden:string|null;
 
 
-	ariaKeyShortcuts:string;
+	ariaKeyShortcuts:string|null;
 
 
-	ariaLabel:string;
+	ariaLabel:string|null;
 
 
-	ariaLevel:string;
+	ariaLevel:string|null;
 
 
-	ariaLive:string;
+	ariaLive:string|null;
 
 
-	ariaModal:string;
+	ariaModal:string|null;
 
 
-	ariaMultiLine:string;
+	ariaMultiLine:string|null;
 
 
-	ariaMultiSelectable:string;
+	ariaMultiSelectable:string|null;
 
 
-	ariaOrientation:string;
+	ariaOrientation:string|null;
 
 
-	ariaPlaceholder:string;
+	ariaPlaceholder:string|null;
 
 
-	ariaPosInSet:string;
+	ariaPosInSet:string|null;
 
 
-	ariaPressed:string;
+	ariaPressed:string|null;
 
 
-	ariaReadOnly:string;
+	ariaReadOnly:string|null;
 
 
-	ariaRequired:string;
+	ariaRequired:string|null;
 
 
-	ariaRoleDescription:string;
+	ariaRoleDescription:string|null;
 
 
-	ariaRowCount:string;
+	ariaRowCount:string|null;
 
 
-	ariaRowIndex:string;
+	ariaRowIndex:string|null;
 
 
-	ariaRowSpan:string;
+	ariaRowSpan:string|null;
 
 
-	ariaSelected:string;
+	ariaSelected:string|null;
 
 
-	ariaSetSize:string;
+	ariaSetSize:string|null;
 
 
-	ariaSort:string;
+	ariaSort:string|null;
 
 
-	ariaValueMax:string;
+	ariaValueMax:string|null;
 
 
-	ariaValueMin:string;
+	ariaValueMin:string|null;
 
 
-	ariaValueNow:string;
+	ariaValueNow:string|null;
 
 
-	ariaValueText:string;
+	ariaValueText:string|null;
 
 
 	animate(keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeAnimationOptions):CssChainT;
@@ -994,6 +994,9 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onscroll:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+
+	onsecuritypolicyviolation:((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)|null;
+
 /**  Occurs when the seek operation ends. <br/>*/
 
 	onseeked:((this: GlobalEventHandlers, ev: Event) => any)|null;
@@ -1011,6 +1014,9 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 
 	onselectstart:((this: GlobalEventHandlers, ev: Event) => any)|null;
+
+
+	onslotchange:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
 /**  Occurs when the download has stopped. <br/>*/
 
@@ -2028,8 +2034,9 @@ The event listener is appended to target's event listener list and is not append
 
 	isMap:boolean;
 
+/**  Sets or retrieves the policy for loading image elements that are outside the viewport. <br/>*/
 
-	loading:string;
+	loading:"eager"|"lazy";
 
 
 	lowsrc:string;

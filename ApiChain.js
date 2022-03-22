@@ -7,13 +7,18 @@ setProp = ( refObj, k, ApiChainLocal )=>
     if( typeof refObj[ k ] == 'function' )
     {   ApiChainLocal.prototype[ k ] = function( ...args )
         {   if( k.startsWith('get') )
-                return this.length ? this[0][k](...args) : undefined;
+            {
+                if( this.length )
+                    return this[ 0 ][ k ]( ...args )
+                else
+                    return;
+            }
             this.forEach( el => el[ k ]( ...args ) );
             return this;
         }
     }else
     {   Object.defineProperty( ApiChainLocal.prototype, k,
-        {   get  : function(){ return this.length ? this[ 0 ][ k ] : undefined }
+        {   get  : function(){ if( this.length ) return this[ 0 ][ k ] }
         ,   set: function( v )
             {  this.forEach( el => el[ k ] = v );
                return v

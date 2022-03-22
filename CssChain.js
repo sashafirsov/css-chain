@@ -2,9 +2,10 @@ import { setProp } from './ApiChain.js';
 export const map = (arr, ...args ) => Array.prototype.map.apply( arr, args );
 export const csv = (arr, ...args ) => map( arr, ...args ).join(',');
 
-export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('')
+export const collectionText = arr=> map(arr, e=>getNodeText(e)).join('');
 const createEl = tag=> document.createElement(tag);
 function nodeProp( tag, prop, val ){ const el = createEl(tag); el[prop]=val; return el; }
+export function isNode(n){ return !!n?.nodeType; }
 
 const nop = ()=>''
 ,   isArr = a => Array.isArray(a) || (a && 'function' === typeof a.forEach)
@@ -12,7 +13,6 @@ const nop = ()=>''
 ,   isStr  = a => isT(a, 'string')
 ,   isNum  = a => isT(a, 'number')
 ,   isFn   = a => isT(a, 'function')
-,   isNode = n => n && n.nodeType
 ,   inWC   = n => n.getRootNode().host
 ,   hasAssigned = n=> inWC(n) && n.assignedNodes
 ,   each = (arr, cb )=> (arr.forEach(cb),arr)
