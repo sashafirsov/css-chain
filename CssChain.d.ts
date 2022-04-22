@@ -8,7 +8,7 @@ import { HTMLElementMixin as AnyElement } from './HTMLElementMixin';
  * @param el Node|Node[] css selector to be applied on node(s)
  * @param protoArr prototype(s) for members and methods of CssChain
  */
-export function CssChain<T= AnyElement>(css?: string|AnyElement|Array<AnyElement&T>, el?: Document|Node|Node[], protoArr?: string|T|string[]): CssChainCollection<T>&T;
+export function CssChain<T= AnyElement>(css?: string|AnyElement|Array<AnyElement&T>|HTMLElement, el?: Document|Node|Node[], protoArr?: string|T|string[]): CssChainCollection<T>&T;
 
 /** CssChain as Array and HTMLElementMixin dual interface */
 export type CssChainT<T = AnyElement > = CssChainCollection<T> & T;
