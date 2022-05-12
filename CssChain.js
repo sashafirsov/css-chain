@@ -240,7 +240,7 @@ Object.getOwnPropertyNames(window)
 CssChain( css, el=document, protoArr=[] )
 {
     const arr = 'string'===typeof css
-                ? el.querySelectorAll( css )
+                ? (el.shadowRoot || el).querySelectorAll( css )
                 : isArr(css) ? css : [css? css.shadowRoot || css : document];
 
     if( isArr( protoArr ) )
