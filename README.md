@@ -4,7 +4,7 @@ _HTML template/slot and DOM manipulation library_
 _Collection API inherits the element API and Array._
 
 [![git][github-image] GitHub](https://github.com/sashafirsov/css-chain)
-| Demo: [css-chain](https://unpkg.com/css-chain-test@1.1.4/dist/demo.html)
+| Demo: [css-chain](https://unpkg.com/css-chain-test@1.1.5/dist/demo.html)
 | [tests project](https://github.com/sashafirsov/css-chain-test) 
 
 [![NPM version][npm-image]][npm-url] [![coverage][coverage-image]][coverage-url]
@@ -212,10 +212,10 @@ ApiChain( [a,b] ).f1().f2() // would reuse API generated in previous call
 [github-image]:   https://cdnjs.cloudflare.com/ajax/libs/octicons/8.5.0/svg/mark-github.svg
 [npm-image]:      https://img.shields.io/npm/v/css-chain.svg
 [npm-url]:        https://npmjs.org/package/css-chain
-[coverage-image]: https://unpkg.com/css-chain-test@1.1.4/coverage/coverage.svg
-[coverage-url]:   https://unpkg.com/css-chain-test@1.1.4/coverage/lcov-report/index.html
-[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.1.4/src/PokeApi-Explorer.png
-[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.1.4/dist/PokeApi-Explorer.html
+[coverage-image]: https://unpkg.com/css-chain-test@1.1.5/coverage/coverage.svg
+[coverage-url]:   https://unpkg.com/css-chain-test@1.1.5/coverage/lcov-report/index.html
+[PokeApi-explorer-image]: https://unpkg.com/css-chain-test@1.1.5/src/PokeApi-Explorer.png
+[PokeApi-explorer-url]: https://unpkg.com/css-chain-test@1.1.5/dist/PokeApi-Explorer.html
 [css-chain-image]:      ChainedCalls.png
 [css-chain-link]:       https://github.com/sashafirsov/css-chain-test/blob/9edc6edac6bc6c22c078e2fd987b37a7721947ee/src/PokeApi-Explorer.js#L140
 [element-api-image]:    ElementAPI.png
