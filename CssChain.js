@@ -42,8 +42,13 @@ export const collectionHtml = arr => map( arr, n=>n.assignedElements
     ).join('');
 
 export const html2NodeArr = html =>
-{   const n = createEl('div');
-    n.innerHTML = html;
+{   let n = createEl('div');
+    if( isNode(html) )
+        n.append( html.cloneNode(true) );
+    else if( isArr(html) )
+        each(html, e=> each( html2NodeArr(e), i=> n.appendChild(i)) )
+    else
+        n.innerHTML = html;
     const wrapIfText = e=>{
         if( e.nodeType !== 3 )
             return e;
