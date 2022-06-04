@@ -4,5 +4,3 @@
 
 * `html(strArr|NodeList|function*)` - array duplicated within each collection element
 * `clone( function*, cb( clonedNode, dataItem, function* ) )`
-
-# test

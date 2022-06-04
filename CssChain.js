@@ -76,6 +76,15 @@ export const addNodeHtml = ( n, val ) =>
         : append(val);
 }
 export const setNodeHtml = ( n, val ) => { clear(n); addNodeHtml(n,val) };
+function assignedNodesLight(f)
+{   if(f?.flatten)
+    {   const r = [];
+        const flatten = n=> n.CssChainAssignedNodes ? each(n.CssChainAssignedNodes,flatten): r.push(n);
+        each(this.CssChainAssignedNodes, flatten );
+        return r;
+    }
+    return this.CssChainAssignedNodes;
+}
 
     class
 CssChainT extends Array
@@ -144,13 +153,34 @@ CssChainT extends Array
         {   n = this.$( n );
             n.remove();
         }
-        const c = CssChain( n.content ? n.content.childNodes : n ).clone(this);
+        n = n.cloneNode(true);
+        const content = n.content ? n.content.childNodes : n;
+        const c = CssChain( content );
         c.slots().forEach( s =>
         {   const v = this.children.filter( n=>n.slot===s.name );
-            v.length && setNodeHtml(s,v)
+            const p = s.parentNode;
+            s.CssChainAssignedNodes = [];
+            s.assignedNodes = s.assignedElements = assignedNodesLight;
+            const insert = (n,r)=>
+            {   const k = p.insertBefore( n, r);
+                n.CssChainAssignedSlot || s.CssChainAssignedNodes.push(n);
+                n.CssChainAssignedSlot = s;
+                return k;
+            };
+            each(v, e=>e.cssChainSlot = s);
+            const injectInSlot = (e,s)=>
+            {   if( e.tagName === 'SLOT' )
+                {   const q = e.parentNode;
+                    const r = insert(e,s);
+                    each( q.querySelectorAll(`[slot="${e.name}"]`), n=> p.insertBefore( n, r) );
+                }else
+                    insert(e,s);
+            }
+            each( v, e=>injectInSlot( e, s) )
+            if( v.length ) s.hidden=true;
         });
-        this.children.remove();
-        this.append(c);
+        this.children.filter(e=>!e.cssChainSlot).remove();
+        this.append( CssChain( html2NodeArr('<light-dom></light-dom>') ).append(content) );
         return this;
     }
     get innerText(){ return this.txt() }
