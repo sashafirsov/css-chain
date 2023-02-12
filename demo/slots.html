@@ -1,0 +1,81 @@
+<script type="module">
+    import $ from "../CssChain.js";
+    // $('#host2').template(h2);
+    $('#host1').template(h1);
+    // $('#host2').template(h2);
+    $('aside').template(t0);
+    $('main').template(t1);
+</script>
+
+<div id="host1">
+    <template id="h1">
+        <div id="host2">
+            <template id="h2">
+                <slot id="s7">#s7</slot>
+            </template>
+            <slot id="s3">#s3</slot>
+            <slot id="s4" name="slot4" slot="slot-none">#s4</slot>
+            <div id="c7">#c7</div>
+        </div>
+    </template>
+    <div id="c3">#c3</div>
+    <div id="c4" slot="slot-none">#c4</div>
+</div>
+<hr/>
+<div >
+    <template shadowroot="open">
+        <div >
+            <template data-mode="open">
+                <slot id="s7">#s7</slot>
+            </template>
+            <slot id="s3">#s3</slot>
+            <slot id="s4" name="slot4" slot="slot-none">#s4</slot>
+            <div id="c7">#c7</div>
+        </div>
+    </template>
+    <div id="c3">#c3</div>
+    <div id="c4" slot="slot-none">#c4</div>
+</div>
+
+<template id="t0">
+        To: <slot name="title"></slot>
+
+        <p>Dear <slot name="title"></slot></p>
+</template>
+<aside>
+    <h4 slot="title">Doc</h4>
+</aside>
+
+<template id="t1">
+    <style>
+        a { display:block;
+            box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+            border-radius: 2rem;
+            padding: 2rem;
+            width: 10rem;
+            height: 10rem;
+        }
+    </style>
+    <a href="#" role="button">
+        <attribute name="href" hidden><slot
+            name="base-uri" ></slot><slot
+            name="link-path" ></slot></attribute>
+        <attribute name="aria-label" hidden><slot name="title"></slot></attribute>
+
+        <img alt="" src="" id="image-1" />
+        <attribute name="src" hidden for="image-1"><slot
+            name="base-uri" ></slot><slot
+            name="image-path" ></slot></attribute>
+        <attribute name="alt" hidden for="image-1"><slot name="title"></slot></attribute>
+
+        <h4><slot name="title"></slot></h4>
+        <slot
+                name="base-uri" ></slot>
+    </a>
+</template>
+<main>
+    <h4 slot="title">Doc</h4>
+    <noscript slot="base-uri">https://unpkg.com/shadow-dom-element@0.0</noscript>
+    <noscript slot="link-path">/demo/index.html</noscript>
+    <noscript slot="image-path">/demo/doc.png</noscript>
+</main>

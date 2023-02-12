@@ -14,15 +14,16 @@ _Collection API inherits the element API and Array._
 `CssChain` searches HTML by `css` and returns an Array inherited object which has 
 all methods and properties of its elements.
 When method is called, each element would invoke this method and then same CssChain object is returned.
+```js
+import $ from 'https://unpkg.com/css-chain@1/CssChain.js'
+$( '*[title]', rootEL ).addEventListener( 'click', ev=> alert(ev.target.title) );
+```
+^^ adds event listener to all selected elements in `rootEl` DOM tree
 
 | chained calls                                      | HTMLElement API                                        |                                        
 |----------------------------------------------------|--------------------------------------------------------|
 | [![chained call][css-chain-image]][css-chain-link] | [![chained call][element-api-image]][element-api-link] | 
 
-```js
-    CssChain( '*[title]', rootEL ).addEventListener( 'click', ev=> alert(ev.target.title) );
-```
-^^ adds event listener to all selected elements in `rootEl` DOM tree
 ```js
     CssChain( 'a' )
         .addEventListener( 'mouseover' , ev=> alert(ev.target.classList.add('hovered') ) )
