@@ -5,60 +5,81 @@ import type { CssChainT} from './CssChain';
     all methods return CssChainT
 */
 export interface HTMLElementMixin {
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKey) <br/>*/
 
 	accessKey:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKeyLabel) <br/>*/
 
 	accessKeyLabel:string;
 
 
 	autocapitalize:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dir) <br/>*/
 
 	dir:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/draggable) <br/>*/
 
 	draggable:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/hidden) <br/>*/
 
 	hidden:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/inert) <br/>*/
+
+	inert:boolean;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/innerText) <br/>*/
 
 	innerText:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lang) <br/>*/
 
 	lang:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetHeight) <br/>*/
 
 	offsetHeight:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetLeft) <br/>*/
 
 	offsetLeft:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetParent) <br/>*/
 
 	offsetParent:Element|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetTop) <br/>*/
 
 	offsetTop:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetWidth) <br/>*/
 
 	offsetWidth:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/outerText) <br/>*/
 
 	outerText:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/spellcheck) <br/>*/
 
 	spellcheck:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/title) <br/>*/
 
 	title:string;
 
 
 	translate:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attachInternals) <br/>*/
 
 	attachInternals():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/click) <br/>*/
 
 	click():CssChainT;
 
@@ -74,7 +95,24 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
@@ -90,251 +128,399 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attributes) <br/>*/
 
 	attributes:NamedNodeMap;
 
-/**  Allows for manipulation of element's class content attribute as a set of whitespace-separated tokens through a DOMTokenList object. <br/>*/
+/**  Allows for manipulation of element's class content attribute as a set of whitespace-separated tokens through a DOMTokenList object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/classList) <br/>*/
 
 	classList:DOMTokenList;
 
-/**  Returns the value of element's class content attribute. Can be set to change it. <br/>*/
+/**  Returns the value of element's class content attribute. Can be set to change it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/className) <br/>*/
 
 	className:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientHeight) <br/>*/
 
 	clientHeight:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientLeft) <br/>*/
 
 	clientLeft:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientTop) <br/>*/
 
 	clientTop:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientWidth) <br/>*/
 
 	clientWidth:number;
 
-/**  Returns the value of element's id content attribute. Can be set to change it. <br/>*/
+/**  Returns the value of element's id content attribute. Can be set to change it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/id) <br/>*/
 
 	id:string;
 
-/**  Returns the local name. <br/>*/
+/**  Returns the local name.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/localName) <br/>*/
 
 	localName:string;
 
-/**  Returns the namespace. <br/>*/
+/**  Returns the namespace.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/namespaceURI) <br/>*/
 
 	namespaceURI:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/fullscreenchange_event) <br/>*/
 
 	onfullscreenchange:((this: Element, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/fullscreenerror_event) <br/>*/
 
 	onfullscreenerror:((this: Element, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/outerHTML) <br/>*/
 
 	outerHTML:string;
 
-/**  Returns the node document. Returns null for documents. <br/>*/
+/**  Returns the node document. Returns null for documents.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/ownerDocument) <br/>*/
 
 	ownerDocument:Document|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/part) <br/>*/
 
 	part:DOMTokenList;
 
-/**  Returns the namespace prefix. <br/>*/
+/**  Returns the namespace prefix.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/prefix) <br/>*/
 
 	prefix:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollHeight) <br/>*/
 
 	scrollHeight:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollLeft) <br/>*/
 
 	scrollLeft:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTop) <br/>*/
 
 	scrollTop:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollWidth) <br/>*/
 
 	scrollWidth:number;
 
-/**  Returns element's shadow root, if any, and if shadow root's mode is "open", and null otherwise. <br/>*/
+/**  Returns element's shadow root, if any, and if shadow root's mode is "open", and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/shadowRoot) <br/>*/
 
 	shadowRoot:ShadowRoot|null;
 
-/**  Returns the value of element's slot content attribute. Can be set to change it. <br/>*/
+/**  Returns the value of element's slot content attribute. Can be set to change it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/slot) <br/>*/
 
 	slot:string;
 
-/**  Returns the HTML-uppercased qualified name. <br/>*/
+/**  Returns the HTML-uppercased qualified name.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName) <br/>*/
 
 	tagName:string;
 
-/**  Creates a shadow root for element and returns it. <br/>*/
+/**  Creates a shadow root for element and returns it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attachShadow) <br/>*/
 
 	attachShadow(init: ShadowRootInit):CssChainT;
 
-/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise. <br/>*/
+
+	checkVisibility(options?: CheckVisibilityOptions):CssChainT;
+
+/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/closest) <br/>*/
 
 	closest<K extends keyof HTMLElementTagNameMap>(selector: K):CssChainT;
 
-/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise. <br/>*/
+/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/closest) <br/>*/
 
 	closest<K extends keyof SVGElementTagNameMap>(selector: K):CssChainT;
 
-/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise. <br/>*/
+/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/closest) <br/>*/
+
+	closest<K extends keyof MathMLElementTagNameMap>(selector: K):CssChainT;
+
+/**  Returns the first (starting at element) inclusive ancestor that matches selectors, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/closest) <br/>*/
 
 	closest<E extends Element = Element>(selectors: string):CssChainT;
 
-/**  Returns element's first attribute whose qualified name is qualifiedName, and null if there is no such attribute otherwise. <br/>*/
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/computedStyleMap) <br/>*/
+
+	computedStyleMap():CssChainT;
+
+/**  Returns element's first attribute whose qualified name is qualifiedName, and null if there is no such attribute otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttribute) <br/>*/
 
 	getAttribute(qualifiedName: string):CssChainT;
 
-/**  Returns element's attribute whose namespace is namespace and local name is localName, and null if there is no such attribute otherwise. <br/>*/
+/**  Returns element's attribute whose namespace is namespace and local name is localName, and null if there is no such attribute otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNS) <br/>*/
 
 	getAttributeNS(namespace: string | null, localName: string):CssChainT;
 
-/**  Returns the qualified names of all element's attributes. Can contain duplicates. <br/>*/
+/**  Returns the qualified names of all element's attributes. Can contain duplicates.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNames) <br/>*/
 
 	getAttributeNames():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNode) <br/>*/
 
 	getAttributeNode(qualifiedName: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNodeNS) <br/>*/
 
 	getAttributeNodeNS(namespace: string | null, localName: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getBoundingClientRect) <br/>*/
 
 	getBoundingClientRect():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getClientRects) <br/>*/
 
 	getClientRects():CssChainT;
 
-/**  Returns a HTMLCollection of the elements in the object on which the method was invoked (a document or an element) that have all the classes given by classNames. The classNames argument is interpreted as a space-separated list of classes. <br/>*/
+/**  Returns a HTMLCollection of the elements in the object on which the method was invoked (a document or an element) that have all the classes given by classNames. The classNames argument is interpreted as a space-separated list of classes.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByClassName) <br/>*/
 
 	getElementsByClassName(classNames: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName) <br/>*/
 
 	getElementsByTagName<K extends keyof HTMLElementTagNameMap>(qualifiedName: K):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName) <br/>*/
 
 	getElementsByTagName<K extends keyof SVGElementTagNameMap>(qualifiedName: K):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName) <br/>*/
+
+	getElementsByTagName<K extends keyof MathMLElementTagNameMap>(qualifiedName: K):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName) <br/>*/
+
+	getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName) <br/>*/
 
 	getElementsByTagName(qualifiedName: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagNameNS) <br/>*/
 
 	getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1999/xhtml", localName: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagNameNS) <br/>*/
 
 	getElementsByTagNameNS(namespaceURI: "http://www.w3.org/2000/svg", localName: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagNameNS) <br/>*/
+
+	getElementsByTagNameNS(namespaceURI: "http://www.w3.org/1998/Math/MathML", localName: string):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagNameNS) <br/>*/
 
 	getElementsByTagNameNS(namespace: string | null, localName: string):CssChainT;
 
-/**  Returns true if element has an attribute whose qualified name is qualifiedName, and false otherwise. <br/>*/
+/**  Returns true if element has an attribute whose qualified name is qualifiedName, and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasAttribute) <br/>*/
 
 	hasAttribute(qualifiedName: string):CssChainT;
 
-/**  Returns true if element has an attribute whose namespace is namespace and local name is localName. <br/>*/
+/**  Returns true if element has an attribute whose namespace is namespace and local name is localName.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasAttributeNS) <br/>*/
 
 	hasAttributeNS(namespace: string | null, localName: string):CssChainT;
 
-/**  Returns true if element has attributes, and false otherwise. <br/>*/
+/**  Returns true if element has attributes, and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasAttributes) <br/>*/
 
 	hasAttributes():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasPointerCapture) <br/>*/
 
 	hasPointerCapture(pointerId: number):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentElement) <br/>*/
 
 	insertAdjacentElement(where: InsertPosition, element: Element):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentHTML) <br/>*/
 
 	insertAdjacentHTML(position: InsertPosition, text: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentText) <br/>*/
 
 	insertAdjacentText(where: InsertPosition, data: string):CssChainT;
 
-/**  Returns true if matching selectors against element's root yields element, and false otherwise. <br/>*/
+/**  Returns true if matching selectors against element's root yields element, and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches) <br/>*/
 
 	matches(selectors: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/releasePointerCapture) <br/>*/
 
 	releasePointerCapture(pointerId: number):CssChainT;
 
-/**  Removes element's first attribute whose qualified name is qualifiedName. <br/>*/
+/**  Removes element's first attribute whose qualified name is qualifiedName.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/removeAttribute) <br/>*/
 
 	removeAttribute(qualifiedName: string):CssChainT;
 
-/**  Removes element's attribute whose namespace is namespace and local name is localName. <br/>*/
+/**  Removes element's attribute whose namespace is namespace and local name is localName.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/removeAttributeNS) <br/>*/
 
 	removeAttributeNS(namespace: string | null, localName: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/removeAttributeNode) <br/>*/
 
 	removeAttributeNode(attr: Attr):CssChainT;
 
 /**  Displays element fullscreen and resolves promise when done.
 
-When supplied, options's navigationUI member indicates whether showing navigation UI while in fullscreen is preferred or not. If set to "show", navigation simplicity is preferred over screen space, and if set to "hide", more screen space is preferred. User agents are always free to honor user preference over the application's. The default value "auto" indicates no application preference. <br/>*/
+When supplied, options's navigationUI member indicates whether showing navigation UI while in fullscreen is preferred or not. If set to "show", navigation simplicity is preferred over screen space, and if set to "hide", more screen space is preferred. User agents are always free to honor user preference over the application's. The default value "auto" indicates no application preference.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestFullscreen) <br/>*/
 
 	requestFullscreen(options?: FullscreenOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestPointerLock) <br/>*/
 
 	requestPointerLock():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll) <br/>*/
 
 	scroll(options?: ScrollToOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll) <br/>*/
 
 	scroll(x: number, y: number):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollBy) <br/>*/
 
 	scrollBy(options?: ScrollToOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollBy) <br/>*/
 
 	scrollBy(x: number, y: number):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollIntoView) <br/>*/
 
 	scrollIntoView(arg?: boolean | ScrollIntoViewOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTo) <br/>*/
 
 	scrollTo(options?: ScrollToOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTo) <br/>*/
 
 	scrollTo(x: number, y: number):CssChainT;
 
-/**  Sets the value of element's first attribute whose qualified name is qualifiedName to value. <br/>*/
+/**  Sets the value of element's first attribute whose qualified name is qualifiedName to value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttribute) <br/>*/
 
 	setAttribute(qualifiedName: string, value: string):CssChainT;
 
-/**  Sets the value of element's attribute whose namespace is namespace and local name is localName to value. <br/>*/
+/**  Sets the value of element's attribute whose namespace is namespace and local name is localName to value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNS) <br/>*/
 
 	setAttributeNS(namespace: string | null, qualifiedName: string, value: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNode) <br/>*/
 
 	setAttributeNode(attr: Attr):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNodeNS) <br/>*/
 
 	setAttributeNodeNS(attr: Attr):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setPointerCapture) <br/>*/
 
 	setPointerCapture(pointerId: number):CssChainT;
 
 /**  If force is not given, "toggles" qualifiedName, removing it if it is present and adding it if it is not present. If force is true, adds qualifiedName. If force is false, removes qualifiedName.
 
-Returns true if qualifiedName is now present, and false otherwise. <br/>*/
+Returns true if qualifiedName is now present, and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/toggleAttribute) <br/>*/
 
 	toggleAttribute(qualifiedName: string, force?: boolean):CssChainT;
 
@@ -353,174 +539,238 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof ElementEventMap>(type: K, listener: (this: Element, ev: ElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Returns node's node document's document base URL. <br/>*/
+/**  Returns node's node document's document base URL.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/baseURI) <br/>*/
 
 	baseURI:string;
 
-/**  Returns true if node is connected and false otherwise. <br/>*/
+/**  Returns true if node is connected and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isConnected) <br/>*/
 
 	isConnected:boolean;
 
-/**  Returns the last child. <br/>*/
+/**  Returns the last child.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lastChild) <br/>*/
 
 	lastChild:ChildNode|null;
 
-/**  Returns the next sibling. <br/>*/
+/**  Returns the next sibling.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nextSibling) <br/>*/
 
 	nextSibling:ChildNode|null;
 
-/**  Returns a string appropriate for the type of node. <br/>*/
+/**  Returns a string appropriate for the type of node.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeName) <br/>*/
 
 	nodeName:string;
 
-/**  Returns the type of node. <br/>*/
+/**  Returns the type of node.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeType) <br/>*/
 
 	nodeType:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeValue) <br/>*/
 
 	nodeValue:string|null;
 
-/**  Returns the parent element. <br/>*/
+/**  Returns the parent element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentElement) <br/>*/
 
 	parentElement:HTMLElement|null;
 
-/**  Returns the parent. <br/>*/
+/**  Returns the parent.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentNode) <br/>*/
 
 	parentNode:ParentNode|null;
 
-/**  Returns the previous sibling. <br/>*/
+/**  Returns the previous sibling.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/previousSibling) <br/>*/
 
 	previousSibling:ChildNode|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/textContent) <br/>*/
 
 	textContent:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/appendChild) <br/>*/
 
 	appendChild<T extends Node>(node: T):CssChainT;
 
-/**  Returns a copy of node. If deep is true, the copy also includes the node's descendants. <br/>*/
+/**  Returns a copy of node. If deep is true, the copy also includes the node's descendants.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/cloneNode) <br/>*/
 
 	cloneNode(deep?: boolean):CssChainT;
 
-/**  Returns a bitmask indicating the position of other relative to node. <br/>*/
+/**  Returns a bitmask indicating the position of other relative to node.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/compareDocumentPosition) <br/>*/
 
 	compareDocumentPosition(other: Node):CssChainT;
 
-/**  Returns true if other is an inclusive descendant of node, and false otherwise. <br/>*/
+/**  Returns true if other is an inclusive descendant of node, and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/contains) <br/>*/
 
 	contains(other: Node | null):CssChainT;
 
-/**  Returns node's root. <br/>*/
+/**  Returns node's root.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/getRootNode) <br/>*/
 
 	getRootNode(options?: GetRootNodeOptions):CssChainT;
 
-/**  Returns whether node has children. <br/>*/
+/**  Returns whether node has children.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/hasChildNodes) <br/>*/
 
 	hasChildNodes():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/insertBefore) <br/>*/
 
 	insertBefore<T extends Node>(node: T, child: Node | null):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isDefaultNamespace) <br/>*/
 
 	isDefaultNamespace(namespace: string | null):CssChainT;
 
-/**  Returns whether node and otherNode have the same properties. <br/>*/
+/**  Returns whether node and otherNode have the same properties.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isEqualNode) <br/>*/
 
 	isEqualNode(otherNode: Node | null):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isSameNode) <br/>*/
 
 	isSameNode(otherNode: Node | null):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lookupNamespaceURI) <br/>*/
 
 	lookupNamespaceURI(prefix: string | null):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lookupPrefix) <br/>*/
 
 	lookupPrefix(namespace: string | null):CssChainT;
 
-/**  Removes empty exclusive Text nodes and concatenates the data of remaining contiguous exclusive Text nodes into the first of their nodes. <br/>*/
+/**  Removes empty exclusive Text nodes and concatenates the data of remaining contiguous exclusive Text nodes into the first of their nodes.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/normalize) <br/>*/
 
 	normalize():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/removeChild) <br/>*/
 
 	removeChild<T extends Node>(child: T):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/replaceChild) <br/>*/
 
 	replaceChild<T extends Node>(node: Node, child: T):CssChainT;
 
-
-	ATTRIBUTE_NODE:number;
-
-/**  node is a CDATASection node. <br/>*/
-
-	CDATA_SECTION_NODE:number;
-
-/**  node is a Comment node. <br/>*/
-
-	COMMENT_NODE:number;
-
-/**  node is a DocumentFragment node. <br/>*/
-
-	DOCUMENT_FRAGMENT_NODE:number;
-
-/**  node is a document. <br/>*/
-
-	DOCUMENT_NODE:number;
-
-/**  Set when other is a descendant of node. <br/>*/
-
-	DOCUMENT_POSITION_CONTAINED_BY:number;
-
-/**  Set when other is an ancestor of node. <br/>*/
-
-	DOCUMENT_POSITION_CONTAINS:number;
-
-/**  Set when node and other are not in the same tree. <br/>*/
-
-	DOCUMENT_POSITION_DISCONNECTED:number;
-
-/**  Set when other is following node. <br/>*/
-
-	DOCUMENT_POSITION_FOLLOWING:number;
-
-
-	DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC:number;
-
-/**  Set when other is preceding node. <br/>*/
-
-	DOCUMENT_POSITION_PRECEDING:number;
-
-/**  node is a doctype. <br/>*/
-
-	DOCUMENT_TYPE_NODE:number;
-
 /**  node is an element. <br/>*/
 
-	ELEMENT_NODE:number;
+	ELEMENT_NODE:1;
 
 
-	ENTITY_NODE:number;
-
-
-	ENTITY_REFERENCE_NODE:number;
-
-
-	NOTATION_NODE:number;
-
-/**  node is a ProcessingInstruction node. <br/>*/
-
-	PROCESSING_INSTRUCTION_NODE:number;
+	ATTRIBUTE_NODE:2;
 
 /**  node is a Text node. <br/>*/
 
-	TEXT_NODE:number;
+	TEXT_NODE:3;
+
+/**  node is a CDATASection node. <br/>*/
+
+	CDATA_SECTION_NODE:4;
+
+
+	ENTITY_REFERENCE_NODE:5;
+
+
+	ENTITY_NODE:6;
+
+/**  node is a ProcessingInstruction node. <br/>*/
+
+	PROCESSING_INSTRUCTION_NODE:7;
+
+/**  node is a Comment node. <br/>*/
+
+	COMMENT_NODE:8;
+
+/**  node is a document. <br/>*/
+
+	DOCUMENT_NODE:9;
+
+/**  node is a doctype. <br/>*/
+
+	DOCUMENT_TYPE_NODE:10;
+
+/**  node is a DocumentFragment node. <br/>*/
+
+	DOCUMENT_FRAGMENT_NODE:11;
+
+
+	NOTATION_NODE:12;
+
+/**  Set when node and other are not in the same tree. <br/>*/
+
+	DOCUMENT_POSITION_DISCONNECTED:0x01;
+
+/**  Set when other is preceding node. <br/>*/
+
+	DOCUMENT_POSITION_PRECEDING:0x02;
+
+/**  Set when other is following node. <br/>*/
+
+	DOCUMENT_POSITION_FOLLOWING:0x04;
+
+/**  Set when other is an ancestor of node. <br/>*/
+
+	DOCUMENT_POSITION_CONTAINS:0x08;
+
+/**  Set when other is a descendant of node. <br/>*/
+
+	DOCUMENT_POSITION_CONTAINED_BY:0x10;
+
+
+	DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC:0x20;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -534,240 +784,340 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: AddEventListenerOptions | boolean):CssChainT;
 
-/**  Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise. <br/>*/
+/**  Dispatches a synthetic event event to target and returns true if either event's cancelable attribute value is false or its preventDefault() method was not invoked, and false otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent) <br/>*/
 
 	dispatchEvent(event: Event):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: EventListenerOptions | boolean):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAtomic) <br/>*/
 
 	ariaAtomic:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete) <br/>*/
 
 	ariaAutoComplete:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBusy) <br/>*/
 
 	ariaBusy:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaChecked) <br/>*/
 
 	ariaChecked:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColCount) <br/>*/
 
 	ariaColCount:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndex) <br/>*/
 
 	ariaColIndex:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan) <br/>*/
 
 	ariaColSpan:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent) <br/>*/
 
 	ariaCurrent:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDisabled) <br/>*/
 
 	ariaDisabled:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaExpanded) <br/>*/
 
 	ariaExpanded:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHasPopup) <br/>*/
 
 	ariaHasPopup:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHidden) <br/>*/
 
 	ariaHidden:string|null;
 
 
+	ariaInvalid:string|null;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaKeyShortcuts) <br/>*/
+
 	ariaKeyShortcuts:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabel) <br/>*/
 
 	ariaLabel:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLevel) <br/>*/
 
 	ariaLevel:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLive) <br/>*/
 
 	ariaLive:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaModal) <br/>*/
 
 	ariaModal:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiLine) <br/>*/
 
 	ariaMultiLine:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiSelectable) <br/>*/
 
 	ariaMultiSelectable:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOrientation) <br/>*/
 
 	ariaOrientation:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPlaceholder) <br/>*/
 
 	ariaPlaceholder:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPosInSet) <br/>*/
 
 	ariaPosInSet:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPressed) <br/>*/
 
 	ariaPressed:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaReadOnly) <br/>*/
 
 	ariaReadOnly:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRequired) <br/>*/
 
 	ariaRequired:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRoleDescription) <br/>*/
 
 	ariaRoleDescription:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowCount) <br/>*/
 
 	ariaRowCount:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndex) <br/>*/
 
 	ariaRowIndex:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowSpan) <br/>*/
 
 	ariaRowSpan:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSelected) <br/>*/
 
 	ariaSelected:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSetSize) <br/>*/
 
 	ariaSetSize:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSort) <br/>*/
 
 	ariaSort:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMax) <br/>*/
 
 	ariaValueMax:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMin) <br/>*/
 
 	ariaValueMin:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueNow) <br/>*/
 
 	ariaValueNow:string|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueText) <br/>*/
 
 	ariaValueText:string|null;
 
 
+	role:string|null;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animate) <br/>*/
+
 	animate(keyframes: Keyframe[] | PropertyIndexedKeyframes | null, options?: number | KeyframeAnimationOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAnimations) <br/>*/
 
 	getAnimations(options?: GetAnimationsOptions):CssChainT;
 
 /**  Inserts nodes just after node, while replacing strings in nodes with equivalent Text nodes.
 
-Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated. <br/>*/
+Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/after) <br/>*/
 
 	after(...nodes: (Node | string)[]):CssChainT;
 
 /**  Inserts nodes just before node, while replacing strings in nodes with equivalent Text nodes.
 
-Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated. <br/>*/
+Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/before) <br/>*/
 
 	before(...nodes: (Node | string)[]):CssChainT;
 
 /**  Replaces node with nodes, while replacing strings in nodes with equivalent Text nodes.
 
-Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated. <br/>*/
+Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/replaceWith) <br/>*/
 
 	replaceWith(...nodes: (Node | string)[]):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/innerHTML) <br/>*/
 
 	innerHTML:string;
 
-/**  Returns the first following sibling that is an element, and null otherwise. <br/>*/
+/**  Returns the first following sibling that is an element, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/nextElementSibling) <br/>*/
 
 	nextElementSibling:Element|null;
 
-/**  Returns the first preceding sibling that is an element, and null otherwise. <br/>*/
+/**  Returns the first preceding sibling that is an element, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/previousElementSibling) <br/>*/
 
 	previousElementSibling:Element|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/childElementCount) <br/>*/
 
 	childElementCount:number;
 
-/**  Returns the last child that is an element, and null otherwise. <br/>*/
+/**  Returns the last child that is an element, and null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/lastElementChild) <br/>*/
 
 	lastElementChild:Element|null;
 
 /**  Inserts nodes after the last child of node, while replacing strings in nodes with equivalent Text nodes.
 
-Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated. <br/>*/
+Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append) <br/>*/
 
 	append(...nodes: (Node | string)[]):CssChainT;
 
 /**  Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.
 
-Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated. <br/>*/
+Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/prepend) <br/>*/
 
 	prepend(...nodes: (Node | string)[]):CssChainT;
 
-/**  Returns the first element that is a descendant of node that matches selectors. <br/>*/
+/**  Returns the first element that is a descendant of node that matches selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector) <br/>*/
 
 	querySelector<K extends keyof HTMLElementTagNameMap>(selectors: K):CssChainT;
 
-/**  Returns the first element that is a descendant of node that matches selectors. <br/>*/
+/**  Returns the first element that is a descendant of node that matches selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector) <br/>*/
 
 	querySelector<K extends keyof SVGElementTagNameMap>(selectors: K):CssChainT;
 
-/**  Returns the first element that is a descendant of node that matches selectors. <br/>*/
+/**  Returns the first element that is a descendant of node that matches selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector) <br/>*/
+
+	querySelector<K extends keyof MathMLElementTagNameMap>(selectors: K):CssChainT;
+
+/**  Returns the first element that is a descendant of node that matches selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector) <br/>*/
+
+	querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K):CssChainT;
+
+/**  Returns the first element that is a descendant of node that matches selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector) <br/>*/
 
 	querySelector<E extends Element = Element>(selectors: string):CssChainT;
 
-/**  Returns all element descendants of node that match selectors. <br/>*/
+/**  Returns all element descendants of node that match selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll) <br/>*/
 
 	querySelectorAll<K extends keyof HTMLElementTagNameMap>(selectors: K):CssChainT;
 
-/**  Returns all element descendants of node that match selectors. <br/>*/
+/**  Returns all element descendants of node that match selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll) <br/>*/
 
 	querySelectorAll<K extends keyof SVGElementTagNameMap>(selectors: K):CssChainT;
 
-/**  Returns all element descendants of node that match selectors. <br/>*/
+/**  Returns all element descendants of node that match selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll) <br/>*/
+
+	querySelectorAll<K extends keyof MathMLElementTagNameMap>(selectors: K):CssChainT;
+
+/**  Returns all element descendants of node that match selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll) <br/>*/
+
+	querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K):CssChainT;
+
+/**  Returns all element descendants of node that match selectors.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll) <br/>*/
 
 	querySelectorAll<E extends Element = Element>(selectors: string):CssChainT;
 
 /**  Replace all children of node with nodes, while replacing strings in nodes with equivalent Text nodes.
 
-Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated. <br/>*/
+Throws a "HierarchyRequestError" DOMException if the constraints of the node tree are violated.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/replaceChildren) <br/>*/
 
 	replaceChildren(...nodes: (Node | string)[]):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/assignedSlot) <br/>*/
 
 	assignedSlot:HTMLSlotElement|null;
 
 
-	oncopy:((this: DocumentAndElementEventHandlers, ev: ClipboardEvent) => any)|null;
+	attributeStyleMap:StylePropertyMap;
 
-
-	oncut:((this: DocumentAndElementEventHandlers, ev: ClipboardEvent) => any)|null;
-
-
-	onpaste:((this: DocumentAndElementEventHandlers, ev: ClipboardEvent) => any)|null;
-
-
-	addEventListener<K extends keyof DocumentAndElementEventHandlersEventMap>(type: K, listener: (this: DocumentAndElementEventHandlers, ev: DocumentAndElementEventHandlersEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
-
-
-	removeEventListener<K extends keyof DocumentAndElementEventHandlersEventMap>(type: K, listener: (this: DocumentAndElementEventHandlers, ev: DocumentAndElementEventHandlersEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
-
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style) <br/>*/
 
 	style:CSSStyleDeclaration;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/contentEditable) <br/>*/
 
 	contentEditable:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/enterKeyHint) <br/>*/
 
 	enterKeyHint:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/inputMode) <br/>*/
 
 	inputMode:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/isContentEditable) <br/>*/
 
 	isContentEditable:boolean;
 
@@ -775,29 +1125,43 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onabort:((this: GlobalEventHandlers, ev: UIEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationcancel_event) <br/>*/
 
 	onanimationcancel:((this: GlobalEventHandlers, ev: AnimationEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationend_event) <br/>*/
 
 	onanimationend:((this: GlobalEventHandlers, ev: AnimationEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationiteration_event) <br/>*/
 
 	onanimationiteration:((this: GlobalEventHandlers, ev: AnimationEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event) <br/>*/
 
 	onanimationstart:((this: GlobalEventHandlers, ev: AnimationEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/auxclick_event) <br/>*/
 
 	onauxclick:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforeinput_event) <br/>*/
+
+	onbeforeinput:((this: GlobalEventHandlers, ev: InputEvent) => any)|null;
 
 /**  Fires when the object loses the input focus. <br/>*/
 
 	onblur:((this: GlobalEventHandlers, ev: FocusEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/cancel_event) <br/>*/
+
+	oncancel:((this: GlobalEventHandlers, ev: Event) => any)|null;
+
 /**  Occurs when playback is possible, but would require further buffering. <br/>*/
 
 	oncanplay:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canplaythrough_event) <br/>*/
 
 	oncanplaythrough:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
@@ -809,6 +1173,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onclick:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event) <br/>*/
 
 	onclose:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
@@ -816,8 +1181,17 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	oncontextmenu:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/copy_event) <br/>*/
+
+	oncopy:((this: GlobalEventHandlers, ev: ClipboardEvent) => any)|null;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/cuechange_event) <br/>*/
 
 	oncuechange:((this: GlobalEventHandlers, ev: Event) => any)|null;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/cut_event) <br/>*/
+
+	oncut:((this: GlobalEventHandlers, ev: ClipboardEvent) => any)|null;
 
 /**  Fires when the user double-clicks the object. <br/>*/
 
@@ -847,6 +1221,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	ondragstart:((this: GlobalEventHandlers, ev: DragEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/drop_event) <br/>*/
 
 	ondrop:((this: GlobalEventHandlers, ev: DragEvent) => any)|null;
 
@@ -870,15 +1245,19 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onfocus:((this: GlobalEventHandlers, ev: FocusEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event) <br/>*/
 
 	onformdata:((this: GlobalEventHandlers, ev: FormDataEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/gotpointercapture_event) <br/>*/
 
 	ongotpointercapture:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/input_event) <br/>*/
 
 	oninput:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/invalid_event) <br/>*/
 
 	oninvalid:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
@@ -910,6 +1289,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onloadstart:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/lostpointercapture_event) <br/>*/
 
 	onlostpointercapture:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
@@ -917,9 +1297,11 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onmousedown:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseenter_event) <br/>*/
 
 	onmouseenter:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseleave_event) <br/>*/
 
 	onmouseleave:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
 
@@ -939,6 +1321,10 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onmouseup:((this: GlobalEventHandlers, ev: MouseEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/paste_event) <br/>*/
+
+	onpaste:((this: GlobalEventHandlers, ev: ClipboardEvent) => any)|null;
+
 /**  Occurs when playback is paused. <br/>*/
 
 	onpause:((this: GlobalEventHandlers, ev: Event) => any)|null;
@@ -951,27 +1337,35 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onplaying:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointercancel_event) <br/>*/
 
 	onpointercancel:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerdown_event) <br/>*/
 
 	onpointerdown:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerenter_event) <br/>*/
 
 	onpointerenter:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerleave_event) <br/>*/
 
 	onpointerleave:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointermove_event) <br/>*/
 
 	onpointermove:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerout_event) <br/>*/
 
 	onpointerout:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event) <br/>*/
 
 	onpointerover:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event) <br/>*/
 
 	onpointerup:((this: GlobalEventHandlers, ev: PointerEvent) => any)|null;
 
@@ -987,6 +1381,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onreset:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/resize_event) <br/>*/
 
 	onresize:((this: GlobalEventHandlers, ev: UIEvent) => any)|null;
 
@@ -994,6 +1389,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onscroll:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/securitypolicyviolation_event) <br/>*/
 
 	onsecuritypolicyviolation:((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)|null;
 
@@ -1009,12 +1405,15 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onselect:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/selectionchange_event) <br/>*/
 
 	onselectionchange:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/selectstart_event) <br/>*/
 
 	onselectstart:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/slotchange_event) <br/>*/
 
 	onslotchange:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
@@ -1022,6 +1421,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onstalled:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/submit_event) <br/>*/
 
 	onsubmit:((this: GlobalEventHandlers, ev: SubmitEvent) => any)|null;
 
@@ -1033,30 +1433,39 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	ontimeupdate:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/toggle_event) <br/>*/
 
 	ontoggle:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchcancel_event) <br/>*/
 
 	ontouchcancel:((this: GlobalEventHandlers, ev: TouchEvent) => any)|null|undefined;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchend_event) <br/>*/
 
 	ontouchend:((this: GlobalEventHandlers, ev: TouchEvent) => any)|null|undefined;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchmove_event) <br/>*/
 
 	ontouchmove:((this: GlobalEventHandlers, ev: TouchEvent) => any)|null|undefined;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchstart_event) <br/>*/
 
 	ontouchstart:((this: GlobalEventHandlers, ev: TouchEvent) => any)|null|undefined;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitioncancel_event) <br/>*/
 
 	ontransitioncancel:((this: GlobalEventHandlers, ev: TransitionEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionend_event) <br/>*/
 
 	ontransitionend:((this: GlobalEventHandlers, ev: TransitionEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionrun_event) <br/>*/
 
 	ontransitionrun:((this: GlobalEventHandlers, ev: TransitionEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionstart_event) <br/>*/
 
 	ontransitionstart:((this: GlobalEventHandlers, ev: TransitionEvent) => any)|null;
 
@@ -1080,6 +1489,7 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	onwebkittransitionend:((this: GlobalEventHandlers, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/wheel_event) <br/>*/
 
 	onwheel:((this: GlobalEventHandlers, ev: WheelEvent) => any)|null;
 
@@ -1092,18 +1502,23 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	autofocus:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset) <br/>*/
 
 	dataset:DOMStringMap;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/nonce) <br/>*/
 
 	nonce:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/tabIndex) <br/>*/
 
 	tabIndex:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/blur) <br/>*/
 
 	blur():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/focus) <br/>*/
 
 	focus(options?: FocusOptions):CssChainT;
 
@@ -1111,39 +1526,104 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	charset:string;
 
-/**  Sets or retrieves the coordinates of the object. <br/>*/
+/**  Sets or retrieves the coordinates of the object. <br/>
+
+ Sets or retrieves the coordinates of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/coords) <br/>*/
 
 	coords:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/download) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/download) <br/>*/
 
 	download:string;
 
-/**  Sets or retrieves the language code of the object. <br/>*/
+/**  Sets or retrieves the language code of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/hreflang) <br/>
+
+ Sets or retrieves the language code of the object. <br/>*/
 
 	hreflang:string;
 
 /**  Sets or retrieves the shape of the object. <br/>
 
+ Sets or retrieves the name of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/name) <br/>
+
  Sets or retrieves the name of the object. <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/name) <br/>
+
+ Sets or retrieves the name of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/name) <br/>
 
  Sets or retrieves the frame name. <br/>
 
+ Sets or retrieves the frame name.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/name) <br/>
+
+ Sets or retrieves the name of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMapElement/name) <br/>
+
  Sets or retrieves the value specified in the content attribute of the meta object. <br/>
 
- Sets or retrieves the name of an input parameter for an element. <br/>*/
+ Sets or retrieves the name of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/name) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/name) <br/>
+
+ Sets or retrieves the name of an input parameter for an element. <br/>
+
+ Sets or retrieves the name of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/name) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/name) <br/>*/
 
 	name:string;
 
 
 	ping:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/referrerPolicy) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/referrerPolicy) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/referrerPolicy) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/referrerPolicy) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/referrerPolicy) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLScriptElement/referrerPolicy) <br/>*/
 
 	referrerPolicy:string|ReferrerPolicy;
 
-/**  Sets or retrieves the relationship between the object and the destination of the link. <br/>*/
+/**  Sets or retrieves the relationship between the object and the destination of the link.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/rel) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/rel) <br/>
+
+ Sets or retrieves the relationship between the object and the destination of the link.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/rel) <br/>*/
 
 	rel:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/relList) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/relList) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/relList) <br/>*/
 
 	relList:DOMTokenList;
 
@@ -1151,43 +1631,91 @@ Throws a "HierarchyRequestError" DOMException if the constraints of the node tre
 
 	rev:string;
 
-/**  Sets or retrieves the shape of the object. <br/>*/
+/**  Sets or retrieves the shape of the object. <br/>
+
+ Sets or retrieves the shape of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/shape) <br/>*/
 
 	shape:string;
 
-/**  Sets or retrieves the window or frame at which to target content. <br/>*/
+/**  Sets or retrieves the window or frame at which to target content.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/target) <br/>
+
+ Sets or retrieves the window or frame at which to target content.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/target) <br/>
+
+ Sets or retrieves the window or frame at which to target content.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBaseElement/target) <br/>
+
+ Sets or retrieves the window or frame at which to target content.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/target) <br/>
+
+ Sets or retrieves the window or frame at which to target content. <br/>*/
 
 	target:string;
 
-/**  Retrieves or sets the text of the object as a string. <br/>
+/**  Retrieves or sets the text of the object as a string.
 
- Sets or retrieves the text string specified by the option tag. <br/>*/
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/text) <br/>
+
+ Sets or retrieves the text string specified by the option tag.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/text) <br/>
+
+ Retrieves or sets the text of the object as a string. <br/>
+
+ Retrieves or sets the text of the object as a string.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTitleElement/text) <br/>*/
 
 	text:string;
 
-/**  Gets the classification and default behavior of the button. <br/>
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAnchorElement/type) <br/>
 
- Returns the string "fieldset". <br/>
+ Gets the classification and default behavior of the button.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/type) <br/>
+
+ Returns the string "fieldset".
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/type) <br/>
 
  Returns the content type of the object. <br/>
 
  Sets or retrieves the MIME type of the object. <br/>
 
- Returns the string "output". <br/>
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOListElement/type) <br/>
+
+ Sets or retrieves the MIME type of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/type) <br/>
+
+ Returns the string "output".
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/type) <br/>
 
  Sets or retrieves the content type of the resource designated by the value attribute. <br/>
 
  Sets or retrieves the MIME type for the associated scripting engine. <br/>
 
- Retrieves the type of select control based on the value of the MULTIPLE attribute. <br/>
+ Retrieves the type of select control based on the value of the MULTIPLE attribute.
 
- Gets or sets the MIME type of a media resource. <br/>
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/type) <br/>
+
+ Gets or sets the MIME type of a media resource.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/type) <br/>
 
  Retrieves the CSS language in which the style sheet is written. <br/>
 
  Retrieves the type of control. <br/>*/
 
-	type:string;
+	type:string|"submit"|"reset"|"button";
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -1201,15 +1729,45 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAnchorElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves a text alternative to the graphic. <br/>*/
+/**  Sets or retrieves a text alternative to the graphic.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLAreaElement/alt) <br/>
+
+ Sets or retrieves a text alternative to the graphic.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/alt) <br/>
+
+ Sets or retrieves a text alternative to the graphic. <br/>*/
 
 	alt:string;
 
@@ -1229,11 +1787,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1253,15 +1833,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Gets or sets the baseline URL on which relative links are based. <br/>
+/**  Gets or sets the baseline URL on which relative links are based.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLBaseElement/href) <br/>
 
  Sets or retrieves a destination URL or an anchor point. <br/>*/
 
@@ -1279,11 +1883,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLBaseElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1300,9 +1926,6 @@ The event listener is appended to target's event listener list and is not append
 	link:string;
 
 
-	onorientationchange:((this: HTMLBodyElement, ev: Event) => any)|null;
-
-
 	vLink:string;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
@@ -1317,84 +1940,305 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLBodyElementEventMap>(type: K, listener: (this: HTMLBodyElement, ev: HTMLBodyElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLBodyElementEventMap>(type: K, listener: (this: HTMLBodyElement, ev: HTMLBodyElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/disabled) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/disabled) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptGroupElement/disabled) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/disabled) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/disabled) <br/>
+
+ Enables or disables the style sheet.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/disabled) <br/>*/
 
 	disabled:boolean;
 
-/**  Retrieves a reference to the form that the object is embedded in. <br/>*/
+/**  Retrieves a reference to the form that the object is embedded in.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/form) <br/>
+
+ Retrieves a reference to the form that the object is embedded in.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/form) <br/>
+
+ Retrieves a reference to the form that the object is embedded in. <br/>
+
+ Retrieves a reference to the form that the object is embedded in.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/form) <br/>
+
+ Retrieves a reference to the form that the object is embedded in.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/form) <br/>
+
+ Retrieves a reference to the form that the object is embedded in.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/form) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/form) <br/>
+
+ Retrieves a reference to the form that the object is embedded in.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/form) <br/>*/
 
 	form:HTMLFormElement|null;
 
-/**  Overrides the action attribute (where the data on a form is sent) on the parent form element. <br/>*/
+/**  Overrides the action attribute (where the data on a form is sent) on the parent form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formAction) <br/>
+
+ Overrides the action attribute (where the data on a form is sent) on the parent form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formAction) <br/>*/
 
 	formAction:string;
 
-/**  Used to override the encoding (formEnctype attribute) specified on the form element. <br/>*/
+/**  Used to override the encoding (formEnctype attribute) specified on the form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formEnctype) <br/>
+
+ Used to override the encoding (formEnctype attribute) specified on the form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formEnctype) <br/>*/
 
 	formEnctype:string;
 
-/**  Overrides the submit method attribute previously specified on a form element. <br/>*/
+/**  Overrides the submit method attribute previously specified on a form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formMethod) <br/>
+
+ Overrides the submit method attribute previously specified on a form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formMethod) <br/>*/
 
 	formMethod:string;
 
-/**  Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option. <br/>*/
+/**  Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formNoValidate) <br/>
+
+ Overrides any validation or required attributes on a form or form elements to allow it to be submitted without validation. This can be used to create a "save draft"-type submit option.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formNoValidate) <br/>*/
 
 	formNoValidate:boolean;
 
-/**  Overrides the target attribute on a form element. <br/>*/
+/**  Overrides the target attribute on a form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/formTarget) <br/>
+
+ Overrides the target attribute on a form element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/formTarget) <br/>*/
 
 	formTarget:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/labels) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/labels) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/labels) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/labels) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLProgressElement/labels) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/labels) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/labels) <br/>*/
 
 	labels:NodeListOf<HTMLLabelElement>|null;
 
-/**  Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. <br/>*/
+/**  Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/validationMessage) <br/>
+
+ Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/validationMessage) <br/>
+
+ Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/validationMessage) <br/>
+
+ Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/validationMessage) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validationMessage) <br/>
+
+ Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/validationMessage) <br/>
+
+ Returns the error message that would be displayed if the user submits the form, or an empty string if no error message. It also triggers the standard error message, such as "this is a required field". The result is that the user sees validation messages without actually submitting. <br/>*/
 
 	validationMessage:string;
 
-/**  Returns a  ValidityState object that represents the validity states of an element. <br/>*/
+/**  Returns a  ValidityState object that represents the validity states of an element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/validity) <br/>
+
+ Returns a  ValidityState object that represents the validity states of an element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/validity) <br/>
+
+ Returns a  ValidityState object that represents the validity states of an element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/validity) <br/>
+
+ Returns a  ValidityState object that represents the validity states of an element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/validity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/validity) <br/>
+
+ Returns a  ValidityState object that represents the validity states of an element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/validity) <br/>
+
+ Returns a  ValidityState object that represents the validity states of an element. <br/>*/
 
 	validity:ValidityState;
 
-/**  Sets or retrieves the default or selected value of the control. <br/>
+/**  Sets or retrieves the default or selected value of the control.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/value) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataElement/value) <br/>
 
  Returns the value of the data at the cursor's current position. <br/>
 
  Sets or retrieves the value of a list item. <br/>
 
- Sets or retrieves the value which is returned to the server when the form control is submitted. <br/>
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/value) <br/>
+
+ Sets or retrieves the value which is returned to the server when the form control is submitted.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/value) <br/>
 
  Returns the element's current value.
 
-Can be set, to change the value. <br/>
+Can be set, to change the value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/value) <br/>
 
  Sets or retrieves the value of an input parameter for an element. <br/>
 
- Sets or gets the current value of a progress element. The value must be a non-negative number between 0 and the max value. <br/>
+ Sets or gets the current value of a progress element. The value must be a non-negative number between 0 and the max value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLProgressElement/value) <br/>
+
+ Sets or retrieves the value which is returned to the server when the form control is submitted.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/value) <br/>
 
  Retrieves or sets the text in the entry field of the textArea element. <br/>*/
 
 	value:string|number;
 
-/**  Returns whether an element will successfully validate based on forms validation rules and constraints. <br/>*/
+/**  Returns whether an element will successfully validate based on forms validation rules and constraints.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/willValidate) <br/>
+
+ Returns whether an element will successfully validate based on forms validation rules and constraints.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/willValidate) <br/>
+
+ Returns whether an element will successfully validate based on forms validation rules and constraints.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/willValidate) <br/>
+
+ Returns whether an element will successfully validate based on forms validation rules and constraints.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/willValidate) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/willValidate) <br/>
+
+ Returns whether an element will successfully validate based on forms validation rules and constraints.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/willValidate) <br/>
+
+ Returns whether an element will successfully validate based on forms validation rules and constraints. <br/>*/
 
 	willValidate:boolean;
 
-/**  Returns whether a form will validate when it is submitted, without having to submit it. <br/>*/
+/**  Returns whether a form will validate when it is submitted, without having to submit it. <br/>
+
+ Returns whether a form will validate when it is submitted, without having to submit it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/checkValidity) <br/>
+
+ Returns whether a form will validate when it is submitted, without having to submit it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/checkValidity) <br/>
+
+ Returns whether a form will validate when it is submitted, without having to submit it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/checkValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/checkValidity) <br/>
+
+ Returns whether a form will validate when it is submitted, without having to submit it.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/checkValidity) <br/>*/
 
 	checkValidity():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLButtonElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/reportValidity) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/reportValidity) <br/>*/
 
 	reportValidity():CssChainT;
 
-/**  Sets a custom error message that is displayed when a form is submitted. <br/>*/
+/**  Sets a custom error message that is displayed when a form is submitted. <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/setCustomValidity) <br/>*/
 
 	setCustomValidity(error: string):CssChainT;
 
@@ -1410,32 +2254,95 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLButtonElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLButtonElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Gets or sets the height of a canvas element on a document. <br/>
+/**  Gets or sets the height of a canvas element on a document.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/height) <br/>
 
  Sets or retrieves the height of the object. <br/>
 
- Gets or sets the height of the video element. <br/>*/
+ Sets or retrieves the height of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/height) <br/>
+
+ Sets or retrieves the height of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/height) <br/>
+
+ Sets or retrieves the height of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/height) <br/>
+
+ Gets or sets the height of the video element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/height) <br/>
+
+ Sets or retrieves the height of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/height) <br/>*/
 
 	height:number|string;
 
-/**  Gets or sets the width of a canvas element on a document. <br/>
+/**  Gets or sets the width of a canvas element on a document.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/width) <br/>
 
  Sets or retrieves the width of the object. <br/>
 
- Gets or sets the width of the video element. <br/>
+ Sets or retrieves the width of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/width) <br/>
+
+ Sets or retrieves the width of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/width) <br/>
+
+ Sets or retrieves the width of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/width) <br/>
+
+ Gets or sets the width of the video element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/width) <br/>
+
+ Sets or retrieves the width of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/width) <br/>
 
  Sets or gets a value that you can use to implement your own width functionality for the object. <br/>*/
 
 	width:number|string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/captureStream) <br/>*/
 
 	captureStream(frameRequestRate?: number):CssChainT;
 
@@ -1459,12 +2366,17 @@ The event listener is appended to target's event listener list and is not append
 
 	getContext(contextId: string, options?: any):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/toBlob) <br/>*/
 
 	toBlob(callback: BlobCallback, type?: string, quality?: any):CssChainT;
 
 /**  Returns the content of the current canvas as an image that you can use as a source for another canvas or an HTML element. <br/>*/
 
 	toDataURL(type?: string, quality?: any):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen) <br/>*/
+
+	transferControlToOffscreen():CssChainT;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -1478,11 +2390,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLCanvasElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1501,11 +2435,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1521,17 +2477,43 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Returns an HTMLCollection of the option elements of the datalist element. <br/>
+/**  Returns an HTMLCollection of the option elements of the datalist element.
 
- Returns an HTMLOptionsCollection of the list of options. <br/>*/
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDataListElement/options) <br/>
+
+ Returns an HTMLOptionsCollection of the list of options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/options) <br/>*/
 
 	options:HTMLCollectionOf<HTMLOptionElement>|HTMLOptionsCollection;
 
@@ -1547,14 +2529,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDataListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDetailsElement/open) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/open) <br/>*/
 
 	open:boolean;
 
@@ -1570,13 +2577,57 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDetailsElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDetailsElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/returnValue) <br/>*/
+
+	returnValue:string;
+
+/**  Closes the dialog element.
+
+The argument, if provided, provides a return value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close) <br/>*/
+
+	close(returnValue?: string):CssChainT;
+
+/**  Displays the dialog element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/show) <br/>*/
+
+	show():CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/showModal) <br/>*/
+
+	showModal():CssChainT;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -1590,11 +2641,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDialogElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDialogElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1610,11 +2683,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDirectoryElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDirectoryElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1640,22 +2735,63 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLDivElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
 /**  Sets or retrieves a URL to be loaded by the object. <br/>
 
+ Sets or retrieves a URL to be loaded by the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/src) <br/>
+
+ The address or URL of the a media resource that is to be considered.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/src) <br/>
+
  The address or URL of the a media resource that is to be considered. <br/>
 
- Retrieves the URL to an external file that contains the source code or data. <br/>*/
+ The address or URL of the a media resource that is to be considered.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/src) <br/>
+
+ Retrieves the URL to an external file that contains the source code or data. <br/>
+
+ The address or URL of the a media resource that is to be considered.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/src) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/src) <br/>*/
 
 	src:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/getSVGDocument) <br/>*/
 
 	getSVGDocument():CssChainT;
 
@@ -1671,17 +2807,43 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLEmbedElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLEmbedElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Returns an HTMLCollection of the form controls in the element. <br/>
+/**  Returns an HTMLCollection of the form controls in the element.
 
- Retrieves a collection, in source order, of all controls in a given form. <br/>*/
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFieldSetElement/elements) <br/>
+
+ Retrieves a collection, in source order, of all controls in a given form.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/elements) <br/>*/
 
 	elements:HTMLCollection|HTMLFormControlsCollection;
 
@@ -1697,11 +2859,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFieldSetElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFieldSetElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1712,7 +2896,9 @@ The event listener is appended to target's event listener list and is not append
 
 	face:string;
 
-/**  Sets or retrieves the number of rows in the list box. <br/>*/
+/**  Sets or retrieves the number of rows in the list box.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/size) <br/>*/
 
 	size:string|number;
 
@@ -1728,54 +2914,109 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFontElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves a list of character encodings for input data that must be accepted by the server processing the form. <br/>*/
+/**  Sets or retrieves a list of character encodings for input data that must be accepted by the server processing the form.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/acceptCharset) <br/>*/
 
 	acceptCharset:string;
 
-/**  Sets or retrieves the URL to which the form content is sent for processing. <br/>*/
+/**  Sets or retrieves the URL to which the form content is sent for processing.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/action) <br/>*/
 
 	action:string;
 
-/**  Specifies whether autocomplete is applied to an editable text field. <br/>*/
+/**  Specifies whether autocomplete is applied to an editable text field.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/autocomplete) <br/>
+
+ Specifies whether autocomplete is applied to an editable text field.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/autocomplete) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/autocomplete) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/autocomplete) <br/>*/
 
 	autocomplete:string;
 
-/**  Sets or retrieves the MIME encoding for the form. <br/>*/
+/**  Sets or retrieves the MIME encoding for the form.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/encoding) <br/>*/
 
 	encoding:string;
 
-/**  Sets or retrieves the encoding type for the form. <br/>*/
+/**  Sets or retrieves the encoding type for the form.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/enctype) <br/>*/
 
 	enctype:string;
 
-/**  Sets or retrieves the number of objects in a collection. <br/>*/
+/**  Sets or retrieves the number of objects in a collection.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/length) <br/>
+
+ Sets or retrieves the number of objects in a collection.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/length) <br/>*/
 
 	length:number;
 
-/**  Sets or retrieves how to send the form data to the server. <br/>*/
+/**  Sets or retrieves how to send the form data to the server.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/method) <br/>*/
 
 	method:string;
 
-/**  Designates a form that is not validated when submitted. <br/>*/
+/**  Designates a form that is not validated when submitted.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/noValidate) <br/>*/
 
 	noValidate:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/requestSubmit) <br/>*/
 
 	requestSubmit(submitter?: HTMLElement | null):CssChainT;
 
-/**  Fires when the user resets a form. <br/>*/
+/**  Fires when the user resets a form.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/reset) <br/>*/
 
 	reset():CssChainT;
 
-/**  Fires when a FORM is about to be submitted. <br/>*/
+/**  Fires when a FORM is about to be submitted.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/submit) <br/>*/
 
 	submit():CssChainT;
 
@@ -1791,19 +3032,55 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFormElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFormElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Retrieves the document object of the page or frame. <br/>*/
+/**  Retrieves the document object of the page or frame. <br/>
+
+ Retrieves the document object of the page or frame.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/contentDocument) <br/>
+
+ Retrieves the document object of the page or frame.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/contentDocument) <br/>*/
 
 	contentDocument:Document|null;
 
-/**  Retrieves the object of the specified. <br/>*/
+/**  Retrieves the object of the specified. <br/>
+
+ Retrieves the object of the specified.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/contentWindow) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/contentWindow) <br/>*/
 
 	contentWindow:WindowProxy|null;
 
@@ -1845,11 +3122,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1860,6 +3159,14 @@ The event listener is appended to target's event listener list and is not append
 	cols:string|number;
 
 /**  Sets or retrieves the frame heights of the object. <br/>
+
+ Sets or retrieves the number of horizontal rows contained in the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/rows) <br/>
+
+ Sets or retrieves the number of horizontal rows contained in the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableSectionElement/rows) <br/>
 
  Sets or retrieves the number of horizontal rows contained in the object. <br/>*/
 
@@ -1877,11 +3184,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLFrameSetElementEventMap>(type: K, listener: (this: HTMLFrameSetElement, ev: HTMLFrameSetElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLFrameSetElementEventMap>(type: K, listener: (this: HTMLFrameSetElement, ev: HTMLFrameSetElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1901,11 +3230,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHRElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1921,11 +3272,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1941,11 +3314,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadingElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHeadingElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1965,11 +3360,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHtmlElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLHtmlElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -1979,10 +3396,18 @@ The event listener is appended to target's event listener list and is not append
 
 	allowFullscreen:boolean;
 
+/**  Sets or retrieves the policy for loading image elements that are outside the viewport.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/loading) <br/>*/
+
+	loading:string|"eager"|"lazy";
+
 
 	sandbox:DOMTokenList;
 
-/**  Sets or retrives the content of the page that is to contain. <br/>*/
+/**  Sets or retrives the content of the page that is to contain.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLIFrameElement/srcdoc) <br/>*/
 
 	srcdoc:string;
 
@@ -1998,11 +3423,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLIFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLIFrameElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2012,17 +3459,29 @@ The event listener is appended to target's event listener list and is not append
 
 	border:string;
 
-/**  Retrieves whether the object is fully loaded. <br/>*/
+/**  Retrieves whether the object is fully loaded.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/complete) <br/>*/
 
 	complete:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/crossOrigin) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/crossOrigin) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/crossOrigin) <br/>*/
 
 	crossOrigin:string|null;
 
-/**  Gets the address or URL of the current media resource that is selected by IHTMLMediaElement. <br/>*/
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/currentSrc) <br/>
+
+ Gets the address or URL of the current media resource that is selected by IHTMLMediaElement.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/currentSrc) <br/>*/
 
 	currentSrc:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/decoding) <br/>*/
 
 	decoding:"async"|"sync"|"auto";
 
@@ -2030,32 +3489,50 @@ The event listener is appended to target's event listener list and is not append
 
 	hspace:number;
 
-/**  Sets or retrieves whether the image is a server-side image map. <br/>*/
+/**  Sets or retrieves whether the image is a server-side image map.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/isMap) <br/>*/
 
 	isMap:boolean;
-
-/**  Sets or retrieves the policy for loading image elements that are outside the viewport. <br/>*/
-
-	loading:"eager"|"lazy";
 
 
 	lowsrc:string;
 
-/**  The original height of the image resource before sizing. <br/>*/
+/**  The original height of the image resource before sizing.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/naturalHeight) <br/>*/
 
 	naturalHeight:number;
 
-/**  The original width of the image resource before sizing. <br/>*/
+/**  The original width of the image resource before sizing.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/naturalWidth) <br/>*/
 
 	naturalWidth:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/sizes) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/sizes) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/sizes) <br/>*/
 
 	sizes:string|DOMTokenList;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/srcset) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/srcset) <br/>*/
 
 	srcset:string;
 
-/**  Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map. <br/>*/
+/**  Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/useMap) <br/>
+
+ Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map. <br/>
+
+ Sets or retrieves the URL, often with a bookmark extension (#name), to use as a client-side image map.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/useMap) <br/>*/
 
 	useMap:string;
 
@@ -2063,12 +3540,15 @@ The event listener is appended to target's event listener list and is not append
 
 	vspace:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/x) <br/>*/
 
 	x:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/y) <br/>*/
 
 	y:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLImageElement/decode) <br/>*/
 
 	decode():CssChainT;
 
@@ -2084,11 +3564,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLImageElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLImageElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2107,28 +3609,40 @@ The event listener is appended to target's event listener list and is not append
 
 	defaultChecked:boolean;
 
-/**  Sets or retrieves the initial contents of the object. <br/>*/
+/**  Sets or retrieves the initial contents of the object. <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/defaultValue) <br/>*/
 
 	defaultValue:string;
 
 
 	dirName:string;
 
-/**  Returns a FileList object on a file type input object. <br/>*/
+/**  Returns a FileList object on a file type input object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/files) <br/>*/
 
 	files:FileList|null;
 
-/**  When set, overrides the rendering of checkbox controls so that the current value is not visible. <br/>*/
+/**  When set, overrides the rendering of checkbox controls so that the current value is not visible.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/indeterminate) <br/>*/
 
 	indeterminate:boolean;
 
-/**  Specifies the ID of a pre-defined datalist of options for an input element. <br/>*/
+/**  Specifies the ID of a pre-defined datalist of options for an input element.
 
-	list:HTMLElement|null;
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/list) <br/>*/
+
+	list:HTMLDataListElement|null;
 
 /**  Defines the maximum acceptable value for an input element with type="number".When used with the min and step attributes, lets you control the range and increment (such as only even numbers) that the user can enter into an input field. <br/>
 
- Defines the maximum, or "done" value for a progress element. <br/>*/
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/max) <br/>
+
+ Defines the maximum, or "done" value for a progress element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLProgressElement/max) <br/>*/
 
 	max:string|number;
 
@@ -2136,22 +3650,36 @@ The event listener is appended to target's event listener list and is not append
 
 	maxLength:number;
 
-/**  Defines the minimum acceptable value for an input element with type="number". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field. <br/>*/
+/**  Defines the minimum acceptable value for an input element with type="number". When used with the max and step attributes, lets you control the range and increment (such as even numbers only) that the user can enter into an input field. <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/min) <br/>*/
 
 	min:string|number;
 
 
 	minLength:number;
 
-/**  Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list. <br/>*/
+/**  Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/multiple) <br/>
+
+ Sets or retrieves the Boolean value indicating whether multiple items can be selected from a list.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/multiple) <br/>*/
 
 	multiple:boolean;
 
-/**  Gets or sets a string containing a regular expression that the user's input must match. <br/>*/
+/**  Gets or sets a string containing a regular expression that the user's input must match.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/pattern) <br/>*/
 
 	pattern:string;
 
-/**  Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field. <br/>*/
+/**  Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/placeholder) <br/>
+
+ Gets or sets a text string that is displayed in an input field as a hint or prompt to users as the format or type of information they need to enter.The text appears in an input field until the user puts focus on the field. <br/>*/
 
 	placeholder:string;
 
@@ -2159,10 +3687,19 @@ The event listener is appended to target's event listener list and is not append
 
 	readOnly:boolean;
 
-/**  When present, marks an element that can't be submitted without a value. <br/>*/
+/**  When present, marks an element that can't be submitted without a value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/required) <br/>
+
+ When present, marks an element that can't be submitted without a value.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/required) <br/>
+
+ When present, marks an element that can't be submitted without a value. <br/>*/
 
 	required:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/selectionDirection) <br/>*/
 
 	selectionDirection:"forward"|"backward"|"none"|null;
 
@@ -2186,27 +3723,37 @@ The event listener is appended to target's event listener list and is not append
 
 	valueAsNumber:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitEntries) <br/>*/
 
 	webkitEntries:ReadonlyArray<FileSystemEntry>;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/webkitdirectory) <br/>*/
 
 	webkitdirectory:boolean;
 
-/**  Makes the selection equal to the current object. <br/>
+/**  Makes the selection equal to the current object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/select) <br/>
 
  Highlights the input area of a form element. <br/>*/
 
 	select():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText) <br/>*/
 
 	setRangeText(replacement: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/setRangeText) <br/>*/
 
 	setRangeText(replacement: string, start: number, end: number, selectionMode?: SelectionMode):CssChainT;
 
 /**  Sets the start and end positions of a selection in a text field. <br/>*/
 
 	setSelectionRange(start: number | null, end: number | null, direction?: "forward" | "backward" | "none"):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/showPicker) <br/>*/
+
+	showPicker():CssChainT;
 
 /**  Decrements a range input control's value by the value given by the Step attribute. If the optional parameter is used, it will decrement the input control's step value multiplied by the parameter's value. <br/>*/
 
@@ -2228,11 +3775,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLInputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLInputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2248,19 +3817,47 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLIElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLIElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Returns the form control that is associated with this element. <br/>*/
+/**  Returns the form control that is associated with this element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/control) <br/>*/
 
 	control:HTMLElement|null;
 
-/**  Sets or retrieves the object to which the given label object is assigned. <br/>
+/**  Sets or retrieves the object to which the given label object is assigned.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLabelElement/htmlFor) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOutputElement/htmlFor) <br/>
 
  Sets or retrieves the object that is bound to the event script. <br/>*/
 
@@ -2278,11 +3875,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLabelElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLabelElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2298,14 +3917,37 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLegendElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLLinkElement/as) <br/>*/
 
 	as:string;
 
@@ -2320,7 +3962,13 @@ The event listener is appended to target's event listener list and is not append
 
 /**  Sets or retrieves the media type. <br/>
 
- Gets or sets the intended media type of the media source. <br/>*/
+ Gets or sets the intended media type of the media source.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSourceElement/media) <br/>
+
+ Sets or retrieves the media type.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLStyleElement/media) <br/>*/
 
 	media:string;
 
@@ -2336,15 +3984,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLinkElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLLinkElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Retrieves a collection of the area objects defined for the given map object. <br/>*/
+/**  Retrieves a collection of the area objects defined for the given map object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMapElement/areas) <br/>*/
 
 	areas:HTMLCollection;
 
@@ -2360,11 +4032,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMapElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMapElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2374,7 +4068,9 @@ The event listener is appended to target's event listener list and is not append
 
 	direction:string;
 
-/**  Gets or sets a flag to specify whether playback should restart after it completes. <br/>*/
+/**  Gets or sets a flag to specify whether playback should restart after it completes.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loop) <br/>*/
 
 	loop:number|boolean;
 
@@ -2405,162 +4101,245 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMarqueeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMarqueeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Gets or sets a value that indicates whether to start playing the media automatically. <br/>*/
+/**  Gets or sets a value that indicates whether to start playing the media automatically.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/autoplay) <br/>*/
 
 	autoplay:boolean;
 
-/**  Gets a collection of buffered time ranges. <br/>*/
+/**  Gets a collection of buffered time ranges.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/buffered) <br/>*/
 
 	buffered:TimeRanges;
 
-/**  Gets or sets a flag that indicates whether the client provides a set of controls for the media (in case the developer does not include controls for the player). <br/>*/
+/**  Gets or sets a flag that indicates whether the client provides a set of controls for the media (in case the developer does not include controls for the player).
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/controls) <br/>*/
 
 	controls:boolean;
 
-/**  Gets or sets the current playback position, in seconds. <br/>*/
+/**  Gets or sets the current playback position, in seconds.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/currentTime) <br/>*/
 
 	currentTime:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/defaultMuted) <br/>*/
 
 	defaultMuted:boolean;
 
-/**  Gets or sets the default playback rate when the user is not using fast forward or reverse for a video or audio resource. <br/>*/
+/**  Gets or sets the default playback rate when the user is not using fast forward or reverse for a video or audio resource.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/defaultPlaybackRate) <br/>*/
 
 	defaultPlaybackRate:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/disableRemotePlayback) <br/>*/
 
 	disableRemotePlayback:boolean;
 
-/**  Returns the duration in seconds of the current media resource. A NaN value is returned if duration is not available, or Infinity if the media resource is streaming. <br/>*/
+/**  Returns the duration in seconds of the current media resource. A NaN value is returned if duration is not available, or Infinity if the media resource is streaming.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/duration) <br/>*/
 
 	duration:number;
 
-/**  Gets information about whether the playback has ended or not. <br/>*/
+/**  Gets information about whether the playback has ended or not.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended) <br/>*/
 
 	ended:boolean;
 
-/**  Returns an object representing the current error state of the audio or video element. <br/>*/
+/**  Returns an object representing the current error state of the audio or video element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/error) <br/>*/
 
 	error:MediaError|null;
 
-/**  Available only in secure contexts. <br/>*/
+/**  Available only in secure contexts.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/mediaKeys) <br/>*/
 
 	mediaKeys:MediaKeys|null;
 
-/**  Gets or sets a flag that indicates whether the audio (either audio or the audio track on video media) is muted. <br/>*/
+/**  Gets or sets a flag that indicates whether the audio (either audio or the audio track on video media) is muted.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/muted) <br/>*/
 
 	muted:boolean;
 
-/**  Gets the current network activity for the element. <br/>*/
+/**  Gets the current network activity for the element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/networkState) <br/>*/
 
 	networkState:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/encrypted_event) <br/>*/
 
 	onencrypted:((this: HTMLMediaElement, ev: MediaEncryptedEvent) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/waitingforkey_event) <br/>*/
 
 	onwaitingforkey:((this: HTMLMediaElement, ev: Event) => any)|null;
 
-/**  Gets a flag that specifies whether playback is paused. <br/>*/
+/**  Gets a flag that specifies whether playback is paused.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/paused) <br/>*/
 
 	paused:boolean;
 
-/**  Gets or sets the current rate of speed for the media resource to play. This speed is expressed as a multiple of the normal speed of the media resource. <br/>*/
+/**  Gets or sets the current rate of speed for the media resource to play. This speed is expressed as a multiple of the normal speed of the media resource.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/playbackRate) <br/>*/
 
 	playbackRate:number;
 
-/**  Gets TimeRanges for the current media resource that has been played. <br/>*/
+/**  Gets TimeRanges for the current media resource that has been played.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/played) <br/>*/
 
 	played:TimeRanges;
 
-/**  Gets or sets a value indicating what data should be preloaded, if any. <br/>*/
+/**  Gets or sets a value indicating what data should be preloaded, if any.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/preload) <br/>*/
 
 	preload:"none"|"metadata"|"auto"|"";
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/preservesPitch) <br/>*/
+
+	preservesPitch:boolean;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/readyState) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/readyState) <br/>*/
 
 	readyState:number;
 
 
 	remote:RemotePlayback;
 
-/**  Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked. <br/>*/
+/**  Returns a TimeRanges object that represents the ranges of the current media resource that can be seeked.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seekable) <br/>*/
 
 	seekable:TimeRanges;
 
-/**  Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource. <br/>*/
+/**  Gets a flag that indicates whether the client is currently moving to a new playback position in the media resource.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seeking) <br/>*/
 
 	seeking:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/srcObject) <br/>*/
 
 	srcObject:MediaProvider|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/textTracks) <br/>*/
 
 	textTracks:TextTrackList;
 
-/**  Gets or sets the volume level for audio portions of the media element. <br/>*/
+/**  Gets or sets the volume level for audio portions of the media element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/volume) <br/>*/
 
 	volume:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/addTextTrack) <br/>*/
 
 	addTextTrack(kind: TextTrackKind, label?: string, language?: string):CssChainT;
 
-/**  Returns a string that specifies whether the client can play a given media resource type. <br/>*/
+/**  Returns a string that specifies whether the client can play a given media resource type.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canPlayType) <br/>*/
 
 	canPlayType(type: string):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/fastSeek) <br/>*/
 
 	fastSeek(time: number):CssChainT;
 
-/**  Resets the audio or video object and loads a new media resource. <br/>*/
+/**  Resets the audio or video object and loads a new media resource.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/load) <br/>*/
 
 	load():CssChainT;
 
-/**  Pauses the current playback and sets paused to TRUE. This can be used to test whether the media is playing or paused. You can also use the pause or play events to tell whether the media is playing or not. <br/>*/
+/**  Pauses the current playback and sets paused to TRUE. This can be used to test whether the media is playing or paused. You can also use the pause or play events to tell whether the media is playing or not.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/pause) <br/>*/
 
 	pause():CssChainT;
 
-/**  Loads and starts playback of a media resource. <br/>*/
+/**  Loads and starts playback of a media resource.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/play) <br/>*/
 
 	play():CssChainT;
 
-/**  Available only in secure contexts. <br/>*/
+/**  Available only in secure contexts.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/setMediaKeys) <br/>*/
 
 	setMediaKeys(mediaKeys: MediaKeys | null):CssChainT;
 
 
-	HAVE_CURRENT_DATA:number;
+	NETWORK_EMPTY:0;
 
 
-	HAVE_ENOUGH_DATA:number;
+	NETWORK_IDLE:1;
 
 
-	HAVE_FUTURE_DATA:number;
+	NETWORK_LOADING:2;
 
 
-	HAVE_METADATA:number;
+	NETWORK_NO_SOURCE:3;
 
 
-	HAVE_NOTHING:number;
+	HAVE_NOTHING:0;
 
 
-	NETWORK_EMPTY:number;
+	HAVE_METADATA:1;
 
 
-	NETWORK_IDLE:number;
+	HAVE_CURRENT_DATA:2;
 
 
-	NETWORK_LOADING:number;
+	HAVE_FUTURE_DATA:3;
 
 
-	NETWORK_NO_SOURCE:number;
+	HAVE_ENOUGH_DATA:4;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -2574,11 +4353,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLMediaElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLMediaElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2594,20 +4395,45 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLAudioElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLMediaElementEventMap>(type: K, listener: (this: HTMLAudioElement, ev: HTMLMediaElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/disablePictureInPicture) <br/>*/
 
 	disablePictureInPicture:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/enterpictureinpicture_event) <br/>*/
 
 	onenterpictureinpicture:((this: HTMLVideoElement, ev: Event) => any)|null;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/leavepictureinpicture_event) <br/>*/
 
 	onleavepictureinpicture:((this: HTMLVideoElement, ev: Event) => any)|null;
 
@@ -2615,23 +4441,37 @@ The event listener is appended to target's event listener list and is not append
 
 	playsInline:boolean;
 
-/**  Gets or sets a URL of an image to display, for example, like a movie poster. This can be a still frame from the video, or another image if no video data is available. <br/>*/
+/**  Gets or sets a URL of an image to display, for example, like a movie poster. This can be a still frame from the video, or another image if no video data is available.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/poster) <br/>*/
 
 	poster:string;
 
-/**  Gets the intrinsic height of a video in CSS pixels, or zero if the dimensions are not known. <br/>*/
+/**  Gets the intrinsic height of a video in CSS pixels, or zero if the dimensions are not known.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/videoHeight) <br/>*/
 
 	videoHeight:number;
 
-/**  Gets the intrinsic width of a video in CSS pixels, or zero if the dimensions are not known. <br/>*/
+/**  Gets the intrinsic width of a video in CSS pixels, or zero if the dimensions are not known.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/videoWidth) <br/>*/
 
 	videoWidth:number;
 
 
+	cancelVideoFrameCallback(handle: number):CssChainT;
+
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/getVideoPlaybackQuality) <br/>*/
+
 	getVideoPlaybackQuality():CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/requestPictureInPicture) <br/>*/
 
 	requestPictureInPicture():CssChainT;
+
+
+	requestVideoFrameCallback(callback: VideoFrameRequestCallback):CssChainT;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -2645,11 +4485,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLVideoElementEventMap>(type: K, listener: (this: HTMLVideoElement, ev: HTMLVideoElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLVideoElementEventMap>(type: K, listener: (this: HTMLVideoElement, ev: HTMLVideoElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2665,17 +4527,41 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMenuElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMenuElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
 /**  Gets or sets meta-information to associate with httpEquiv or name. <br/>
 
- Returns the template contents (a DocumentFragment). <br/>*/
+ Returns the template contents (a DocumentFragment).
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTemplateElement/content) <br/>*/
 
 	content:string|DocumentFragment;
 
@@ -2699,20 +4585,45 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMetaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/high) <br/>*/
 
 	high:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/low) <br/>*/
 
 	low:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMeterElement/optimum) <br/>*/
 
 	optimum:number;
 
@@ -2728,19 +4639,51 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMeterElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLMeterElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves reference information about the object. <br/>*/
+/**  Sets or retrieves reference information about the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLModElement/cite) <br/>
+
+ Sets or retrieves reference information about the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLQuoteElement/cite) <br/>*/
 
 	cite:string;
 
-/**  Sets or retrieves the date and time of a modification to the object. <br/>*/
+/**  Sets or retrieves the date and time of a modification to the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLModElement/dateTime) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTimeElement/dateTime) <br/>*/
 
 	dateTime:string;
 
@@ -2756,14 +4699,37 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLModElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLModElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOListElement/reversed) <br/>*/
 
 	reversed:boolean;
 
@@ -2779,11 +4745,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2803,7 +4791,9 @@ The event listener is appended to target's event listener list and is not append
 
 	codeType:string;
 
-/**  Sets or retrieves the URL that references the data of the object. <br/>*/
+/**  Sets or retrieves the URL that references the data of the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLObjectElement/data) <br/>*/
 
 	data:string;
 
@@ -2826,15 +4816,45 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLObjectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLObjectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves a value that you can use to implement your own label functionality for the object. <br/>*/
+/**  Sets or retrieves a value that you can use to implement your own label functionality for the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptGroupElement/label) <br/>
+
+ Sets or retrieves a value that you can use to implement your own label functionality for the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/label) <br/>
+
+ [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/label) <br/>*/
 
 	label:string;
 
@@ -2850,23 +4870,51 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptGroupElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptGroupElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves the status of an option. <br/>*/
+/**  Sets or retrieves the status of an option.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/defaultSelected) <br/>*/
 
 	defaultSelected:boolean;
 
-/**  Sets or retrieves the ordinal position of an option in a list box. <br/>*/
+/**  Sets or retrieves the ordinal position of an option in a list box.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/index) <br/>*/
 
 	index:number;
 
-/**  Sets or retrieves whether the option in the list box is the default item. <br/>*/
+/**  Sets or retrieves whether the option in the list box is the default item.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLOptionElement/selected) <br/>*/
 
 	selected:boolean;
 
@@ -2882,11 +4930,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2902,11 +4972,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOutputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLOutputElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2922,11 +5014,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParagraphElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParagraphElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2946,11 +5060,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParamElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLParamElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2966,11 +5102,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPictureElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPictureElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -2986,15 +5144,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPreElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLPreElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Returns the quotient of value/max when the value attribute is set (determinate progress bar), or -1 when the value attribute is missing (indeterminate progress bar). <br/>*/
+/**  Returns the quotient of value/max when the value attribute is set (determinate progress bar), or -1 when the value attribute is missing (indeterminate progress bar).
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLProgressElement/position) <br/>*/
 
 	position:number;
 
@@ -3010,11 +5192,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLProgressElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLProgressElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3030,11 +5234,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLQuoteElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLQuoteElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3064,18 +5290,43 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLScriptElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves the index of the selected option in a select object. <br/>*/
+/**  Sets or retrieves the index of the selected option in a select object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/selectedIndex) <br/>*/
 
 	selectedIndex:number;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSelectElement/selectedOptions) <br/>*/
 
 	selectedOptions:HTMLCollectionOf<HTMLOptionElement>;
 
@@ -3103,20 +5354,45 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSelectElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/assign) <br/>*/
 
 	assign(...nodes: (Element | Text)[]):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/assignedElements) <br/>*/
 
 	assignedElements(options?: AssignedNodesOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/assignedNodes) <br/>*/
 
 	assignedNodes(options?: AssignedNodesOptions):CssChainT;
 
@@ -3132,11 +5408,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSlotElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSlotElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3152,11 +5450,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSourceElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3172,11 +5492,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSpanElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLSpanElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3192,11 +5534,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLStyleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLStyleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3212,15 +5576,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCaptionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves abbreviated text for the object. <br/>*/
+/**  Sets or retrieves abbreviated text for the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/abbr) <br/>*/
 
 	abbr:string;
 
@@ -3228,7 +5616,9 @@ The event listener is appended to target's event listener list and is not append
 
 	axis:string;
 
-/**  Retrieves the position of the object in the cells collection of a row. <br/>*/
+/**  Retrieves the position of the object in the cells collection of a row.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/cellIndex) <br/>*/
 
 	cellIndex:number;
 
@@ -3238,11 +5628,15 @@ The event listener is appended to target's event listener list and is not append
 
 	chOff:string;
 
-/**  Sets or retrieves the number columns in the table that the object should span. <br/>*/
+/**  Sets or retrieves the number columns in the table that the object should span.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/colSpan) <br/>*/
 
 	colSpan:number;
 
-/**  Sets or retrieves a list of header cells that provide information for the object. <br/>*/
+/**  Sets or retrieves a list of header cells that provide information for the object.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/headers) <br/>*/
 
 	headers:string;
 
@@ -3250,11 +5644,15 @@ The event listener is appended to target's event listener list and is not append
 
 	noWrap:boolean;
 
-/**  Sets or retrieves how many rows in a table the cell should span. <br/>*/
+/**  Sets or retrieves how many rows in a table the cell should span.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/rowSpan) <br/>*/
 
 	rowSpan:number;
 
-/**  Sets or retrieves the group of cells in a table to which the object's information applies. <br/>*/
+/**  Sets or retrieves the group of cells in a table to which the object's information applies.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableCellElement/scope) <br/>*/
 
 	scope:string;
 
@@ -3273,11 +5671,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3293,11 +5713,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableDataCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableDataCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3313,15 +5755,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableHeaderCellElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Sets or retrieves the number of columns in the group. <br/>*/
+/**  Sets or retrieves the number of columns in the group.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableColElement/span) <br/>*/
 
 	span:number;
 
@@ -3337,15 +5803,39 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableColElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableColElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Retrieves the caption object of a table. <br/>*/
+/**  Retrieves the caption object of a table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/caption) <br/>*/
 
 	caption:HTMLTableCaptionElement|null;
 
@@ -3369,35 +5859,51 @@ The event listener is appended to target's event listener list and is not append
 
 	summary:string;
 
-/**  Retrieves a collection of all tBody objects in the table. Objects in this collection are in source order. <br/>*/
+/**  Retrieves a collection of all tBody objects in the table. Objects in this collection are in source order.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/tBodies) <br/>*/
 
 	tBodies:HTMLCollectionOf<HTMLTableSectionElement>;
 
-/**  Retrieves the tFoot object of the table. <br/>*/
+/**  Retrieves the tFoot object of the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/tFoot) <br/>*/
 
 	tFoot:HTMLTableSectionElement|null;
 
-/**  Retrieves the tHead object of the table. <br/>*/
+/**  Retrieves the tHead object of the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/tHead) <br/>*/
 
 	tHead:HTMLTableSectionElement|null;
 
-/**  Creates an empty caption element in the table. <br/>*/
+/**  Creates an empty caption element in the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/createCaption) <br/>*/
 
 	createCaption():CssChainT;
 
-/**  Creates an empty tBody element in the table. <br/>*/
+/**  Creates an empty tBody element in the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/createTBody) <br/>*/
 
 	createTBody():CssChainT;
 
-/**  Creates an empty tFoot element in the table. <br/>*/
+/**  Creates an empty tFoot element in the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/createTFoot) <br/>*/
 
 	createTFoot():CssChainT;
 
-/**  Returns the tHead element object if successful, or null otherwise. <br/>*/
+/**  Returns the tHead element object if successful, or null otherwise.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/createTHead) <br/>*/
 
 	createTHead():CssChainT;
 
-/**  Deletes the caption element and its contents from the table. <br/>*/
+/**  Deletes the caption element and its contents from the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/deleteCaption) <br/>*/
 
 	deleteCaption():CssChainT;
 
@@ -3405,11 +5911,15 @@ The event listener is appended to target's event listener list and is not append
 
 	deleteRow(index: number):CssChainT;
 
-/**  Deletes the tFoot element and its contents from the table. <br/>*/
+/**  Deletes the tFoot element and its contents from the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/deleteTFoot) <br/>*/
 
 	deleteTFoot():CssChainT;
 
-/**  Deletes the tHead element and its contents from the table. <br/>*/
+/**  Deletes the tHead element and its contents from the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableElement/deleteTHead) <br/>*/
 
 	deleteTHead():CssChainT;
 
@@ -3429,23 +5939,51 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
-/**  Retrieves a collection of all cells in the table row. <br/>*/
+/**  Retrieves a collection of all cells in the table row.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/cells) <br/>*/
 
 	cells:HTMLCollectionOf<HTMLTableCellElement>;
 
-/**  Retrieves the position of the object in the rows collection for the table. <br/>*/
+/**  Retrieves the position of the object in the rows collection for the table.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/rowIndex) <br/>*/
 
 	rowIndex:number;
 
-/**  Retrieves the position of the object in the collection. <br/>*/
+/**  Retrieves the position of the object in the collection.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTableRowElement/sectionRowIndex) <br/>*/
 
 	sectionRowIndex:number;
 
@@ -3469,11 +6007,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableRowElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableRowElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3489,11 +6049,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableSectionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTableSectionElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3509,14 +6091,37 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTemplateElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTextAreaElement/textLength) <br/>*/
 
 	textLength:number;
 
@@ -3536,11 +6141,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3556,11 +6183,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTimeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTimeElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3576,38 +6225,65 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTitleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTitleElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/default) <br/>*/
 
 	default:boolean;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/kind) <br/>*/
 
 	kind:string;
 
+/**  [MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/srclang) <br/>*/
 
 	srclang:string;
 
-/**  Returns the TextTrack object corresponding to the text track of the track element. <br/>*/
+/**  Returns the TextTrack object corresponding to the text track of the track element.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/track) <br/>*/
 
 	track:TextTrack;
 
 
-	ERROR:number;
+	NONE:0;
 
 
-	LOADED:number;
+	LOADING:1;
 
 
-	LOADING:number;
+	LOADED:2;
 
 
-	NONE:number;
+	ERROR:3;
 
 /**  Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
 
@@ -3621,11 +6297,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTrackElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLTrackElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3641,11 +6339,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUListElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 
@@ -3661,11 +6381,33 @@ When set to true, options's once indicates that the callback will only be invoke
 
 If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
 
-The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture. <br/>*/
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)
+Appends an event listener for events whose type attribute value is type. The callback argument sets the callback that will be invoked when the event is dispatched.
+
+The options argument sets listener-specific options. For compatibility this can be a boolean, in which case the method behaves exactly as if the value was specified as options's capture.
+
+When set to true, options's capture prevents callback from being invoked when the event's eventPhase attribute value is BUBBLING_PHASE. When false (or not present), callback will not be invoked when event's eventPhase attribute value is CAPTURING_PHASE. Either way, callback will be invoked if event's eventPhase attribute value is AT_TARGET.
+
+When set to true, options's passive indicates that the callback will not cancel the event by invoking preventDefault(). This is used to enable performance optimizations described in § 2.8 Observing event listeners.
+
+When set to true, options's once indicates that the callback will only be invoked once after which the event listener will be removed.
+
+If an AbortSignal is passed for options's signal, then the event listener will be removed when signal is aborted.
+
+The event listener is appended to target's event listener list and is not appended if it has the same type, callback, and capture.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener) <br/>*/
 
 	addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUnknownElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions):CssChainT;
 
-/**  Removes the event listener in target's event listener list with the same type, callback, and options. <br/>*/
+/**  Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)
+Removes the event listener in target's event listener list with the same type, callback, and options.
+
+[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener) <br/>*/
 
 	removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLUnknownElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions):CssChainT;
 

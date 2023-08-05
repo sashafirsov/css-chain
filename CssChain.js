@@ -89,14 +89,34 @@ function assignedNodesLight(f)
     class
 CssChainT extends Array
 {
-    attr(...args){  return args.length>1 ? (( args[2] ? this.$(args[2]) : this ).setAttribute(...args),this) : this.getAttribute(...args) }
-    prop(...args){  return args.length>1 ? (( args[2] ? this.$(args[2]) : this ).forEach( el=>el[args[0]]=args[1]),this ): this[0][args[0]] }
+    attr(...args)
+    {   if( args.length < 2 )
+            return this.getAttribute(...args);
+        let [k,v,s] = args
+        ,        $s = this.$(s);
+        if(isFn(v))
+            $s.map((n,i,arr)=>v(n,i,arr,this)).forEach((V,i)=>$s[i].setAttribute(k,V))
+        else
+            $s.setAttribute(...args);
+        return this
+    }
+    prop(...args)
+    {   if( args.length < 2 )
+            return this[0][args[0]];
+        let [k,v,s] = args
+        ,        $s = this.$(s);
+        if(isFn(v))
+            $s.map((n,i,arr)=>v(n,i,arr,this)).forEach((V,i)=>$s[i][k]=V)
+        else
+            $s.forEach( el=>el[k]=v);
+        return this
+    }
     forEach( ...args){ Array.prototype.forEach.apply(this,args); return this }
     map( ...args){ return map(this,...args) }
     push(...args){ Array.prototype.push.apply(this,args); return this; }
     querySelector(css){ return new CssChainT().push( this.querySelectorAll(css)[0] )  }
     querySelectorAll(css){ return this.reduce( ($,el)=> $.push(...(el.shadowRoot||el).querySelectorAll(css) ), new CssChainT()) }
-    $(...args){ return args.length ? this.querySelectorAll(...args) : this; }
+    $(...args){ return args.length && args[0] ? this.querySelectorAll(...args) : this; }
     parent(css)
     {   const s = new Set()
         , add = n=> s.has(n) ? 0 : (s.add(n), n)
@@ -186,11 +206,11 @@ CssChainT extends Array
     get innerText(){ return this.txt() }
     set innerText( val ){ return this.txt( val ) }
     txt( val, css=undefined )
-    {   const arr = css? this.$(css): this;
+    {   const $ = this.$(css);
         if( val === undefined )
-            return collectionText( arr );
-        arr.forEach( isFn(val)
-                    ? (n,i)=>setNodeText(n,val(n,i,arr))
+            return collectionText( $ );
+        $.forEach( isFn(val)
+                    ? (n,i)=>setNodeText(n,val(n,i,$,this))
                     : n=>setNodeText(n,val) );
         return this
     }
