@@ -76,11 +76,11 @@ $([],[],[DemoElement]);
 * `querySelectorAll(css)` - selects all children matching `css` , returns CssChain
 * `$` - alias to `querySelectorAll()`
 * `attr(name)` (alias for `getAttribute`) returns 1st element attribute value or `undefined` for empty collection
-* `attr(name, value)` (alias for `setAttribute`) sets elements attribute, returns CssChain
-* `attr(name, value,css)` (alias for `setAttribute`) sets `css`-defined sub-tree elements attribute, returns CssChain
+* `attr(name, val|cb(el,i,arr))` (alias for `setAttribute`) sets elements attribute, returns CssChain
+* `attr(name, val|cb(el,i,arrCss,arrThis),css)` (alias for `setAttribute`) sets `css`-defined sub-tree elements attribute, returns CssChain
 * `prop(name)`  returns 1st element property value or `undefined` for empty collection
-* `prop(name, value)`  sets elements attribute, returns CssChain
-* `prop(name, value, css)`  sets `css`-defined sub-tree elements attribute, returns CssChain
+* `prop(name, val|cb(el,i,arr))`  sets elements attribute, returns CssChain
+* `prop(name, val|cb(el,i,arrCss,arrThis), css)`  sets `css`-defined sub-tree elements attribute, returns CssChain
 * `parent()` - set of immediate parents of current collection, duplications removed
 * `parent(css)` - set of parents of current set which 
   [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
@@ -90,8 +90,8 @@ $([],[],[DemoElement]);
 * `remove()` - delete all nodes, returns empty CssChain
 * `erase()` - removes content of collection nodes, collection nodes remain
 * `txt()` - returns text of whole collection
-* `txt(val | cb(el,i,arr))` - sets text for each element from `val` or callback
-* `txt( val, css )` sets text for children elements defined by css, returns original collection
+* `txt( val | cb(el,i,arr))` - sets text for each element from `val` or callback
+* `txt( val | cb(el,i,arrCss,arrThis), css )` sets text for children elements defined by css, returns original collection
 * `html()` - returns concatenated innerHTML of collection
 * `html( cb(el,i,arr) )` - sets innerHTML of each collection element
 * `html(htmlText)` - sets innerHTML of each collection element
