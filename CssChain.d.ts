@@ -40,6 +40,8 @@ export interface CssChainCollection<T> extends  Array<AnyElement&T>, Omit<AnyEle
     querySelectorAll(css: string): CssChainT;
     /** alias to [querySelectorAll](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) */
     $(css: string): CssChainT<T>;
+    /** direct parents of current set which matches parentNode, duplications removed */
+    parent(): CssChainT<T>;
     /** set of parents of current set which
      [matches](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
      the selector, duplications removed */
